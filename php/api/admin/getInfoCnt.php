@@ -4,7 +4,17 @@
     $db = $database->getConnection();
 
     $query = new Admininfo($db);
-    $stmt = $query->getInfoCnt();
+    $users = $query->getInfoCntUser();
+    $user = $users->fetchAll(PDO::FETCH_ASSOC);
+
+    $deps = $query->getInfoCntDep();
+    $dep = $deps->fetchAll(PDO::FETCH_ASSOC);
+
+    $wids = $query->getInfoCntWid();
+    $wid = $wids->fetchAll(PDO::FETCH_ASSOC);
+
+    $inqs = $query->getInfoCntInq();
+    $inq = $inqs->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt1 = $query->getNotification();
     $notifcnt = $stmt1->fetchAll(PDO::FETCH_ASSOC);
@@ -12,17 +22,13 @@
     $stmt2 = $query->checkCategoryRequest();
     $notif = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql = $stmt->rowCount();
-    if($sql > 0){
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $array = array(
-            "Cnt" => $data,
-            "NotifCnt" => count($notifcnt),
-            "Notif" => $notif
-        );
-        echo json_encode($array);
-    }else{
-        http_response_code(404);
-        echo json_encode('No Record Found.');
-    }
+    $array = array(
+        "UserApplication" => ($user[0]["Cnt"] > 0) ? $user[0]["cnt"] : 0,
+        "DepositApplication" => ($dep[0]["Cnt"] > 0) ? $dep[0]["Cnt"] : 0,
+        "WithdrawApplication" => ($wid[0]["Cnt"] > 0) ? $wid[0]["Cnt"] : 0,
+        "InquiryApplication" => ($inq[0]["Cnt"] > 0) ? $inq[0]["Cnt"] : 0,
+        "NotifCnt" => count($notifcnt),
+        "Notif" => $notif
+    );
+    echo json_encode($array);
 ?>

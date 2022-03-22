@@ -14,6 +14,71 @@
         padding: 5px 5px;
         font-size: 16px;
     }
+    .modal_notice_template .btn-inquiry_save{
+        background: #0093FF;
+        border-radius: 5px;
+        width: 80px;
+        color: #FFFFFF;
+    }
+    .modal_notice_template .m_footer{
+        background: #666666;
+    }
+    .modal_notice_template .modal-content{
+        background: #333333;
+        border: 4px solid #888888;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    .modal_notice_template .modal-body .card-body{
+        padding: 0;
+    }
+    .modal_notice_template .modal-body .card-header{
+        background: #000000;
+        border-radius: 5px 5px 0px 0px;
+        color: #FF9300;
+        font-size: 20px;
+    }
+    .modal_notice_template .modal-body tr td{
+        background: #444444;
+        border: 0.4px solid #000000;
+        box-sizing: border-box;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .modal_notice_template .modal-body .noticeguide_input{
+        background: #FFFFFF;
+        border-radius: 5px;
+        height: 35px;
+        width: 100%;
+        border: none;
+        padding: 10px 10px;
+    }
+    .modal_notice_template .modal-body tr td select {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    .modal_notice_template .modal-body tr td .select-wrapper {
+        position: relative;
+    }
+
+    .modal_notice_template .modal-body tr td .select-wrapper::after {
+        content: "▼";
+        font-size: 1rem;
+        color: #444444;
+        top: 10px;
+        right: 16px;
+        position: absolute;
+    }
+    .modal_notice_template .btn-noticeguide_save{
+        background: #0093FF;
+        border-radius: 5px;
+        color: #FFFFFF;
+        width: 120px;
+        height: 40px;
+    }
+    .modal_notice_template .summer_body{
+        padding: 5px 5px;
+    }
 </style>
         <div class="container-fluid">
             <?php include __DIR__ . '/includes_2/middle_header.php';?>

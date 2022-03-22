@@ -65,7 +65,7 @@
     </div>
 </div>
 <!-- display new record for notice -->
-<div class="modal fade" id="modal-notice_add" tabindex="-1">
+<div class="modal fade modal_notice_template" id="modal-notice_add" tabindex="-1">
     <div class="modal-dialog modal-lg" style="height: 300px;">
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
@@ -120,7 +120,7 @@
     </div>
 </div>
 <!-- edit notice -->
-<div class="modal fade" id="modal-notice_edit" tabindex="-1">
+<div class="modal fade modal_notice_template" id="modal-notice_edit" tabindex="-1">
     <div class="modal-dialog modal-lg" style="height: 300px;">
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
@@ -176,7 +176,7 @@
     </div>
 </div>
 <!-- display new record for guide -->
-<div class="modal fade" id="modal-guide_add" tabindex="-1">
+<div class="modal fade modal_guide_template" id="modal-guide_add" tabindex="-1">
     <div class="modal-dialog modal-lg" style="height: 300px;">
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
@@ -231,7 +231,7 @@
     </div>
 </div>
 <!-- edit notice -->
-<div class="modal fade" id="modal-guide_edit" tabindex="-1">
+<div class="modal fade modal_guide_template" id="modal-guide_edit" tabindex="-1">
     <div class="modal-dialog modal-lg" style="height: 300px;">
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
@@ -278,6 +278,66 @@
                             </div>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display template answer for inquiry -->
+<div class="modal fade modal_inquiry_template" id="modal-inquiry_template" tabindex="-1">
+    <div class="modal-dialog modal-lg" style="height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 25px; font-weight: 700;">1:1 문의</span>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                
+                <div class="card">
+                    <div class="card-header">
+                        1:1 문의
+                    </div>
+                    <div class="card-body">
+                        <form id="formInquiry" enctype="multipart/form-data" method="POST">
+                            <div class="grid_column_inquiry">
+                                <div>
+                                    <input type="hidden" name="category_title" value="inquiry">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td style="width: 20%;">제목</td>
+                                            <td colspan="3">
+                                                <input type="text" id="t_title" class="noticeguide_input">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 20%;">닉네임</td>
+                                            <td style="width: 30%;">
+                                                <div class="display_user">닉네임닉</div>
+                                                <input type="hidden" id="t_nickname" class="noticeguide_input">
+                                            </td>
+                                            <td style="width: 20%;">문의일자</td>
+                                            <td style="width: 30%;">
+                                                <input type="text" id="t_inquiry_date" class="noticeguide_input">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <textarea class="user_inquiry_details"></textarea>
+                                    <div class="summer_body">
+                                        <textarea class="summernote" name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="inquiry_template">
+                                    <table class="table">
+                                        <tr>
+                                            <td>est</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-inquiry_save">등록</button></center>
                             </div>
                         </form>
                     </div>

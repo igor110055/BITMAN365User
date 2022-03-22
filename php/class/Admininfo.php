@@ -19,6 +19,25 @@
 			$this->conn = $db;
 		}
 
+        public function getInquiryList(){
+            $query = "SELECT
+            I.t_Inquiry_Title,
+            I.t_Inquiry_Details,
+            I.t_Inquiry_Status_Id,
+            I.t_Inquiry_Date,
+            I.t_Response_Time,
+            U.u_Nickname
+            FROM ".$this->tbl_bit_inquiry." I
+            JOIN ".$this->tbl_bit_user." U ON I.t_Account_Code = U.u_Account_Code
+            ORDER BY I.t_Inquiry_Date DESC";
+            return $query;
+        }
+        public function getInquiryRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_inquiry;
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
         public function getResultHistoryListRowCount(){
             $query = "SELECT * FROM ".$this->tbl_bit_wss_result." W
             LEFT JOIN ".$this->tbl_bit_reserved_result." R ON W.r_Time_Unix = R.r_Time_Unix WHERE W.r_StatusId IN(1)";
@@ -418,17 +437,34 @@
             return false;
         }
 
-        public function getInfoCnt(){
-            $query = "SELECT 
-            COUNT(u_Status_Id) AS UserApplication,
-            (SELECT COUNT(t_Cashin_Status) AS Cnt FROM ".$this->tbl_bit_deposit." WHERE t_Cashin_Status IN(0) GROUP BY t_Cashin_Status) AS DepositApplication,
-            (SELECT COUNT(t_Cashout_Status) AS Cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Cashout_Status IN(0) GROUP BY t_Cashout_Status) AS WithdrawApplication,
-            (SELECT COUNT(t_Inquiry_Status_Id) AS Cnt FROM ".$this->tbl_bit_inquiry." WHERE t_Inquiry_Status_Id IN(0) GROUP BY t_Inquiry_Status_Id) AS InquiryApplication
-            FROM ".$this->tbl_bit_user." WHERE u_Status_Id IN(1) GROUP BY u_Status_Id";
+        public function getInfoCntUser(){
+            $query = "SELECT COUNT(u_Status_Id) AS Cnt FROM ".$this->tbl_bit_user." WHERE u_Status_Id IN(1)";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
         }
+
+        public function getInfoCntDep(){
+            $query = "SELECT COUNT(t_Cashin_Status) AS Cnt FROM ".$this->tbl_bit_deposit." WHERE t_Cashin_Status IN(0)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function getInfoCntWid(){
+            $query = "SELECT COUNT(t_Cashout_Status) AS Cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Cashout_Status IN(0)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function getInfoCntInq(){
+            $query = "SELECT COUNT(t_Inquiry_Status_Id) AS Cnt FROM ".$this->tbl_bit_inquiry." WHERE t_Inquiry_Status_Id IN(0)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
         public function getNotification(){
             $query = "SELECT COUNT(s_TypeName) AS TypeCnt  FROM ".$this->tbl_bit_sound." WHERE s_TypeName IN('on') GROUP BY s_TypeName";
             $stmt = $this->conn->prepare($query);
@@ -443,6 +479,12 @@
         }
         public function setToMUte(){
             $query = "UPDATE ".$this->tbl_bit_sound." SET s_TypeId = 0, s_TypeName = 'off'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getUserList(){
+            $query = "SELECT ".$this->tbl_bit_user." WHERE u_Status_Id IN(2)";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

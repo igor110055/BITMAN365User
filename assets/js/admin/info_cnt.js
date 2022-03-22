@@ -10,9 +10,9 @@ function display_time() {
 function display_counter(){
     var refresh = 1000; // Refresh rate in milli seconds
     mytime = setTimeout('display_time()',refresh)
-    info = setTimeout('getInfoCnt()',refresh)
+    //info = setTimeout('getInfoCnt()',refresh)
     req = setTimeout('checkCategoryReq()',refresh)
-    soundeffect = setTimeout('playSoundEffect()',refresh)
+    soundeffect = setTimeout('playSound()',refresh)
 }
 
 function playsoundEffect(){
@@ -30,17 +30,14 @@ function getInfoCnt(){
         "contentType": "application/json",
         "async": false,
         success: function(response) {
-            var res = response["Cnt"][0];
-            var notifcnt = response["NotifCnt"];
-            var notif = response["Notif"];
-            $('.user_application').text((res.UserApplication) ? res.UserApplication : 0);
-            $('.deposit_application').text((res.DepositApplication) ? res.DepositApplication : 0);
-            $('.withdraw_application').text((res.WithdrawApplication) ? res.WithdrawApplication : 0);
-            $('.inquiry_application').text((res.InquiryApplication) ? res.InquiryApplication : 0);
+            $('.user_application').text(response.UserApplication);
+            $('.deposit_application').text(response.DepositApplication);
+            $('.withdraw_application').text(response.WithdrawApplication);
+            $('.inquiry_application').text(response.InquiryApplication);
         }
     })
 }
-function playSoundEffect(){
+function playSound(){
     $.ajax({
         "url": "../php/api/admin/getInfoCnt.php",
         "type": "GET",
@@ -60,7 +57,7 @@ function playSoundEffect(){
     })
 }
 function OnOff() {
-    var img = document.getElementById('mutesound');
+    var img = document.querySelector('.mutesound');
     $('.mutesound').click(function(){
         if (img.getAttribute('src') === "../assets/icons/akar-icons_sound-on.png") {
             img.setAttribute('src', "../assets/icons/akar-icons_sound-off.png");
@@ -144,5 +141,5 @@ $('.mutesound').click(function(){
 //     })
 // }
 OnOff();
-display_counter();
+//display_counter();
 getInfoCnt();

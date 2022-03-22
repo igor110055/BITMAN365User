@@ -1,6 +1,6 @@
 <?php
     $scriptjs = array(
-        "../assets/js/admin/admin.js"
+        "../assets/js/admin/btcusd_history_ad.js"
     );
 ?>
     <?php include __DIR__ . '/includes_1/header.php';?>

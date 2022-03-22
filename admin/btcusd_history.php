@@ -20,7 +20,7 @@
                     <div class="header_list"><a href="./settlement_mngt.php">정산관리</a></div>
                     <div class="header_list"><a href="./notice.php">고객센터</a></div>
                     <div class="header_list"><a href="./preferences.php">환경설정</a></div>
-                    <<?php include __DIR__ . '/includes_1/notify_info.php';?>
+                    <?php include __DIR__ . '/includes_1/notify_info.php';?>
                 </div>    
             </div>
             <div class="data_content">
