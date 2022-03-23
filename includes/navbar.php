@@ -22,40 +22,93 @@
     ?>
     <!-- 1920 pixels -->
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./btc_usd.php">BTC/USD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">ETH/USD</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">XRP/USD</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-5">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-noticeguide" style="text-decoration: none;" href="#" id="drnoticeguide" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    공지 및 이용
-                </a>
-                <div class="dropdown-menu notgui" aria-labelledby="drnoticeguide">
-                    <a class="dropdown-item" href="./admin/notice.php">공지사항</a>
-                    <a class="dropdown-item" href="./admin/guide.php">이용안내</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-depositwithdraw" style="text-decoration: none;" href="#" id="withdrawdeposit" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    입출금 신청
-                </a>
-                <div class="dropdown-menu depwid" aria-labelledby="withdrawdeposit">
-                    <a class="dropdown-item" href="./admin/deposit.php">입금신청</a>
-                    <a class="dropdown-item" href="./admin/withdraw.php">출금신청</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">고객센터</a>
-            </li>
-        </ul>
+    <?php
+            if(count(@$_SESSION)){
+            echo '
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">BTC/USD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ETH/USD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">XRP/USD</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-5">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-noticeguide" style="text-decoration: none;" href="#" id="drnoticeguide" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        공지 및 이용
+                    </a>
+                    <div class="dropdown-menu notgui" aria-labelledby="drnoticeguide">
+                        <a class="dropdown-item" href="./admin/notice.php">공지사항</a>
+                        <a class="dropdown-item" href="./admin/guide.php">이용안내</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-depositwithdraw" style="text-decoration: none;" href="#" id="withdrawdeposit" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        입출금 신청
+                    </a>
+                    <div class="dropdown-menu depwid" aria-labelledby="withdrawdeposit">
+                        <a class="dropdown-item" href="./admin/deposit.php">입금신청</a>
+                        <a class="dropdown-item" href="./admin/withdraw.php">출금신청</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-inquiryfaq" style="text-decoration: none;" href="#" id="inquiryfaq" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        고객센터
+                    </a>
+                    <div class="dropdown-menu inqfaq" aria-labelledby="inquiryfaq">
+                        <a class="dropdown-item" href="./admin/inquiry.php">1:1문의</a>
+                        <a class="dropdown-item" href="./admin/faq.php">FAQ</a>
+                    </div>
+                </li>
+            </ul>';
+            }else{
+                echo '
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item modal-popup-login">
+                        <a class="nav-link" href="#">BTC/USD</a>
+                    </li>
+                    <li class="nav-item modal-popup-login">
+                        <a class="nav-link" href="#">ETH/USD</a>
+                    </li>
+                    <li class="nav-item modal-popup-login">
+                        <a class="nav-link" href="#">XRP/USD</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item dropdown modal-popup-login">
+                        <a class="nav-link dropdown-noticeguide" style="text-decoration: none;" href="#" id="drnoticeguide" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            공지 및 이용
+                        </a>
+                        <div class="dropdown-menu notgui" aria-labelledby="drnoticeguide">
+                            <a class="dropdown-item" href="#">공지사항</a>
+                            <a class="dropdown-item" href="#">이용안내</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown modal-popup-login">
+                        <a class="nav-link dropdown-depositwithdraw" style="text-decoration: none;" href="#" id="withdrawdeposit" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            입출금 신청
+                        </a>
+                        <div class="dropdown-menu depwid" aria-labelledby="withdrawdeposit">
+                            <a class="dropdown-item" href="#">입금신청</a>
+                            <a class="dropdown-item" href="#">출금신청</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown modal-popup-login">
+                        <a class="nav-link dropdown-inquiryfaq" style="text-decoration: none;" href="#" id="inquiryfaq" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            고객센터
+                        </a>
+                        <div class="dropdown-menu inqfaq" aria-labelledby="inquiryfaq">
+                            <a class="dropdown-item" href="#">1:1문의</a>
+                            <a class="dropdown-item" href="#">FAQ</a>
+                        </div>
+                    </li>
+                </ul>';
+            }
+        ?>
         <span class="nav_layout_btn">
             <ul class="navbar-nav mr-auto">
                 <?php

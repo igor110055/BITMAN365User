@@ -37,6 +37,23 @@ $(function(){
             $('.depwid').hide();
         })
     })
+    //toggle inqfaq
+    $('.dropdown-inquiryfaq').mouseover(function() {
+        $('.inqfaq').show();
+    })
+
+    $('.dropdown-inquiryfaq').mouseout(function() {
+        t = setTimeout(function() {
+            $('.inqfaq').hide();
+        }, 100);
+
+        $('.inqfaq').on('mouseenter', function() {
+            $('.inqfaq').show();
+            clearTimeout(t);
+        }).on('mouseleave', function() {
+            $('.inqfaq').hide();
+        })
+    })
     
     $('#navbar-collapse-1').click(function(){
         $('.navbar-collapse-1-mobile').toggle();

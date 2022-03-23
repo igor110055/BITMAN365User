@@ -13,6 +13,7 @@
         private $tbl_bit_reserved_result = "tbl_bit_reserved_results";
         private $tbl_bit_inquiry = "tbl_bit_inquiries";
         private $tbl_bit_sound = "tbl_bit_sounds";
+        private $tbl_bit_user_log = "tbl_bit_user_logs";
         
         //properties  
 		public function __construct($db){
@@ -484,7 +485,20 @@
             return $stmt;
         }
         public function getUserList(){
-            $query = "SELECT ".$this->tbl_bit_user." WHERE u_Status_Id IN(2)";
+            $query = "SELECT * FROM ".$this->tbl_bit_user." WHERE u_Status_Id IN(2)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getUserPerNickname($nname){
+            $query = "SELECT *,
+            (SELECT l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_LogInDateTime,
+            (SELECT l_Device_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Device_Use,
+            (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Browser_Use,
+            (SELECT l_Access_Domain FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Access_Domain,
+            (SELECT l_Current_Ip FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Current_Ip,
+            (SELECT l_isActive FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive
+            FROM ".$this->tbl_bit_user." WHERE u_Nickname = '".$nname."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

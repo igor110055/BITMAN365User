@@ -79,17 +79,57 @@ $("form[id='formGuide']").validate({
         });
     }
 })
-$(".display_user").click(function(){
+function getUserList(url){
     $.ajax({
         type: 'GET',
-        url: '../php/api/admin/getUserList.php',
+        url: url,
         cache: false,
         success: function(response){
-            $("#modal-notice_add").modal('hide');
-            if(response == 1){
-                izitoast('이용안내!','성공적으로 추가됨.','fa fa-bullhorn','#1072BA','./guide.php');
+            var html = '';
+            html += '<datalist id="nickname">';
+            response.forEach(function(el){
+                html += '<option value='+el.u_Nickname+' class="display_user_perid">'+el.u_Nickname+'</option>';
+            })  
+            html += '</datalist>';
+            $('#display_user').html(html);
+        }
+    })
+}
+$(document).on('change','#s_nickname', function(){
+    var nname = $(this).val();
+    $.ajax({
+        type: 'POST',
+        url: '../php/api/admin/getUserPerNickname.php?nickname='+nname,
+        cache: false,
+        success: function(response){
+            var res = response;
+            console.log(res)
+            if(response){
+                $("#modal-inquiry_user_display").modal('show');
+                $('#accountid').text(res.Account_Code);
+                $('#nname').text(res.Nickname);
+                $('#pass').val(res.Password);
+                $('#domain').val(res.Domain);
             }
         }
     })
-});
+})
+function getBanklist(url){
+    $.ajax({
+        type: 'GET',
+        url: url,
+        cache: false,
+        success: function(response){
+            var html = '';
+            html += '<datalist id="banklist">';
+            response.forEach(function(el){
+                html += '<option data-value='+el.m_BankId+' class="display_user_perid">'+el.m_Bank_Name+'</option>';
+            })  
+            html += '</datalist>';
+            $('#display_bank').html(html);
+        }
+    })
+}
+getBanklist("../php/api/getBankList.php");
+getUserList("../php/api/admin/getUserList.php");
 getresult("../php/api/admin/getInquiryList.php");

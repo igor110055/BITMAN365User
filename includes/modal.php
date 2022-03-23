@@ -314,8 +314,8 @@
                                         <tr>
                                             <td style="width: 20%;">닉네임</td>
                                             <td style="width: 30%;">
-                                                <div class="display_user">닉네임닉</div>
-                                                <input type="hidden" id="t_nickname" class="noticeguide_input">
+                                                <input list="nickname"  id="s_nickname" class="noticeguide_input">
+                                                <div id="display_user"></div>
                                             </td>
                                             <td style="width: 20%;">문의일자</td>
                                             <td style="width: 30%;">
@@ -340,6 +340,80 @@
                                 <center><button type="submit" class="btn btn-inquiry_save">등록</button></center>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display user per nickname -->
+<div class="modal fade modal_inquiry_template" id="modal-inquiry_user_display" tabindex="-1">
+    <div class="modal-dialog modal_size_lenght">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 20px; font-weight: 700;">회원정보</span>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <span style="color: #FF9300; font-size: 20px;">기본정보</span>
+                        <div class="pull-right" style="padding: 0;">
+                            <button type="button" class="btn" style="background: #FF9300; color: #FFFFFF;">쪽지발송</button>
+                            <button type="button" class="btn" style="background: #ED5659; color: #FFFFFF;">로그아웃</button>
+                            <input type="text" class="btn" style="background: #FFFFFF; width: 120px; border-radius: 5px;">
+                            <button type="button" class="btn" style="background: #FFF200; color: #000;">이용</button>
+                            <button type="button" class="btn" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid_column_inquiry_user">
+                            <div>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>아이디</td>
+                                        <td id="accountid" class="tdValue"></td>
+                                        <td>닉네임</td>
+                                        <td id="nname" class="tdValue"></td>
+                                        <td>비밀번호</td>
+                                        <td class="tdValue"><input type="text" id="pass" class="noticeguide_input"></td>
+                                        <td>접속도메인</td>
+                                        <td id="domain" class="tdValue"></td>
+                                        <td>상태</td>
+                                        <td id="" class="tdValue" style="color: #FF9300;">접속중</td>
+                                    </tr>
+                                    <tr>
+                                        <td>예금주</td>
+                                        <td class="tdValue">abcdefghijkl</td>
+                                        <td>추천지점</td>
+                                        <td class="tdValue">abcdefghijkl</td>
+                                        <td>가입일자</td>
+                                        <td class="tdValue"></td>
+                                        <td>접속기기</td>
+                                        <td class="tdValue">ctx365.com</td>
+                                        <td>접속일자</td>
+                                        <td class="tdValue">접속중</td>
+                                    </tr>
+                                    <tr>
+                                        <td>은행</td>
+                                        <td class="tdValue">
+                                            <input list="banklist"  id="bankid" class="noticeguide_input">
+                                            <div id="display_bank"></div>
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td>가입IP</td>
+                                        <td class="tdValue"></td>
+                                        <td>접속브라우저</td>
+                                        <td class="tdValue">ctx365.com</td>
+                                        <td>접속IP</td>
+                                        <td class="tdValue">접속중</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,11 @@
     .inquiry_template table tr td{
         height: 10px;
     }
+    .modal_size_lenght{
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .modal_inquiry_template .btn-inquiry_save{
         background: #0093FF;
         border-radius: 5px;
@@ -112,6 +117,18 @@
         cursor: pointer;
         color: #444444;
         padding: 7px 20px;
+    }
+    #modal-inquiry_user_display .btn{
+        border-radius: 5px; 
+        height: 32px;
+        padding: 2px 5px;
+        font-size: 16px;
+    }
+    .grid_column_inquiry_user table tr td{
+        width: 10%;
+    }
+    .grid_column_inquiry_user table tr td.tdValue{
+        background: #888888;
     }
 </style>
         <div class="container-fluid">

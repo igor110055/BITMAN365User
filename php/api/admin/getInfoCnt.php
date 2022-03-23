@@ -23,7 +23,7 @@
     $notif = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     $array = array(
-        "UserApplication" => ($user[0]["Cnt"] > 0) ? $user[0]["cnt"] : 0,
+        "UserApplication" => ($user[0]["Cnt"] > 0) ? $user[0]["Cnt"] : 0,
         "DepositApplication" => ($dep[0]["Cnt"] > 0) ? $dep[0]["Cnt"] : 0,
         "WithdrawApplication" => ($wid[0]["Cnt"] > 0) ? $wid[0]["Cnt"] : 0,
         "InquiryApplication" => ($inq[0]["Cnt"] > 0) ? $inq[0]["Cnt"] : 0,
