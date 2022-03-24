@@ -356,6 +356,7 @@
             <div class="modal-body" style="padding: 0;">
                 
                 <div class="card">
+                    <!-- 1st row -->
                     <div class="card-header">
                         <span style="color: #FF9300; font-size: 20px;">기본정보</span>
                         <div class="pull-right" style="padding: 0;">
@@ -368,51 +369,195 @@
                     </div>
                     <div class="card-body">
                         <div class="grid_column_inquiry_user">
-                            <div>
-                                <table style="width: 100%;">
-                                    <tr>
-                                        <td>아이디</td>
-                                        <td id="accountid" class="tdValue"></td>
-                                        <td>닉네임</td>
-                                        <td id="nname" class="tdValue"></td>
-                                        <td>비밀번호</td>
-                                        <td class="tdValue"><input type="text" id="pass" class="noticeguide_input"></td>
-                                        <td>접속도메인</td>
-                                        <td id="domain" class="tdValue"></td>
-                                        <td>상태</td>
-                                        <td id="" class="tdValue" style="color: #FF9300;">접속중</td>
-                                    </tr>
-                                    <tr>
-                                        <td>예금주</td>
-                                        <td class="tdValue">abcdefghijkl</td>
-                                        <td>추천지점</td>
-                                        <td class="tdValue">abcdefghijkl</td>
-                                        <td>가입일자</td>
-                                        <td class="tdValue"></td>
-                                        <td>접속기기</td>
-                                        <td class="tdValue">ctx365.com</td>
-                                        <td>접속일자</td>
-                                        <td class="tdValue">접속중</td>
-                                    </tr>
-                                    <tr>
-                                        <td>은행</td>
-                                        <td class="tdValue">
-                                            <input list="banklist"  id="bankid" class="noticeguide_input">
-                                            <div id="display_bank"></div>
-                                        </td>
-                                        <td colspan="2"></td>
-                                        <td>가입IP</td>
-                                        <td class="tdValue"></td>
-                                        <td>접속브라우저</td>
-                                        <td class="tdValue">ctx365.com</td>
-                                        <td>접속IP</td>
-                                        <td class="tdValue">접속중</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div>
-
-                            </div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>아이디</td>
+                                    <td id="accountid" class="tdValue"></td>
+                                    <td>닉네임</td>
+                                    <td id="nname" class="tdValue"></td>
+                                    <td>비밀번호</td>
+                                    <td class="tdValue"><input type="text" id="pass" class="noticeguide_input" style="text-align: center;"></td>
+                                    <td>접속도메인</td>
+                                    <td id="domain" class="tdValue"></td>
+                                    <td>상태</td>
+                                    <td id="slate" class="tdValue">접속중</td>
+                                </tr>
+                                <tr>
+                                    <td>예금주</td>
+                                    <td id="aholder" class="tdValue"></td>
+                                    <td>추천지점</td>
+                                    <td id="rpoint" class="tdValue"></td>
+                                    <td>가입일자</td>
+                                    <td id="regdate" class="tdValue"></td>
+                                    <td>접속기기</td>
+                                    <td id="device" class="tdValue"></td>
+                                    <td>접속일자</td>
+                                    <td id="logindate" class="tdValue"></td>
+                                </tr>
+                                <tr>
+                                    <td>은행</td>
+                                    <td class="tdValue">
+                                        <input list="banklist" id="bankid" class="noticeguide_input" style="text-align: center;">
+                                        <div id="display_bank"></div>
+                                    </td>
+                                    <td id="accountno" class="tdValue" colspan="2"></td>
+                                    <td>가입IP</td>
+                                    <td id="ip" class="tdValue"></td>
+                                    <td>접속브라우저</td>
+                                    <td id="browser" class="tdValue"></td>
+                                    <td>접속IP</td>
+                                    <td id="server_ip" class="tdValue">접속중</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 2nd row -->
+                    <div class="card-header">
+                        <span style="color: #FF9300; font-size: 20px;">게임관리</span>
+                        <div class="pull-right" style="padding: 0;">
+                            <button type="button" class="btn" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid_column_inquiry_user">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>BTC/USD</td>
+                                    <td class="tdValue">
+                                        <input list="btcusdlist" class="noticeguide_input" style="text-align: center;">
+                                        <datalist id="btcusdlist">
+                                            <option data-value='Y'>Y</option>
+                                            <option data-value='N'>N</option>
+                                        </datalist>
+                                    </td>
+                                    <td>ETH/USD</td>
+                                    <td class="tdValue">
+                                        <input list="ethusdlist" class="noticeguide_input" style="text-align: center;">
+                                        <datalist id="ethusdlist">
+                                            <option data-value='Y'>Y</option>
+                                            <option data-value='N'>N</option>
+                                        </datalist>
+                                    </td>
+                                    <td>XRP/USD</td>
+                                    <td class="tdValue">
+                                        <input list="xrpusdlist" class="noticeguide_input" style="text-align: center;">
+                                        <datalist id="xrpusdlist">
+                                            <option data-value='Y'>Y</option>
+                                            <option data-value='N'>N</option>
+                                        </datalist>
+                                    </td>
+                                    <td>-</td>
+                                    <td id="domain" class="tdValue">-</td>
+                                    <td>-</td>
+                                    <td class="tdValue">-</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 3rd row -->
+                    <div class="card-header">
+                        <span style="color: #FF9300; font-size: 20px;">메모</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid_column_inquiry_user">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">메모메모메모</td>
+                                    <td style="width: 10%; background: #444444;">관리자1</td>
+                                    <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
+                                    <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10%; background: #444444;">관리자1</td>
+                                    <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
+                                    <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
+                                </tr>
+                                <!-- next line -->
+                                <tr>
+                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">메모등록</td>
+                                    <td style="width: 10%; background: #444444;">관리자1</td>
+                                    <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
+                                    <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10%; background: #444444;">관리자1</td>
+                                    <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
+                                    <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 4th row -->
+                    <div class="card-header">
+                        <span style="color: #FF9300; font-size: 20px;">보유 및 거래금액</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid_column_inquiry_holding">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <th>보유머니</th>
+                                    <th>총입금액<br>당일입금</th>
+                                    <th>총출금액<br>당일출금</th>
+                                    <th>총지급액<br>당일지급</th>
+                                    <th>총회수액<br>당일회수</th>
+                                    <th>당일거래<br>당일거래손익</th>
+                                    <th>당일실현<br>당일실격</th>
+                                    <th>-</th>
+                                    <th>-</th>
+                                    <th>-</th>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 5th row -->
+                    <div class="card-header">
+                        <span style="color: #FF9300; font-size: 20px;">거래내역</span>
+                        <div class="pull-right" style="padding: 0;">
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">1M</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">접속</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">메모</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">쪽지</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-right: 150px;">문의</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">머니</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">입금</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">출금</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">지급</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-right: 50px;">회수</button>
+                            <select id="current_year" style="border: none; height: 35px; border-radius: 5px; width: 100px; text-align: center;">
+                                <option value="<?=date('Y')?>"><?=date('Y')?>년</option>
+                                <?php
+                                    for($i = 2022; $i < 2030; $i++){
+                                        echo '<option value='.$i.'>'.$i.'년</option>';
+                                    }
+                                ?>
+                            </select>
+                            <select id="current_month" style="border: none; height: 35px; border-radius: 5px; width: 100px; text-align: center;">
+                                <option value="<?=date('m')?>"><?=date('m')?>월</option>
+                                <?php
+                                    for($i = 1; $i <= 12; $i++){
+                                        echo '<option value='.$i.'>'.$i.'월</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid_column_inquiry_holding">
+                            <div id="pagination-result_mini">
+                                <input type="hidden" name="rowcount" id="rowcount" />
+                            </div><br>
                         </div>
                     </div>
                 </div>

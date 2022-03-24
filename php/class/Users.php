@@ -6,6 +6,7 @@
         private $tbl_bit_access = "tbl_bit_access";
         private $tbl_bit_trans_headers = "tbl_bit_transaction_headers";
         private $tbl_bit_bank = "tbl_bit_banklists";
+        private $tbl_bit_admin_log = "tbl_bit_admin_logs";
 
         //properties  
 		public function __construct($db){
@@ -102,6 +103,47 @@
             }else{
                 return false;
             }
+        }
+
+        public function userLogs($isType,$account_code,$get_ip){
+            $query = "INSERT INTO ".$this->tbl_bit_admin_log." (l_Account_Code,l_LogInDateTime,l_Current_Ip,l_Access_Domain,l_Device_Use,l_Browser_Use,l_isActive) VALUES (:AccountCode,:LogInDateTime,:CurrentIp,:AccessDomain,:DeviceUse,:BrowserUse,:isActive)";
+            $stmt = $this->conn->prepare($query);
+
+            $code = $account_code;
+            $device = $isType;
+            $logindtime = date('Y-m-d h:i:s');
+            $browser = 'Chrome';
+            $domain = $_SERVER['SERVER_NAME'];
+            $ip = $get_ip;
+            $active = 1;
+
+            $stmt->bindParam(':AccountCode', $code, PDO::PARAM_STR);
+            $stmt->bindParam(':LogInDateTime', $logindtime, PDO::PARAM_STR);
+            $stmt->bindParam(':CurrentIp', $ip, PDO::PARAM_STR);
+            $stmt->bindParam(':AccessDomain', $domain, PDO::PARAM_STR);
+            $stmt->bindParam(':DeviceUse', $device, PDO::PARAM_STR);
+            $stmt->bindParam(':BrowserUse', $browser, PDO::PARAM_STR);
+            $stmt->bindParam(':isActive', $active, PDO::PARAM_INT);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+
+        public function destroyUserSession($code){
+            $query = "UPDATE ".$this->tbl_bit_admin_log." SET l_LogOutDateTime = :logoutdtime, l_isActive = :status WHERE l_Account_Code = :code AND DATE(l_LogInDateTime) = :logdate AND l_isActive IN(1)";
+            $stmt = $this->conn->prepare($query);
+
+            $acode = $code;
+            $logoutdtime = date('Y-m-d h:i:s');
+            $logdate = date('Y-m-d');
+            $status = 0;
+
+            $stmt->bindParam(':code', $acode, PDO::PARAM_STR);
+            $stmt->bindParam(':logoutdtime', $logoutdtime, PDO::PARAM_STR);
+            $stmt->bindParam(':logdate', $logdate, PDO::PARAM_STR);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->execute();
         }
 		
 		 // Check if the user is already logged in

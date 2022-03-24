@@ -54,6 +54,7 @@
     if($sql1->rowCount() > 0){
         foreach($data as $key => $val){
             $totalAmount = $val["t_Amount_in_Total"] + $val["t_Total_Amount_Cash_In"];
+            $cashinamount = $val["t_Total_Amount_Cash_In"];
             $output .= '<tr style="text-align: center;">';
             $output .= '<td>'.$sNum.'</td>';
             $output .= '<td>'.$val["u_Recommended_Point"].'</td>';
@@ -69,7 +70,7 @@
                 '.$val["u_Ip_Address"].'
             </td>';
             $output .= '<td style="width: 180px;">
-                <button type="button" class="btn btn_accept" data-id="'.$val["UniqueId"].'" data-code="'.$val["u_Account_Code"].'" data-total_amount="'.$totalAmount.'">승인</button>
+                <button type="button" class="btn btn_accept" data-id="'.$val["UniqueId"].'" data-code="'.$val["u_Account_Code"].'" data-cashin="'.$cashinamount.'" data-total_amount="'.$totalAmount.'">승인</button>
                 <button type="button" class="btn btn_reject" data-id="'.$val["UniqueId"].'" data-code="'.$val["u_Account_Code"].'">거절</button>
             </td>';
             $output .= '</tr>';
@@ -93,6 +94,7 @@
     $('.btn_accept').click(function(){
 		var id = $(this).data('id');
 		var code = $(this).data('code');
+		var cashin = $(this).data('cashin');
 		var total_amount = $(this).data('total_amount');
 		$.confirm({
             title: 'You are about to accept deposit request!',
@@ -106,7 +108,7 @@
                     action: function(){
                         $.ajax({
                             type: 'POST',
-                            url: '../php/api/admin/postInformation.php?id='+id+'&total_amount='+total_amount+'&code='+code+'&category_title=deposit_accept',
+                            url: '../php/api/admin/postInformation.php?id='+id+'&cashin='+cashin+'&total_amount='+total_amount+'&code='+code+'&category_title=deposit_accept',
                             cache: false,
                             success: function(response){
                                 if(response == 1){

@@ -12,6 +12,20 @@ function getresult(url) {
         {} 	        
    });
 } 
+function getresult_mini(url,code) {
+    $.ajax({
+        url: url,
+        type: "GET",
+        data:  {rowcount:$("#rowcount").val()},
+        //beforeSend: function(){$("#overlay").show();},
+        success: function(data){
+        $("#pagination-result_mini").html(data);
+        setInterval(function() {$("#overlay").hide(); },500);
+        },
+        error: function() 
+        {} 	        
+   });
+} 
 $(".modal-inquiry_template_show").click(function(){
     $("#modal-inquiry_template").modal('show');
 });
@@ -102,17 +116,37 @@ $(document).on('change','#s_nickname', function(){
         url: '../php/api/admin/getUserPerNickname.php?nickname='+nname,
         cache: false,
         success: function(response){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
             var res = response;
-            console.log(res)
             if(response){
                 $("#modal-inquiry_user_display").modal('show');
                 $('#accountid').text(res.Account_Code);
                 $('#nname').text(res.Nickname);
                 $('#pass').val(res.Password);
-                $('#domain').val(res.Domain);
+                $('#domain').text(res.Domain);
+                $('#slate').html((res.isActive == 1) ? '<span style="color: #FF9300;">접속중</span>' : '<span style="color: #000000;">미접속</span>');
+                $('#aholder').text(res.Bank_Holder_Name);
+                $('#rpoint').text(res.Recommended_Point);
+                $('#regdate').text(res.Entry_Date);
+                $('#device').text(res.Device_Use);
+                $('#logindate').text(res.LogInDateTime);
+                $('#bankid').val(res.BankName);
+                $('#accountno').text(res.Account_Number);
+                $('#ip').text(res.Current_Ip);
+                $('#browser').text(res.Browser_Use);
+                $('#server_ip').text(res.ServerIp);
+                getresult_mini("../php/api/admin/getUserTransactionList.php?code="+res.Account_Code+'&year='+year+'&month='+month);
             }
         }
     })
+})
+$(document).on('change','#current_year', function(){
+    var year = $(this).val();
+    var month = $('.current_month').val();
+    var code = $('#accountid').text();
+    getresult_mini("../php/api/admin/getUserTransactionList.php?code="+code+'&year='+year+'&month='+month);
 })
 function getBanklist(url){
     $.ajax({

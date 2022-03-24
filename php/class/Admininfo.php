@@ -14,12 +14,39 @@
         private $tbl_bit_inquiry = "tbl_bit_inquiries";
         private $tbl_bit_sound = "tbl_bit_sounds";
         private $tbl_bit_user_log = "tbl_bit_user_logs";
+        private $tbl_bit_betting_detail = "tbl_bit_betting_details";
+        private $tbl_bit_trans_history = "tbl_bit_transaction_histories";
         
         //properties  
 		public function __construct($db){
 			$this->conn = $db;
 		}
-
+        public function getUserTransactionList($code,$year,$month){
+            $query = "SELECT *
+            FROM ".$this->tbl_bit_trans_history." WHERE (h_Transaction_Type, h_Processing_Time) IN (
+                SELECT h_Transaction_Type, max(h_Processing_Time) AS date
+                FROM ".$this->tbl_bit_trans_history."
+                WHERE  h_Account_Code = '".$code."'
+                AND YEAR(h_Processing_Time) = '".$year."'
+                AND MONTH(h_Processing_Time) = '".$month."'
+                GROUP BY h_Transaction_Type
+            )";
+            return $query;
+        }
+        public function getUserTransactionRowCount($code,$year,$month){
+            $query = "SELECT *
+            FROM ".$this->tbl_bit_trans_history." WHERE (h_Transaction_Type, h_Processing_Time) IN (
+                SELECT h_Transaction_Type, max(h_Processing_Time) AS date
+                FROM ".$this->tbl_bit_trans_history."
+                WHERE  h_Account_Code = '".$code."'
+                AND YEAR(h_Processing_Time) = '".$year."'
+                AND MONTH(h_Processing_Time) = '".$month."'
+                GROUP BY h_Transaction_Type
+            )";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
         public function getInquiryList(){
             $query = "SELECT
             I.t_Inquiry_Title,
@@ -169,7 +196,7 @@
             B.m_Bank_Name
             FROM ".$this->tbl_bit_withdraw." W
             JOIN ".$this->tbl_bit_user." U ON W.t_Account_Code = U.u_Account_Code
-            JOIN ".$this->tbl_bit_Money_transaction." T ON T.t_Account_Code = U.u_Account_Code
+            LEFT JOIN ".$this->tbl_bit_Money_transaction." T ON T.t_Account_Code = U.u_Account_Code
             JOIN ".$this->tbl_bit_bank." B ON U.u_Bank_Code = B.m_BankId
             WHERE  W.t_cashout_Status In(0) ORDER BY W.t_Cashout_Date DESC";
             return $query;
@@ -193,7 +220,7 @@
             D.t_Cashin_Date
             FROM ".$this->tbl_bit_deposit." D
             JOIN ".$this->tbl_bit_user." U ON D.t_Account_Code = U.u_Account_Code
-            JOIN ".$this->tbl_bit_Money_transaction." T ON T.t_Account_Code = U.u_Account_Code
+            LEFT JOIN ".$this->tbl_bit_Money_transaction." T ON T.t_Account_Code = U.u_Account_Code
             WHERE  D.t_cashin_Status In(0) ORDER BY D.t_Cashin_Date DESC";
             return $query;
         }
@@ -373,24 +400,89 @@
             $stmt->execute();
             return $stmt;
         }
-        public function postDepositUpdate($get){
-            $query = "UPDATE ".$this->tbl_bit_deposit." SET t_Cashin_Status = :Status WHERE t_Id = :Id;
-            UPDATE ".$this->tbl_bit_Money_transaction." SET t_Amount_in_Total = :Total WHERE t_Account_Code = :Code";
+        public function checkTransactionHeaders($code){
+            $query = "SELECT * FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = '".$code."'";
             $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $rowcount = $stmt->rowCount();
+            return $rowcount;
+        }
+        public function postDepositUpdate($get){
+            $checkTH = $this->checkTransactionHeaders($get["code"]);
+            if($checkTH == 1){
+                $query = "UPDATE ".$this->tbl_bit_deposit." SET t_Cashin_Status = :Status WHERE t_Id = :Id;
+                UPDATE ".$this->tbl_bit_Money_transaction." SET t_Amount_in_Total = :Total WHERE t_Account_Code = :Code;
+                INSERT INTO ".$this->tbl_bit_trans_history." (h_Transaction_Type, h_Account_Code, h_Event, h_Contract_Time, h_Plus, h_Minus, h_Current_Balance, h_Processing_Time) VALUES (:Transaction_Type, :Account_Code, :Event, :Contract_Time, :Plus, :Minus, :Current_Balance, :Process_Time)";
+                $stmt = $this->conn->prepare($query);
 
-            $id = $get["id"];
-            $total = $get["total_amount"];
-            $code = $get["code"];
-            $status = 1;
+                $id = $get["id"];
+                $total = $get["total_amount"];
+                $code = $get["code"];
+                $status = 1;
+                $transtype = 'Deposit';
+                $date = date('Y-m-d h:i:s');
+                $event = '증금';
+                $plus = $get["cashin"];
+                $minus = 0;
+                $ctime = '-';
 
-            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':Status', $status, PDO::PARAM_STR);
-            $stmt->bindParam(':Total', $total, PDO::PARAM_STR);
-            $stmt->bindParam(':Code', $code, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return true;
+                $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+                $stmt->bindParam(':Status', $status, PDO::PARAM_STR);
+                $stmt->bindParam(':Total', $total, PDO::PARAM_STR);
+                $stmt->bindParam(':Code', $code, PDO::PARAM_STR);
+                //history
+                $stmt->bindParam(':Transaction_Type', $transtype, PDO::PARAM_STR);
+                $stmt->bindParam(':Account_Code', $code, PDO::PARAM_STR);
+                $stmt->bindParam(':Event', $event, PDO::PARAM_STR);
+                $stmt->bindParam(':Contract_Time', $ctime, PDO::PARAM_STR);
+                $stmt->bindParam(':Plus', $plus, PDO::PARAM_STR);
+                $stmt->bindParam(':Minus', $minus, PDO::PARAM_STR);
+                $stmt->bindParam(':Current_Balance', $total, PDO::PARAM_STR);
+                $stmt->bindParam(':Process_Time', $date, PDO::PARAM_STR);
+                if($stmt->execute()){
+                    return true;
+                }
+                return false;
+            }else{
+                $query = "UPDATE ".$this->tbl_bit_deposit." SET t_Cashin_Status = :Status WHERE t_Id = :Id;
+                INSERT INTO ".$this->tbl_bit_Money_transaction." (t_Account_Code,t_Amount_in_Total,t_Currency,t_Entry_Date) VALUES (:Code,:Total,:Currency,:Date);
+                INSERT INTO ".$this->tbl_bit_trans_history." (h_Transaction_Type, h_Account_Code, h_Event, h_Contract_Time, h_Plus, h_Minus, h_Current_Balance, h_Processing_Time) VALUES (:Transaction_Type, :Account_Code, :Event, :Contract_Time, :Plus, :Minus, :Current_Balance, :Process_Time)";
+                $stmt = $this->conn->prepare($query);
+
+                $total = $get["total_amount"];
+                $code = $get["code"];
+                $currency = 'Dollar';
+                $date = date('Y-m-d h:i:s');
+                $status = 1;
+                $transtype = 'Deposit';
+                $event = '증금';
+                $plus = $get["cashin"];
+                $minus = 0;
+                $ctime = '-';
+
+                $id = $get["id"];
+                $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+                $stmt->bindParam(':Status', $status, PDO::PARAM_STR);
+                $stmt->bindParam(':Code', $code, PDO::PARAM_STR);
+                $stmt->bindParam(':Total', $total, PDO::PARAM_STR);
+                $stmt->bindParam(':Currency', $currency, PDO::PARAM_STR);
+                $stmt->bindParam(':Date', $date, PDO::PARAM_STR);
+
+                //history
+                $stmt->bindParam(':Transaction_Type', $transtype, PDO::PARAM_STR);
+                $stmt->bindParam(':Account_Code', $code, PDO::PARAM_STR);
+                $stmt->bindParam(':Event', $event, PDO::PARAM_STR);
+                $stmt->bindParam(':Contract_Time', $ctime, PDO::PARAM_STR);
+                $stmt->bindParam(':Plus', $plus, PDO::PARAM_STR);
+                $stmt->bindParam(':Minus', $minus, PDO::PARAM_STR);
+                $stmt->bindParam(':Current_Balance', $total, PDO::PARAM_STR);
+                $stmt->bindParam(':Process_Time', $date, PDO::PARAM_STR);
+                
+                if($stmt->execute()){
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
         public function postDepositDelete($id){
             $query = "UPDATE ".$this->tbl_bit_deposit." SET t_Cashin_Status = :Status WHERE t_Id = :Id";
@@ -406,19 +498,37 @@
             return false;
         }
         public function postWithdrawUpdate($get){
+            $checkTH = $this->checkTransactionHeaders($get["code"]);
             $query = "UPDATE ".$this->tbl_bit_withdraw." SET t_Cashout_Status = :Status WHERE t_Id = :Id;
-            UPDATE ".$this->tbl_bit_Money_transaction." SET t_Amount_in_Total = :Total WHERE t_Account_Code = :Code";
+            UPDATE ".$this->tbl_bit_Money_transaction." SET t_Amount_in_Total = :Total WHERE t_Account_Code = :Code;
+            INSERT INTO ".$this->tbl_bit_trans_history." (h_Transaction_Type, h_Account_Code, h_Event, h_Contract_Time, h_Plus, h_Minus, h_Current_Balance, h_Processing_Time) VALUES (:Transaction_Type, :Account_Code, :Event, :Contract_Time, :Plus, :Minus, :Current_Balance, :Process_Time)";
             $stmt = $this->conn->prepare($query);
 
             $id = $get["id"];
             $total = $get["total_amount"];
             $code = $get["code"];
             $status = 1;
+            $date = date('Y-m-d h:i:s');
+            $status = 1;
+            $transtype = 'Withdraw';
+            $event = '출금';
+            $plus = 0;
+            $minus = $get["cashout"];
+            $ctime = '-';
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':Status', $status, PDO::PARAM_STR);
             $stmt->bindParam(':Total', $total, PDO::PARAM_STR);
             $stmt->bindParam(':Code', $code, PDO::PARAM_STR);
+            //history
+            $stmt->bindParam(':Transaction_Type', $transtype, PDO::PARAM_STR);
+            $stmt->bindParam(':Account_Code', $code, PDO::PARAM_STR);
+            $stmt->bindParam(':Event', $event, PDO::PARAM_STR);
+            $stmt->bindParam(':Contract_Time', $ctime, PDO::PARAM_STR);
+            $stmt->bindParam(':Plus', $plus, PDO::PARAM_STR);
+            $stmt->bindParam(':Minus', $minus, PDO::PARAM_STR);
+            $stmt->bindParam(':Current_Balance', $total, PDO::PARAM_STR);
+            $stmt->bindParam(':Process_Time', $date, PDO::PARAM_STR);
             if($stmt->execute()){
                 return true;
             }
@@ -492,12 +602,15 @@
         }
         public function getUserPerNickname($nname){
             $query = "SELECT *,
-            (SELECT l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_LogInDateTime,
-            (SELECT l_Device_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Device_Use,
-            (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Browser_Use,
-            (SELECT l_Access_Domain FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Access_Domain,
-            (SELECT l_Current_Ip FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Current_Ip,
-            (SELECT l_isActive FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive
+            u_Account_Code AS CodeParent,
+            u_Bank_Code AS BankParent,
+            (SELECT m_Bank_Name FROM ".$this->tbl_bit_bank." WHERE m_BankId = BankParent) AS BankName,
+            (SELECT l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_LogInDateTime,
+            (SELECT l_Device_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Device_Use,
+            (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Browser_Use,
+            (SELECT l_Access_Domain FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Access_Domain,
+            (SELECT l_Current_Ip FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Current_Ip,
+            (SELECT l_isActive FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive
             FROM ".$this->tbl_bit_user." WHERE u_Nickname = '".$nname."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();

@@ -8,7 +8,7 @@
     table.inquiry_ad tr th{
         background: #444444;
         padding: 12px 12px;
-        font-size: 18px;
+        font-size: 16px;
     }
     table.inquiry_ad tr td{
         padding: 5px 5px;
@@ -88,6 +88,11 @@
         padding: 5px 5px;
         background: #FFFFFF !important;
     }
+    .modal_inquiry_template .card-header{
+        height: 42px !important;
+        padding: 5px 10px;
+        margin-top: 3px;
+    }
     .grid_column_inquiry{
         width: 100%;
         margin: 0 auto;
@@ -126,9 +131,24 @@
     }
     .grid_column_inquiry_user table tr td{
         width: 10%;
+        font-size: 12px;
+        height: 35px !important;
     }
     .grid_column_inquiry_user table tr td.tdValue{
         background: #888888;
+        font-size: 12px;
+    }
+    .grid_column_inquiry_holding table tr th{
+        border: 0.4px solid #000000;
+        text-align: center;
+        color: #FFFFFF;
+        font-style: normal;
+        background: #444444;
+        font-size: 14px;
+    }
+    .grid_column_inquiry_holding table tr td{
+        background: #666666;
+        color: #FFFFFF;
     }
 </style>
         <div class="container-fluid">

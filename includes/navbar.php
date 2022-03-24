@@ -134,7 +134,7 @@
                                             <button type="button" class="btn" style="width: 100%; margin-bottom: 10px; text-align: left; font-weight: 700;">개인정보 설정</button>
                                         </div>
                                             <center>
-                                                <a href="./logout.php" button type="button" class="btn" style="border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); box-sizing: border-box; border: 0.5px solid #FFFFFF; background: #f1f1f1; padding: 10px; height: 40px; width: 120px;">
+                                                <a href="#" data-code="'.$_SESSION["user_session"]["u_Account_Code"].'" type="button" class="btn btnlogout" style="border-radius: 10px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); box-sizing: border-box; border: 0.5px solid #FFFFFF; background: #f1f1f1; padding: 10px; height: 40px; width: 120px;">
                                                     로그아웃</a>
                                                 </button>
                                             </center>
@@ -205,6 +205,6 @@
             <button type="button" class="btn btn_log_mobile">거래내역</button>
             <button type="button" class="btn btn_log_mobile">개인정보 설정</button>
         </div>
-        <a href="./logout.php" class="btn btn_log_mobile btn_logout">입출금 내역</a>
+        <a href="#" data-code="<?=$_SESSION["user_session"]["u_Account_Code"]?>" class="btn btn_log_mobile btn_logout">입출금 내역</a>
     </div>
 </div>

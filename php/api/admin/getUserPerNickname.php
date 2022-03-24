@@ -21,6 +21,7 @@
             "Mobile_Number" => $data["u_Mobile_Number"],
             "Bank_Holder_Name" => $data["u_Bank_Holder_Name"],
             "Bank_Code" => $data["u_Bank_Code"],
+            "BankName" => $data["BankName"],
             "Account_Number" => $data["u_Account_Number"],
             "Recommended_Point" => $data["u_Recommended_Point"],
             "Ip_Address" => $data["u_Ip_Address"],
@@ -34,8 +35,9 @@
             "LogInDateTime" => $data["l_LogInDateTime"],
             "Device_Use" => $data["l_Device_Use"],
             "Browser_Use" => $data["l_Browser_Use"],
-            "Current_Ip" => $data["l_Current_Ip"],
-            "isActive" => $data["l_isActive"]
+            "Current_Ip" => ($data["l_Current_Ip"]) ? $data["l_Current_Ip"] : $data["u_Ip_Address"],
+            "ServerIp" => $_SERVER["REMOTE_ADDR"],
+            "isActive" => (float)$data["l_isActive"]
         );
         echo json_encode($array);
     }else{
