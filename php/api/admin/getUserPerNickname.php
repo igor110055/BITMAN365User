@@ -37,6 +37,14 @@
             "Browser_Use" => $data["l_Browser_Use"],
             "Current_Ip" => ($data["l_Current_Ip"]) ? $data["l_Current_Ip"] : $data["u_Ip_Address"],
             "ServerIp" => $_SERVER["REMOTE_ADDR"],
+            "TotalCashAmount" => $data["TotalCashAmount"],
+            "TotalDepositAmount" => $data["TotalDepositAmount"],
+            "TotalDepositDailyAmount" => $data["TotalDepositDailyAmount"],
+            "TotalWithdrawAmount" => $data["TotalWithdrawAmount"],
+            "TotalWithdrawDailyAmount" => $data["TotalWithdrawDailyAmount"],
+            "TotalTradingDailyAmount" => $data["TotalTradingDailyAmount"],
+            "TotalProfitDailyAmount" => $data["TotalProfitDailyAmount"],
+            "TotalDisqualifyDailyAmount" => $data["TotalDisqualifyDailyAmount"],
             "isActive" => (float)$data["l_isActive"]
         );
         echo json_encode($array);

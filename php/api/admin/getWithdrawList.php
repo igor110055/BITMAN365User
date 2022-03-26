@@ -36,7 +36,7 @@
 	$sNum = $counter + 1;
 
 	$output = '';
-	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 760px;">';
+	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 610px;">';
 	$output .= '<table style="width: 100%;" class="withdraw_ad">';
 	$output .= '<thea>';
 	$output .= '<tr>';

@@ -36,7 +36,7 @@
 	$sNum = $counter + 1;
 
 	$output = '';
-	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 760px;">';
+	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 610px;">';
 	$output .= '<table style="width: 100%;" class="notice_ad">';
 	$output .= '<thea>';
 	$output .= '<tr>';
@@ -96,6 +96,13 @@
     print $output;
 ?>
 <script>
+	$('#summernote_notice_edit').summernote({
+		height: 340,
+		placeholder: '당신의 글은 여기에.....',
+		lang: 'ko-KR', 
+		dialogsInBody: true,
+		dialogsFade: false
+	});
 	$('.chkb').click(function(event) {
 		if(this.checked) {
 			// Iterate each checkbox
@@ -122,22 +129,6 @@
 			});
 		}
 	});
-	$('.summernote, .summernote_e').summernote({
-		height: 420,
-		lang: 'ko-KR',
-		dialogsInBody: true,
-		dialogsFade: false,
-		toolbar: [
-			['style', ['style']],
-			['style', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['strikethrough', 'superscript', 'subscript']],
-			['fontsize', ['fontsize']],
-			['color', ['color']],
-			['insert', [ 'picture', 'link', 'video', 'table']],
-			['para', ['ul', 'ol', 'paragraph']],
-			['height', ['height']]
-		]
-	});
 	$('.modal-notice_edit_show').click(function(){
 		var id = $(this).data('id');
 		$.ajax({
@@ -150,7 +141,7 @@
 				$("#title_e").val(response[0].n_Title);
 				$("#use_nonuse_e").val(response[0].n_IsPublic);
 				$("#register_date_e").val(response[0].n_Registration_Time);
-				$(".summernote_e").summernote("code", response[0].n_Details);
+				$("#summernote_notice_edit").summernote("code", response[0].n_Details);
 			}
 		})
 	})

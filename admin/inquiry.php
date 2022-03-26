@@ -5,9 +5,12 @@
 ?>
 <?php include __DIR__ . '/includes_2/header.php';?>
 <style>
+    body::-webkit-scrollbar{
+        display: none;
+    }
     table.inquiry_ad tr th{
         background: #444444;
-        padding: 12px 12px;
+        padding: 5px 5px;
         font-size: 16px;
     }
     table.inquiry_ad tr td{
@@ -15,7 +18,12 @@
         font-size: 16px;
     }
     .inquiry_template table tr td{
-        height: 10px;
+        padding: 5px 5px;
+    }
+    .modal_size_medium{
+        max-width: 992px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .modal_size_lenght{
         max-width: 1200px;
@@ -77,6 +85,21 @@
         right: 16px;
         position: absolute;
     }
+    .selectform{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("../assets/icons/Adropdown24.png");
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: 50%;
+        background-size: 15px 15px !important;
+        padding: 2px 10px;
+        border: none; 
+        height: 100%; 
+        border-radius: 5px; 
+        width: 100%;
+        font-size: 14px;
+    }
     .modal_inquiry_template .btn-noticeguide_save{
         background: #0093FF;
         border-radius: 5px;
@@ -87,9 +110,10 @@
     .modal_inquiry_template .summer_body{
         padding: 5px 5px;
         background: #FFFFFF !important;
+        height: 410px;
     }
     .modal_inquiry_template .card-header{
-        height: 42px !important;
+        height: 100% !important;
         padding: 5px 10px;
         margin-top: 3px;
     }
@@ -98,19 +122,22 @@
         margin: 0 auto;
         display: grid;
         grid-gap: 0;
-        grid-template-columns: 70% 30%; 
+        grid-template-columns: 80% 20%; 
     }
     .inquiry_template{
         border: 0.4px solid #000000;
         background: #444444;
     }
     .user_inquiry_details{
-        height: 262px;
+        height: 190px;
         width: 100%;
         border: 0.4px solid #000000;
         box-sizing: border-box;
         padding: 20px 20px;
         overflow-y: scroll;
+    }
+    .modal::-webkit-scrollbar{
+        display: none;
     }
     .display_user{
         border: 0.4px solid #000000;
@@ -138,7 +165,7 @@
         background: #888888;
         font-size: 12px;
     }
-    .grid_column_inquiry_holding table tr th{
+    .grid_column_inquiry_holding table tr th,.grid_column_inquiry_trans table tr th{
         border: 0.4px solid #000000;
         text-align: center;
         color: #FFFFFF;
@@ -146,9 +173,15 @@
         background: #444444;
         font-size: 14px;
     }
-    .grid_column_inquiry_holding table tr td{
+    .grid_column_inquiry_holding table tr th{
+        width: 10%;
+    }
+    .grid_column_inquiry_holding table tr td,.grid_column_inquiry_trans table tr td{
         background: #666666;
         color: #FFFFFF;
+    }
+    .grid_column_inquiry_holding table tr td.tdcashtrans{
+        background: #888888;
     }
 </style>
         <div class="container-fluid">
@@ -171,7 +204,7 @@
                     <div style="padding: 7px 7px;">
                         <span style="color: #FF9300; font-size: 25px;">리스트</span>
                         <div class="pull-right" style="padding-top: 0; padding-bottom: 0;">
-                            <button type="button" class="btn modal-inquiry_template_show" style="background: #0093FF; color: #FFFFFF;">답변템플릿</button>
+                            <button type="button" class="btn modal-answer_template" style="background: #0093FF; color: #FFFFFF;">답변템플릿</button>
                         </div>
                     </div>
                     <div id="pagination-result">
@@ -181,5 +214,14 @@
             </div>
         </div>
         <?php include __DIR__ . '/includes_2/script.php';?>
+        <script>
+            $('#summernote_inquiry_add').summernote({
+                height: 340,
+                placeholder: '당신의 글은 여기에.....',
+                lang: 'ko-KR', 
+                dialogsInBody: true,
+                dialogsFade: false
+            });
+        </script>
     </body>
 </html>

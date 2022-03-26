@@ -35,7 +35,7 @@
 	$counter = ($_GET["page"] > 1) ? ($_GET["page"] * COUNT($data)) - COUNT($data) : 0;
 	$sNum = $counter + 1;
 	$output = '';
-	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 770px; text-align: center;">';
+	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 610px; text-align: center;">';
 	$output .= '<table style="width: 100%;" class="btcusd_history_ad">';
 	$output .= '<thead>';
 	$output .= '<tr>';

@@ -6,6 +6,7 @@
         private $tbl_bit_access = "tbl_bit_access";
         private $tbl_bit_trans_headers = "tbl_bit_transaction_headers";
         private $tbl_bit_bank = "tbl_bit_banklists";
+        private $tbl_bit_game_type = "tbl_bit_game_types";
         private $tbl_bit_admin_log = "tbl_bit_admin_logs";
 
         //properties  
@@ -41,7 +42,8 @@
 			$query = "INSERT INTO ". $this->tbl_bit_users ." (u_Account_Code,u_Nickname,u_Password,u_Mobile_Number,u_Bank_Holder_Name,u_Bank_Code,u_Account_Number,u_Recommended_Point,u_Ip_Address,u_Full_consent,u_Terms_Condition1,u_Terms_Condition2,u_Entry_Date)
 			SELECT * FROM (SELECT :account_code AS u_Account_Code,:nickname AS u_Nickname,:password AS u_Password,:mobile_number AS u_Mobile_Number,:account_holder AS u_Bank_Holder_Name,:bank_code AS u_Bank_Code,:account_number AS u_Account_Number,:rec_point AS u_Recommended_Point,:ip_address AS u_Ip_Address,:full_consent AS u_Full_consent,:term_cond1 AS u_Terms_Condition1,:term_cond2 AS u_Terms_Condition2,:entry_date AS u_Entry_Date) AS temp
 			WHERE NOT EXISTS (
-				SELECT u_Account_Code FROM ". $this->tbl_bit_users ." WHERE u_Account_Code = :account_code) LIMIT 1";
+				SELECT u_Account_Code FROM ". $this->tbl_bit_users ." WHERE u_Account_Code = :account_code) LIMIT 1;
+            INSERT INTO ".$this->tbl_bit_game_type." (g_Account_Code) VALUES(:account_code)";
 			$stmt = $this->conn->prepare($query);
 
 			$account_code = $arr["account_code"];

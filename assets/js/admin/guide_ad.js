@@ -1,17 +1,3 @@
-function getresult(url) {
-    $.ajax({
-        url: url,
-        type: "GET",
-        data:  {rowcount:$("#rowcount").val()},
-        //beforeSend: function(){$("#overlay").show();},
-        success: function(data){
-        $("#pagination-result").html(data);
-        setInterval(function() {$("#overlay").hide(); },500);
-        },
-        error: function() 
-        {} 	        
-   });
-} 
 $(".modal-guide_add_show").click(function(){
     $("#modal-guide_add").modal('show');
 });
@@ -30,7 +16,7 @@ $("form[id='formGuide']").validate({
         register_date: {
             required: true
         },
-        details: {
+        guide_details: {
             required: true
         }
     },
@@ -44,7 +30,7 @@ $("form[id='formGuide']").validate({
         register_date: {
             required: "가치를 제공하다"
         },
-        details: {
+        guide_details: {
             required: "가치를 제공하다"
         },
     },
@@ -85,30 +71,30 @@ $("form[id='formGuide']").validate({
 $("form[id='formGuide_Edit']").validate({
     ignore: ".note-editor *",
     rules: {
-        title: {
+        g_title_e: {
             required: true
         },
-        use_nonuse: {
+        g_use_nonuse_e: {
             required: true
         },
-        register_date: {
+        g_register_date_e: {
             required: true
         },
-        details: {
+        g_guide_details_e: {
             required: true
         }
     },
     messages: {
-        title: {
+        g_title_e: {
             required: "가치를 제공하다"
         },
-        use_nonuse: {
+        g_use_nonuse_e: {
             required: "가치를 제공하다"
         },
-        register_date: {
+        g_register_date_e: {
             required: "가치를 제공하다"
         },
-        details: {
+        g_guide_details_e: {
             required: "가치를 제공하다"
         },
     },
@@ -178,4 +164,18 @@ $('.btn_delete_all').on('click', function() {
         }
     });
 });
+function getresult(url) {
+    $.ajax({
+        url: url,
+        type: "GET",
+        data:  {rowcount:$("#rowcount").val()},
+        //beforeSend: function(){$("#overlay").show();},
+        success: function(data){
+        $("#pagination-result").html(data);
+        setInterval(function() {$("#overlay").hide(); },500);
+        },
+        error: function() 
+        {} 	        
+   });
+} 
 getresult("../php/api/admin/getGuideList.php");

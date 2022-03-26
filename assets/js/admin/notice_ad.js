@@ -1,17 +1,3 @@
-function getresult(url) {
-    $.ajax({
-        url: url,
-        type: "GET",
-        data:  {rowcount:$("#rowcount").val()},
-        //beforeSend: function(){$("#overlay").show();},
-        success: function(data){
-        $("#pagination-result").html(data);
-        setInterval(function() {$("#overlay").hide(); },500);
-        },
-        error: function() 
-        {} 	        
-   });
-} 
 $(".modal-notice_add_show").click(function(){
     $("#modal-notice_add").modal('show');
 });
@@ -30,7 +16,7 @@ $("form[id='formNotice']").validate({
         register_date: {
             required: true
         },
-        details: {
+        notice_details: {
             required: true
         }
     },
@@ -44,7 +30,7 @@ $("form[id='formNotice']").validate({
         register_date: {
             required: "가치를 제공하다"
         },
-        details: {
+        notice_details: {
             required: "가치를 제공하다"
         },
     },
@@ -85,30 +71,30 @@ $("form[id='formNotice']").validate({
 $("form[id='formNotice_Edit']").validate({
     ignore: ".note-editor *",
     rules: {
-        title: {
+        title_e: {
             required: true
         },
-        use_nonuse: {
+        use_nonuse_e: {
             required: true
         },
-        register_date: {
+        register_date_e: {
             required: true
         },
-        details: {
+        notice_details_e: {
             required: true
         }
     },
     messages: {
-        title: {
+        title_e: {
             required: "가치를 제공하다"
         },
-        use_nonuse: {
+        use_nonuse_e: {
             required: "가치를 제공하다"
         },
-        register_date: {
+        register_date_e: {
             required: "가치를 제공하다"
         },
-        details: {
+        notice_details_e: {
             required: "가치를 제공하다"
         },
     },
@@ -178,4 +164,18 @@ $('.btn_delete_all').on('click', function() {
         }
     });
 });
+function getresult(url) {
+    $.ajax({
+        url: url,
+        type: "GET",
+        data:  {rowcount:$("#rowcount").val()},
+        //beforeSend: function(){$("#overlay").show();},
+        success: function(data){
+        $("#pagination-result").html(data);
+        setInterval(function() {$("#overlay").hide(); },500);
+        },
+        error: function() 
+        {} 	        
+   });
+} 
 getresult("../php/api/admin/getNoticeList.php");

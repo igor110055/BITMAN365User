@@ -24,7 +24,7 @@
         <!-- Bootstrap CSS -->
         <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <link href="../plugins/summernote/summernote-bs4.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../plugins/jquery-confirm-3.3.2/css/jquery-confirm.min.css">
         <link rel="stylesheet" href="../plugins/iziToast-master/dist/css/iziToast.min.css">
@@ -178,7 +178,7 @@
                 font-size: 12px;  
                 color: #777777; 
                 font-weight: 700; 
-                height: 880px;
+                height: 730px;
             }
             .data_list table, .data_list table th{
                 border-top: 1px solid #222222;

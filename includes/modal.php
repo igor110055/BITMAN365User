@@ -70,6 +70,7 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 20px;">공지사항</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
                 <div class="card">
@@ -100,15 +101,13 @@
                                     <td style="width: 20%;">공지일자</td>
                                     <td style="width: 30%;">
                                         <div class="form-inline">
-                                            <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d')?>">
+                                            <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d h:i:s')?>">
                                             <img src="../assets/icons/calendar.png" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <div class="summer_body">
-                            <textarea class="summernote" name="message"></textarea>
-                            </div>
+                            <textarea id="summernote_notice_add" name="notice_details"></textarea>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
                             </div>
@@ -125,6 +124,7 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 20px;">공지사항</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
                 <div class="card">
@@ -162,9 +162,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div class="summer_body">
-                            <textarea class="summernote_e" name="message_e" id="message_e"></textarea>
-                            </div>
+                            <textarea id="summernote_notice_edit" name="notice_details_e"></textarea>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
                             </div>
@@ -181,6 +179,7 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 20px;">이용안내</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
                 <div class="card">
@@ -211,15 +210,13 @@
                                     <td style="width: 20%;">공지일자</td>
                                     <td style="width: 30%;">
                                         <div class="form-inline">
-                                            <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d')?>">
+                                            <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d h:i:s')?>">
                                             <img src="../assets/icons/calendar.png" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <div class="summer_body">
-                            <textarea class="summernote" name="message"></textarea>
-                            </div>
+                            <textarea id="summernote_guide_add" name="guide_details"></textarea>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
                             </div>
@@ -236,6 +233,7 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 20px;">이용안내</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
                 <div class="card">
@@ -244,20 +242,20 @@
                     </div>
                     <div class="card-body">
                         <form id="formGuide_Edit" enctype="multipart/form-data" method="POST">
-                            <input type="hidden" name="id_e" id="g_id_e">
+                            <input type="hidden" name="g_id_e" id="g_id_e">
                             <input type="hidden" name="category_title" value="guide_edit">
                             <table style="width: 100%;">
                                 <tr>
                                     <td style="width: 20%;">제목</td>
                                     <td colspan="3">
-                                        <input type="text" name="title_e" id="g_title_e" class="noticeguide_input" placeholder="공지......">
+                                        <input type="text" name="g_title_e" id="g_title_e" class="noticeguide_input" placeholder="공지......">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;">사용</td>
                                     <td style="width: 30%;">
                                         <div class="select-wrapper">
-                                            <select name="use_nonuse_e" id="g_use_nonuse_e" class="form-control">
+                                            <select name="g_use_nonuse_e" id="g_use_nonuse_e" class="form-control">
                                                 <option selected disabled>-</option>
                                                 <option value="1">사용</option>
                                                 <option value="0">미사용</option>
@@ -267,15 +265,13 @@
                                     <td style="width: 20%;">공지일자</td>
                                     <td style="width: 30%;">
                                         <div class="form-inline">
-                                            <input type="text" name="register_date_e" id="g_register_date_e" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;">
+                                            <input type="text" name="g_register_date_e" id="g_register_date_e" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;">
                                             <img src="../assets/icons/calendar.png" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <div class="summer_body">
-                            <textarea class="g_summernote_e" name="message_e" id="g_message_e"></textarea>
-                            </div>
+                            <textarea id="summernote_guide_edit" name="g_guide_details_e"></textarea>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
                             </div>
@@ -287,11 +283,12 @@
     </div>
 </div>
 <!-- display template answer for inquiry -->
-<div class="modal fade modal_inquiry_template" id="modal-inquiry_template" tabindex="-1">
-    <div class="modal-dialog modal-lg" style="height: 300px;">
+<div class="modal fade modal_inquiry_template" id="modal-inquiry_template_edit" tabindex="-1">
+    <div class="modal-dialog modal_size_medium">
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 25px; font-weight: 700;">1:1 문의</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
                 
@@ -300,40 +297,41 @@
                         1:1 문의
                     </div>
                     <div class="card-body">
-                        <form id="formInquiry" enctype="multipart/form-data" method="POST">
+                        <form id="formInquiryEdit" enctype="multipart/form-data" method="POST">
                             <div class="grid_column_inquiry">
-                                <div>
-                                    <input type="hidden" name="category_title" value="inquiry">
+                                <div class="inquiry_template_left">
+                                    <input type="hidden" name="i_id_e" id="i_id_e">
+                                    <input type="hidden" name="category_title" value="inquiry_edit">
                                     <table style="width: 100%;">
                                         <tr>
                                             <td style="width: 20%;">제목</td>
                                             <td colspan="3">
-                                                <input type="text" id="t_title" class="noticeguide_input">
+                                                <input type="text" id="i_title_e" class="noticeguide_input">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 20%;">닉네임</td>
                                             <td style="width: 30%;">
-                                                <input list="nickname"  id="s_nickname" class="noticeguide_input">
-                                                <div id="display_user"></div>
+                                                <select class="selectform" id="i_nickname_e" style="height: 35px;">
+                                                </select>
                                             </td>
                                             <td style="width: 20%;">문의일자</td>
                                             <td style="width: 30%;">
-                                                <input type="text" id="t_inquiry_date" class="noticeguide_input">
+                                                <input type="text" id="i_inquiry_date_e" class="noticeguide_input">
                                             </td>
                                         </tr>
                                     </table>
-                                    <textarea class="user_inquiry_details"></textarea>
-                                    <div class="summer_body">
-                                        <textarea class="summernote" name="message"></textarea>
-                                    </div>
+                                    <textarea class="user_inquiry_details" id="i_user_inquiry_details_e"></textarea>
+                                    <textarea id="summernote_inquiry_edit" name="i_inquiry_details_e"></textarea>
                                 </div>
                                 <div class="inquiry_template">
-                                    <table class="table">
-                                        <tr>
-                                            <td>est</td>
-                                        </tr>
-                                    </table>
+                                    <style>
+                                        #answer_table .td{
+                                            background: rgb(0,0,0,0.3);
+                                            color: #FF9300;
+                                        }
+                                    </style>
+                                    <div id="display_answer"></div>
                                 </div>
                             </div>
                             <div style="padding: 10px 0;" class="m_footer">
@@ -352,108 +350,113 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #333333;">
                 <span style="color: #FFFFFF; font-size: 20px; font-weight: 700;">회원정보</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" style="padding: 0;">
-                
                 <div class="card">
-                    <!-- 1st row -->
-                    <div class="card-header">
-                        <span style="color: #FF9300; font-size: 20px;">기본정보</span>
-                        <div class="pull-right" style="padding: 0;">
-                            <button type="button" class="btn" style="background: #FF9300; color: #FFFFFF;">쪽지발송</button>
-                            <button type="button" class="btn" style="background: #ED5659; color: #FFFFFF;">로그아웃</button>
-                            <input type="text" class="btn" style="background: #FFFFFF; width: 120px; border-radius: 5px;">
-                            <button type="button" class="btn" style="background: #FFF200; color: #000;">이용</button>
-                            <button type="button" class="btn" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                    <form id="formUserUpdateByAdmin" enctype="multipart/form-data" method="POST">
+                        <input type="hidden" name="category_title" value="user_update_by_admin">
+                        <!-- 1st row -->
+                        <div class="card-header">
+                            <span style="color: #FF9300; font-size: 20px;">기본정보</span>
+                            <div class="pull-right" style="padding: 0;">
+                                <button type="button" class="btn" style="background: #FF9300; color: #FFFFFF;">쪽지발송</button>
+                                <button type="button" class="btn" style="background: #ED5659; color: #FFFFFF;">로그아웃</button>
+                                <button type="button" class="btn" style="background: #FFF200; color: #000;">이용</button>
+                                <input type="password" name="admin_pwd" id="admin_pwd" class="btn" style="background: #FFFFFF; width: 120px; border-radius: 5px;">
+                                <button type="button" class="btn" id="userbtnsubmit" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="grid_column_inquiry_user">
-                            <table style="width: 100%;">
-                                <tr>
-                                    <td>아이디</td>
-                                    <td id="accountid" class="tdValue"></td>
-                                    <td>닉네임</td>
-                                    <td id="nname" class="tdValue"></td>
-                                    <td>비밀번호</td>
-                                    <td class="tdValue"><input type="text" id="pass" class="noticeguide_input" style="text-align: center;"></td>
-                                    <td>접속도메인</td>
-                                    <td id="domain" class="tdValue"></td>
-                                    <td>상태</td>
-                                    <td id="slate" class="tdValue">접속중</td>
-                                </tr>
-                                <tr>
-                                    <td>예금주</td>
-                                    <td id="aholder" class="tdValue"></td>
-                                    <td>추천지점</td>
-                                    <td id="rpoint" class="tdValue"></td>
-                                    <td>가입일자</td>
-                                    <td id="regdate" class="tdValue"></td>
-                                    <td>접속기기</td>
-                                    <td id="device" class="tdValue"></td>
-                                    <td>접속일자</td>
-                                    <td id="logindate" class="tdValue"></td>
-                                </tr>
-                                <tr>
-                                    <td>은행</td>
-                                    <td class="tdValue">
-                                        <input list="banklist" id="bankid" class="noticeguide_input" style="text-align: center;">
-                                        <div id="display_bank"></div>
-                                    </td>
-                                    <td id="accountno" class="tdValue" colspan="2"></td>
-                                    <td>가입IP</td>
-                                    <td id="ip" class="tdValue"></td>
-                                    <td>접속브라우저</td>
-                                    <td id="browser" class="tdValue"></td>
-                                    <td>접속IP</td>
-                                    <td id="server_ip" class="tdValue">접속중</td>
-                                </tr>
-                            </table>
+                        <div class="card-body">
+                            <div class="grid_column_inquiry_user">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>아이디</td>
+                                        <td class="tdValue">
+                                            <span id="accountid"></span>
+                                            <input type="hidden" id="accountid_s" name="accountid">
+                                        </td>
+                                        <td>닉네임</td>
+                                        <td id="nname" class="tdValue"></td>
+                                        <td>비밀번호</td>
+                                        <td class="tdValue"><input type="text" id="user_pass" name="user_pass" class="noticeguide_input" style="text-align: center;"></td>
+                                        <td>접속도메인</td>
+                                        <td id="domain" class="tdValue"></td>
+                                        <td>상태</td>
+                                        <td id="slate" class="tdValue">접속중</td>
+                                    </tr>
+                                    <tr>
+                                        <td>예금주</td>
+                                        <td id="aholder" class="tdValue"></td>
+                                        <td>추천지점</td>
+                                        <td id="rpoint" class="tdValue"></td>
+                                        <td>가입일자</td>
+                                        <td id="regdate" class="tdValue"></td>
+                                        <td>접속기기</td>
+                                        <td id="device" class="tdValue"></td>
+                                        <td>접속일자</td>
+                                        <td id="logindate" class="tdValue"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>은행</td>
+                                        <td class="tdValue">
+                                            <!-- <input list="banklist" id="bankid" class="noticeguide_input" style="text-align: center;"> -->
+                                            <select class="selectform" id="bankid" name="bankid">
+                                                <option value="" selected></option>
+                                            </select>
+                                        </td>
+                                        <td id="accountno" class="tdValue" colspan="2"></td>
+                                        <td>가입IP</td>
+                                        <td id="ip" class="tdValue"></td>
+                                        <td>접속브라우저</td>
+                                        <td id="browser" class="tdValue"></td>
+                                        <td>접속IP</td>
+                                        <td id="server_ip" class="tdValue">접속중</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <!-- 2nd row -->
-                    <div class="card-header">
-                        <span style="color: #FF9300; font-size: 20px;">게임관리</span>
-                        <div class="pull-right" style="padding: 0;">
-                            <button type="button" class="btn" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                        <!-- 2nd row -->
+                        <div class="card-header">
+                            <span style="color: #FF9300; font-size: 20px;">게임관리</span>
+                            <div class="pull-right" style="padding: 0;">
+                                <button type="button" class="btn" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="grid_column_inquiry_user">
-                            <table style="width: 100%;">
-                                <tr>
-                                    <td>BTC/USD</td>
-                                    <td class="tdValue">
-                                        <input list="btcusdlist" class="noticeguide_input" style="text-align: center;">
-                                        <datalist id="btcusdlist">
-                                            <option data-value='Y'>Y</option>
-                                            <option data-value='N'>N</option>
-                                        </datalist>
-                                    </td>
-                                    <td>ETH/USD</td>
-                                    <td class="tdValue">
-                                        <input list="ethusdlist" class="noticeguide_input" style="text-align: center;">
-                                        <datalist id="ethusdlist">
-                                            <option data-value='Y'>Y</option>
-                                            <option data-value='N'>N</option>
-                                        </datalist>
-                                    </td>
-                                    <td>XRP/USD</td>
-                                    <td class="tdValue">
-                                        <input list="xrpusdlist" class="noticeguide_input" style="text-align: center;">
-                                        <datalist id="xrpusdlist">
-                                            <option data-value='Y'>Y</option>
-                                            <option data-value='N'>N</option>
-                                        </datalist>
-                                    </td>
-                                    <td>-</td>
-                                    <td id="domain" class="tdValue">-</td>
-                                    <td>-</td>
-                                    <td class="tdValue">-</td>
-                                </tr>
-                            </table>
+                        <div class="card-body">
+                            <div class="grid_column_inquiry_user">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>BTC/USD</td>
+                                        <td class="tdValue">
+                                            <select class="selectform" name="btcusd">
+                                                <option value="Y">Y</option>
+                                                <option value="N">N</option>
+                                            </select>
+                                        </td>
+                                        <td>ETH/USD</td>
+                                        <td class="tdValue">
+                                            <select class="selectform" name="ethusd">
+                                                <option value="Y">Y</option>
+                                                <option value="N">N</option>
+                                            </select>
+                                        </td>
+                                        <td>XRP/USD</td>
+                                        <td class="tdValue">
+                                            <select class="selectform" name="xrpusd">
+                                                <option value="Y">Y</option>
+                                                <option value="N">N</option>
+                                            </select>
+                                        </td>
+                                        <td>-</td>
+                                        <td id="domain" class="tdValue">-</td>
+                                        <td>-</td>
+                                        <td class="tdValue">-</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <!-- 3rd row -->
                     <div class="card-header">
                         <span style="color: #FF9300; font-size: 20px;">메모</span>
@@ -462,7 +465,9 @@
                         <div class="grid_column_inquiry_user">
                             <table style="width: 100%;">
                                 <tr>
-                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">메모메모메모</td>
+                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">
+                                        <textarea type="text" style="height: 100%; width: 100%; background: #666666; border: none; font-size: 18px;"></textarea>
+                                    </td>
                                     <td style="width: 10%; background: #444444;">관리자1</td>
                                     <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
                                     <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
@@ -474,7 +479,9 @@
                                 </tr>
                                 <!-- next line -->
                                 <tr>
-                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">메모등록</td>
+                                    <td rowspan="2" style="width: 30%; background: #666666; text-align: left;">
+                                        <button class="btn" style="border: none; border-radius: none; height: 100%; width: 100%; background: #444444; color: #FFFFFF;">메모등록</button>
+                                    </td>
                                     <td style="width: 10%; background: #444444;">관리자1</td>
                                     <td style="width: 15%; background: #888888;">2022-01-22  15:55</td>
                                     <td style="width: 45%; background: #888888; text-align: left;">메모메모메모</td>
@@ -507,16 +514,27 @@
                                     <th>-</th>
                                 </tr>
                                 <tr>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td id="totalcash" class="tdcashtrans"></td>
+                                    <td class="tdcashtrans">
+                                        <span id="totaldeposit" style="color: #78A6FF;"></span><br>
+                                        <span id="totaldepositdaily" style="color: #78A6FF;"></span>
+                                    </td>
+                                    <td class="tdcashtrans">
+                                        <span id="totalwithdraw" style="color: #FF787B;"></span><br>
+                                        <span id="totalwithdrawdaily" style="color: #FF787B;"></span>
+                                    </td>
+                                    <td class="tdcashtrans">
+                                        -
+                                    </td>
+                                    <td class="tdcashtrans">-</td>
+                                    <td class="tdcashtrans">
+                                        <span id="totaltradingdaily" style="color: #FFFFFF;"></span><br>
+                                        <span id="totalprofitdaily" style="color: #FF787B;"></span>
+                                    </td>
+                                    <td class="tdcashtrans">-</td>
+                                    <td class="tdcashtrans">-</td>
+                                    <td class="tdcashtrans">-</td>
+                                    <td class="tdcashtrans">-</td>
                                 </tr>
                             </table>
                         </div>
@@ -524,17 +542,17 @@
                     <!-- 5th row -->
                     <div class="card-header">
                         <span style="color: #FF9300; font-size: 20px;">거래내역</span>
-                        <div class="pull-right" style="padding: 0;">
-                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">1M</button>
-                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">접속</button>
-                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">메모</button>
-                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF;">쪽지</button>
-                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-right: 150px;">문의</button>
-                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">머니</button>
-                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">입금</button>
-                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">출금</button>
-                            <button type="button" class="btn" style="background: #FFF200; color: #000000;">지급</button>
-                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-right: 50px;">회수</button>
+                        <div class="pull-right">
+                            <button type="button" class="btn" style="background: #555555; color: #FFFFFF; margin-bottom: 6px;">1M</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-bottom: 6px;">접속</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-bottom: 6px;">메모</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-bottom: 6px;">쪽지</button>
+                            <button type="button" class="btn" style="background: #3BDE42; color: #FFFFFF; margin-right: 150px; margin-bottom: 6px;">문의</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-bottom: 6px;">머니</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-bottom: 6px;">입금</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-bottom: 6px;">출금</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-bottom: 6px;">지급</button>
+                            <button type="button" class="btn" style="background: #FFF200; color: #000000; margin-right: 50px; margin-bottom: 6px;">회수</button>
                             <select id="current_year" style="border: none; height: 35px; border-radius: 5px; width: 100px; text-align: center;">
                                 <option value="<?=date('Y')?>"><?=date('Y')?>년</option>
                                 <?php
@@ -547,18 +565,61 @@
                                 <option value="<?=date('m')?>"><?=date('m')?>월</option>
                                 <?php
                                     for($i = 1; $i <= 12; $i++){
-                                        echo '<option value='.$i.'>'.$i.'월</option>';
+                                        if($i < 10){
+                                            echo '<option value=0'.$i.'>0'.$i.'월</option>';
+                                        }else{
+                                            echo '<option value='.$i.'>'.$i.'월</option>';
+                                        }
                                     }
                                 ?>
                             </select>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="grid_column_inquiry_holding">
+                        <div class="grid_column_inquiry_trans">
                             <div id="pagination-result_mini">
                                 <input type="hidden" name="rowcount" id="rowcount" />
                             </div><br>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display template answer for inquiry -->
+<div class="modal fade modal_inquiry_template" id="modal-inquiry_answer_template" tabindex="-1">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 25px; font-weight: 700;">답변 템플릿</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        답변 템플릿
+                    </div>
+                    <div class="card-body">
+                        <form id="formInquiryTemplate" enctype="multipart/form-data" method="POST">
+                            <div class="grid_column_inquiry_template">
+                                <div>
+                                    <input type="hidden" name="category_title" value="inquiry_answer_template">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td style="width: 20%;">제목</td>
+                                            <td style="width: 80%;">
+                                                <input type="text" class="noticeguide_input" name="inquiry_answer_title" placeholder="이용안내이용안내">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <textarea id="summernote_inquiry_add" name="inquiry_answer_details"></textarea>
+                                </div>
+                            </div>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-inquiry_save">등록</button></center>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

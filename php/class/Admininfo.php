@@ -16,6 +16,8 @@
         private $tbl_bit_user_log = "tbl_bit_user_logs";
         private $tbl_bit_betting_detail = "tbl_bit_betting_details";
         private $tbl_bit_trans_history = "tbl_bit_transaction_histories";
+        private $tbl_bit_answer_template = "tbl_bit_answer_templates";
+        private $tbl_bit_game_type = "tbl_bit_game_types";
         
         //properties  
 		public function __construct($db){
@@ -48,13 +50,7 @@
             return $stmt;
         }
         public function getInquiryList(){
-            $query = "SELECT
-            I.t_Inquiry_Title,
-            I.t_Inquiry_Details,
-            I.t_Inquiry_Status_Id,
-            I.t_Inquiry_Date,
-            I.t_Response_Time,
-            U.u_Nickname
+            $query = "SELECT *,U.u_Nickname
             FROM ".$this->tbl_bit_inquiry." I
             JOIN ".$this->tbl_bit_user." U ON I.t_Account_Code = U.u_Account_Code
             ORDER BY I.t_Inquiry_Date DESC";
@@ -248,10 +244,10 @@
             $query = "INSERT INTO ".$this->tbl_bit_notice." (n_Title,n_Details,n_Writer,n_IsPublic,n_Registration_Time) VALUES (:Title,:Details,:Writer,:IsPublic,:RegistrationTime)";
             $stmt = $this->conn->prepare($query);
 
-            $title = $_POST["title"];
-            $usenonuse = $_POST["use_nonuse"];
-            $regdate = $_POST["register_date"];
-            $message = $_POST["message"];
+            $title = $formdata["title"];
+            $usenonuse = $formdata["use_nonuse"];
+            $regdate = $formdata["register_date"];
+            $message = $formdata["notice_details"];
             $writer = $_SESSION["user_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -275,10 +271,10 @@
             WHERE n_Id = :Id";
             $stmt = $this->conn->prepare($query);
 
-            $id = $_POST["id_e"];
-            $title = $_POST["title_e"];
-            $usenonuse = $_POST["use_nonuse_e"];
-            $message = $_POST["message_e"];
+            $id = $formdata["id_e"];
+            $title = $formdata["title_e"];
+            $usenonuse = $formdata["use_nonuse_e"];
+            $message = $formdata["notice_details_e"];
             $writer = $_SESSION["user_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
@@ -327,10 +323,10 @@
             $query = "INSERT INTO ".$this->tbl_bit_guide." (g_Title,g_Details,g_Writer,g_IsPublic,g_Registration_Time) VALUES (:Title,:Details,:Writer,:IsPublic,:RegistrationTime)";
             $stmt = $this->conn->prepare($query);
 
-            $title = $_POST["title"];
-            $usenonuse = $_POST["use_nonuse"];
-            $regdate = $_POST["register_date"];
-            $message = $_POST["message"];
+            $title = $formdata["title"];
+            $usenonuse = $formdata["use_nonuse"];
+            $regdate = $formdata["register_date"];
+            $message = $formdata["guide_details"];
             $writer = $_SESSION["user_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -354,10 +350,10 @@
             WHERE g_Id = :Id";
             $stmt = $this->conn->prepare($query);
 
-            $id = $_POST["id_e"];
-            $title = $_POST["title_e"];
-            $usenonuse = $_POST["use_nonuse_e"];
-            $message = $_POST["message_e"];
+            $id = $formdata["g_id_e"];
+            $title = $formdata["g_title_e"];
+            $usenonuse = $formdata["g_use_nonuse_e"];
+            $message = $formdata["g_guide_details_e"];
             $writer = $_SESSION["user_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
@@ -393,6 +389,43 @@
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
+        }
+        public function postInquiry($formdata){
+            $query = "INSERT INTO ".$this->tbl_bit_answer_template." (a_Title,a_Answer_Details) VALUES (:title,:details)";
+            $stmt = $this->conn->prepare($query);
+
+            $title = $formdata["inquiry_answer_title"];
+            $details = $formdata["inquiry_answer_details"];
+
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':details', $details, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postInquiryUpdate($formdata){
+            $query = "UPDATE ".$this->tbl_bit_inquiry." 
+            SET
+            t_Manager_Reply = :Reply,
+            t_Inquiry_Status_Id = :Status,
+            t_Response_Time = :Date
+            WHERE t_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $_POST["i_id_e"];
+            $details = $_POST["i_inquiry_details_e"];
+            $date = date('Y-m-d h:i:s');
+            $status = 1;
+
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Reply', $details, PDO::PARAM_STR);
+            $stmt->bindParam(':Status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':Date', $date, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
         }
         public function getGuidePerId($id){
             $query = "SELECT * FROM ".$this->tbl_bit_guide." WHERE g_Id = '".$id."'";
@@ -547,7 +580,29 @@
             }
             return false;
         }
+        public function postuserUpdateByAdmin($formdata,$pass){
+            $query = "UPDATE ".$this->tbl_bit_user." SET u_Password = :user_pass, u_Bank_Code = :bankid WHERE u_Account_Code = :accountid;
+            ";
+            $stmt = $this->conn->prepare($query);
 
+            $user_pass = $pass;
+            $accountid = $formdata["accountid"];
+            $bankid = $formdata["bankid"];
+            $btcusd = $formdata["btcusd"];
+            $ethusd = $formdata["ethusd"];
+            $xrpusd = $formdata["xrpusd"];
+
+            $stmt->bindParam(':user_pass', $user_pass, PDO::PARAM_STR);
+            $stmt->bindParam(':accountid', $accountid, PDO::PARAM_STR);
+            $stmt->bindParam(':bankid', $bankid, PDO::PARAM_STR);
+            $stmt->bindParam(':btcusd', $btcusd, PDO::PARAM_STR);
+            $stmt->bindParam(':ethusd', $ethusd, PDO::PARAM_STR);
+            $stmt->bindParam(':xrpusd', $xrpusd, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
         public function getInfoCntUser(){
             $query = "SELECT COUNT(u_Status_Id) AS Cnt FROM ".$this->tbl_bit_user." WHERE u_Status_Id IN(1)";
             $stmt = $this->conn->prepare($query);
@@ -610,8 +665,36 @@
             (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Browser_Use,
             (SELECT l_Access_Domain FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Access_Domain,
             (SELECT l_Current_Ip FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Current_Ip,
-            (SELECT l_isActive FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive
+            (SELECT l_isActive FROM ".$this->tbl_bit_user_log." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive,
+            (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = CodeParent) AS TotalCashAmount,
+            (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = CodeParent) AS TotalDepositAmount,
+            (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = CodeParent AND DATE(l_LogInDateTime) = '".date('Y-m-d')."') AS TotalDepositDailyAmount,
+            (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = CodeParent) AS TotalWithdrawAmount,
+            (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = CodeParent AND DATE(t_Cashout_Date) = '".date('Y-m-d')."') AS TotalWithdrawDailyAmount,
+            (SELECT SUM(b_betAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."') AS TotalTradingDailyAmount,
+            (SELECT SUM(b_Total_BetAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(1)) AS TotalProfitDailyAmount,
+            (SELECT SUM(b_betAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(2)) AS TotalDisqualifyDailyAmount
             FROM ".$this->tbl_bit_user." WHERE u_Nickname = '".$nname."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getInquiryPerId($id){
+            $query = "SELECT * FROM ".$this->tbl_bit_inquiry." I
+            JOIN ".$this->tbl_bit_user." U ON I.t_Account_Code = U.u_Account_Code
+            WHERE t_Id = '".$id."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getAnswerTemplateList(){
+            $query = "SELECT * FROM ".$this->tbl_bit_answer_template." ORDER BY a_Updated_Date DESC";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function checkAdminUserPass($admin_pass){
+            $query = "SELECT * FROM ".$this->tbl_bit_user." WHERE u_Password = '".$admin_pass."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

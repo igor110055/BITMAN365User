@@ -36,7 +36,7 @@
 	$sNum = $counter + 1;
 
 	$output = '';
-	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 760px;">';
+	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 610px;">';
 	$output .= '<table style="width: 100%;" class="inquiry_ad">';
 	$output .= '<thea>';
 	$output .= '<tr>';
@@ -52,15 +52,27 @@
 	$output .= '<tbody>';
 	if($sql1->rowCount() > 0){
 		foreach($data as $key => $val){
-			$output .= '<tr>';
-            $output .= '<td>'.$sNum.'</td>';
-            $output .= '<td>'.$val["t_Inquiry_Title"].'</td>';
-            ($val["t_Inquiry_Status_Id"] == 0) ? $output .= '<td>대기</td>' : $output .= '<td>완료</td>';
-            $output .= '<td>'.$val["u_Nickname"].'</td>';
-            $output .= '<td>'.$val["t_Inquiry_Date"].'</td>';
-            $output .= '<td>'.$_SESSION["user_session"]["u_Account_Code"].'</td>';
-            ($val["t_Response_Time"]) ? $output .= '<td>'.$val["t_Response_Time"].'</td>' : $output .= '<td>-</td>';
-            $output .= '</tr>';
+			if($val["t_Response_Time"]){
+				$output .= '<tr>';
+				$output .= '<td style="background: #666666;">'.$sNum.'</td>';
+				$output .= '<td class="modal-inquiry_template_show" style="background: #666666; width: 410px; text-align: left; cursor: pointer;" data-id="'.$val["t_Id"].'">'.$val["t_Inquiry_Title"].'</td>';
+				($val["t_Inquiry_Status_Id"] == 0) ? $output .= '<td style="background: #666666; width: 90px;">대기</td>' : $output .= '<td style="background: #666666; width: 90px;">완료</td>';
+				$output .= '<td style="background: #666666;">'.$val["u_Nickname"].'</td>';
+				$output .= '<td style="background: #666666;">'.$val["t_Inquiry_Date"].'</td>';
+				$output .= '<td style="background: #666666;">'.$_SESSION["user_session"]["u_Account_Code"].'</td>';
+				($val["t_Response_Time"]) ? $output .= '<td style="background: #666666;">'.$val["t_Response_Time"].'</td>' : $output .= '<td style="background: #666666;">-</td>';
+				$output .= '</tr>';
+			}else{
+				$output .= '<tr>';
+				$output .= '<td style="background: #555555;">'.$sNum.'</td>';
+				$output .= '<td class="modal-inquiry_template_show" style="background: #555555; width: 410px; text-align: left; cursor: pointer;" data-id="'.$val["t_Id"].'">'.$val["t_Inquiry_Title"].'</td>';
+				($val["t_Inquiry_Status_Id"] == 0) ? $output .= '<td style="background: #555555; width: 90px;">대기</td>' : $output .= '<td style="background: #555555; width: 90px;">완료</td>';
+				$output .= '<td style="background: #555555;">'.$val["u_Nickname"].'</td>';
+				$output .= '<td style="background: #555555;">'.$val["t_Inquiry_Date"].'</td>';
+				$output .= '<td style="background: #555555;">'.$_SESSION["user_session"]["u_Account_Code"].'</td>';
+				($val["t_Response_Time"]) ? $output .= '<td style="background: #555555;">'.$val["t_Response_Time"].'</td>' : $output .= '<td style="background: #555555;">-</td>';
+				$output .= '</tr>';
+			}
 			$sNum ++;
 		}
 	}else{
@@ -78,20 +90,28 @@
     print $output;
 ?>
 <script>
-	$('.summernote').summernote({
-		height: 420,
-		lang: 'ko-KR',
+	$('#summernote_inquiry_edit').summernote({
+		height: 340,
+		placeholder: '당신의 글은 여기에.....',
+		lang: 'ko-KR', 
 		dialogsInBody: true,
-		dialogsFade: false,
-		toolbar: [
-			['style', ['style']],
-			['style', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['strikethrough', 'superscript', 'subscript']],
-			['fontsize', ['fontsize']],
-			['color', ['color']],
-			['insert', [ 'picture', 'link', 'video', 'table']],
-			['para', ['ul', 'ol', 'paragraph']],
-			['height', ['height']]
-		]
+		dialogsFade: false
+	});
+	$(".modal-inquiry_template_show").click(function(){
+		var id = $(this).data('id');
+		$.ajax({
+			type: 'GET',
+			url: '../php/api/admin/getInquiryPerId.php?id='+id,
+			cache: false,
+			success: function(response){
+				$("#modal-inquiry_template_edit").modal('show');
+				$('#i_id_e').val(response[0].t_Id);
+				$('#i_title_e').val(response[0].t_Inquiry_Title);
+				$('#i_nickname_e').val(response[0].u_Nickname);
+				$('#i_inquiry_date_e').val(response[0].t_Inquiry_Date);
+				$('#i_user_inquiry_details_e').val(response[0].t_Inquiry_Details);
+				$("#summernote_inquiry_edit").summernote("code", response[0].t_Manager_Reply);
+			}
+		})
 	});
 </script>

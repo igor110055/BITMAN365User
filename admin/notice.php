@@ -111,5 +111,14 @@
             </div>
         </div>
         <?php include __DIR__ . '/includes_2/script.php';?>
+        <script>
+            $('#summernote_notice_add').summernote({
+                height: 340,
+                placeholder: '당신의 글은 여기에.....',
+                lang: 'ko-KR', 
+                dialogsInBody: true,
+                dialogsFade: false
+            });
+        </script>
     </body>
 </html>
