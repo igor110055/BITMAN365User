@@ -47,5 +47,9 @@
             $post = $query->postuserUpdateByAdmin($_POST,$pass);
             echo $post;
             break;
+        case "stop_usage":
+            $post = $query->postforceStopUsingWebsite($_GET);
+            echo $post;
+            break;
     }
 ?>

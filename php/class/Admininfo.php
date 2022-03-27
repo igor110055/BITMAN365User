@@ -248,7 +248,7 @@
             $usenonuse = $formdata["use_nonuse"];
             $regdate = $formdata["register_date"];
             $message = $formdata["notice_details"];
-            $writer = $_SESSION["user_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
@@ -275,7 +275,7 @@
             $title = $formdata["title_e"];
             $usenonuse = $formdata["use_nonuse_e"];
             $message = $formdata["notice_details_e"];
-            $writer = $_SESSION["user_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -327,7 +327,7 @@
             $usenonuse = $formdata["use_nonuse"];
             $regdate = $formdata["register_date"];
             $message = $formdata["guide_details"];
-            $writer = $_SESSION["user_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
@@ -354,7 +354,7 @@
             $title = $formdata["g_title_e"];
             $usenonuse = $formdata["g_use_nonuse_e"];
             $message = $formdata["g_guide_details_e"];
-            $writer = $_SESSION["user_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Account_Code"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -582,7 +582,7 @@
         }
         public function postuserUpdateByAdmin($formdata,$pass){
             $query = "UPDATE ".$this->tbl_bit_user." SET u_Password = :user_pass, u_Bank_Code = :bankid WHERE u_Account_Code = :accountid;
-            ";
+            UPDATE ".$this->tbl_bit_game_type." SET g_BTCUSD = :btcusd, g_ETHUSD = :ethusd, g_XRPUSD = :xrpusd WHERE g_Account_Code = :accountid";
             $stmt = $this->conn->prepare($query);
 
             $user_pass = $pass;
@@ -598,6 +598,18 @@
             $stmt->bindParam(':btcusd', $btcusd, PDO::PARAM_STR);
             $stmt->bindParam(':ethusd', $ethusd, PDO::PARAM_STR);
             $stmt->bindParam(':xrpusd', $xrpusd, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postforceStopUsingWebsite($get){
+            $query = "UPDATE ".$this->tbl_bit_user." SET u_UseNoUse = :usenoneuse WHERE u_Account_Code = :code";
+            $stmt = $this->conn->prepare($query);
+            $code = $get["code"];
+            $usenoneuse = $get["usenoneuse"];
+            $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+            $stmt->bindParam(':usenoneuse', $usenoneuse, PDO::PARAM_STR);
             if($stmt->execute()){
                 return true;
             }

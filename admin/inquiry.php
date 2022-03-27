@@ -183,6 +183,19 @@
     .grid_column_inquiry_holding table tr td.tdcashtrans{
         background: #888888;
     }
+    label {
+        display: inline-block;
+        border: 1px solid transparent;
+        display: flex;
+        width: 60px;
+        border-radius: 6px;
+        overflow: hidden;
+        background-color: #FFF200;
+        align-items: center;
+        cursor: pointer;
+        padding: 5px 5px;
+        color: #000000;
+    }
 </style>
         <div class="container-fluid">
             <?php include __DIR__ . '/includes_2/middle_header.php';?>

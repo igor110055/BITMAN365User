@@ -1,5 +1,3 @@
-var rollSound = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
-
 function display_time() {
     var myDate = moment.tz(moment(),'Asia/Seoul').format("M월 DD일");
     var time = moment.tz(moment(),'Asia/Seoul').format("HH:mm:ss");
@@ -10,15 +8,14 @@ function display_time() {
 function display_counter(){
     var refresh = 1000; // Refresh rate in milli seconds
     mytime = setTimeout('display_time()',refresh)
-    //info = setTimeout('getInfoCnt()',refresh)
+    info = setTimeout('getInfoCnt()',refresh)
     req = setTimeout('checkCategoryReq()',refresh)
-    soundeffect = setTimeout('playSound()',refresh)
+    soundoff = setTimeout('OnOff()',refresh)
 }
-
-function playsoundEffect(){
-    rollSound.play();
-    rollSound.loop = true;
-}
+var userSound = new Audio('../assets/audio/signup.mp3');
+var depSound = new Audio('../assets/audio/cashin.mp3');
+var widSound = new Audio('../assets/audio/cashout.mp3');
+var inqSound = new Audio('../assets/audio/query.mp3');
 function pausesoundEffect(){
     rollSound.pause();
     rollSound.loop = false;
@@ -30,29 +27,45 @@ function getInfoCnt(){
         "contentType": "application/json",
         "async": false,
         success: function(response) {
+            var result = response.Notif;
             $('.user_application').text(response.UserApplication);
             $('.deposit_application').text(response.DepositApplication);
             $('.withdraw_application').text(response.WithdrawApplication);
             $('.inquiry_application').text(response.InquiryApplication);
-        }
-    })
-}
-function playSound(){
-    $.ajax({
-        "url": "../php/api/admin/getInfoCnt.php",
-        "type": "GET",
-        "contentType": "application/json",
-        "async": false,
-        success: function(response) {
-            var notifcnt = response["NotifCnt"];
-            var img = document.getElementById('mutesound');
-            if(notifcnt <= 0){
-                pausesoundEffect();
-                img.setAttribute('src', "../assets/icons/akar-icons_sound-on.png");
-            }else{
-                playsoundEffect()
-                //img.setAttribute('src', "../assets/icons/akar-icons_sound-on.png");
-            }
+            result.forEach(function(el){
+                if(el.s_Notif_Type == "UserApplication"){
+                    if(el.s_TypeName == 'on'){
+                        userSound.play();
+                        userSound.loop = true;
+                    }else{
+                        userSound.pause();
+                    }
+                }
+                if(el.s_Notif_Type == "DepositApplication"){
+                    if(el.s_TypeName == 'on'){
+                        depSound.play();
+                        depSound.loop = true;
+                    }else{
+                        depSound.pause();
+                    }
+                }
+                if(el.s_Notif_Type == "WithdrawApplication"){
+                    if(el.s_TypeName == 'on'){
+                        widSound.play();
+                        widSound.loop = true;
+                    }else{
+                        widSound.pause();
+                    }
+                }
+                if(el.s_Notif_Type == "InquiryApplication"){
+                    if(el.s_TypeName == 'on'){
+                        inqSound.play();
+                        inqSound.loop = true;
+                    }else{
+                        inqSound.pause();
+                    }
+                }
+            })
         }
     })
 }
@@ -61,8 +74,7 @@ function OnOff() {
     $('.mutesound').click(function(){
         if (img.getAttribute('src') === "../assets/icons/akar-icons_sound-on.png") {
             img.setAttribute('src', "../assets/icons/akar-icons_sound-off.png");
-        }
-        else {
+        }else {
             img.setAttribute('src', "../assets/icons/akar-icons_sound-on.png");
         }
     })
@@ -140,6 +152,5 @@ $('.mutesound').click(function(){
 //         }
 //     })
 // }
-OnOff();
-//display_counter();
+display_counter();
 getInfoCnt();

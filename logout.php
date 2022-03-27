@@ -10,10 +10,10 @@
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 	include_once 'php/config/Database.php';
-	include_once 'php/class/Users.php';
+	include_once 'php/class/AdminUsers.php';
 
 	$database = new Database();
     $db = $database->getConnection();
-	$query = new User($db);
+	$query = new AdminUser($db);
 	$stmt = $query->destroyUserSession($_GET["code"]);
 ?>

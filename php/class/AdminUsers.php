@@ -1,5 +1,5 @@
 <?php
-    class User {
+    class AdminUser {
         // DB stuff
         private $conn;
         private $tbl_bit_users = "tbl_bit_users";
@@ -87,19 +87,22 @@
             U.u_Mobile_Number,
             U.u_Ip_Address,
             U.u_Access_Code,
+            U.u_isAdminUser,
             H.t_Amount_in_Total,
             H.t_Currency
             FROM ".$this->tbl_bit_users." AS U 
             JOIN ".$this->tbl_bit_access." A ON U.u_Access_Code = A.m_Access_Code 
             LEFT JOIN ".$this->tbl_bit_trans_headers." H ON U.u_Account_Code = H.t_Account_Code 
             WHERE U.u_Account_Code = '$account_code' AND U.u_Password = '$password'
-            AND U.u_Status_Id NOT IN(1) LIMIT 1";
+            AND U.u_Status_Id NOT IN(1)
+            AND U.u_UseNoUse IN(1) 
+            AND U.u_isAdminUser IN(1) LIMIT 1";
 			$stmt = $this->conn->prepare($query);
 			$stmt->execute();
             $num_row = $stmt->rowCount();
             if($num_row > 0 ){
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    $_SESSION['user_session'] = $row;
+                    $_SESSION['admin_session'] = $row;
                     return true;
                 }
             }else{
@@ -151,7 +154,7 @@
 		 // Check if the user is already logged in
          public function is_logged_in() {
             // Check if user session has been set
-            if (isset($_SESSION['user_session'])) {
+            if (isset($_SESSION['admin_session'])) {
                 return true;
             }
         }

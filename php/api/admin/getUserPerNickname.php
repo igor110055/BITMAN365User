@@ -37,6 +37,7 @@
             "Browser_Use" => $data["l_Browser_Use"],
             "Current_Ip" => ($data["l_Current_Ip"]) ? $data["l_Current_Ip"] : $data["u_Ip_Address"],
             "ServerIp" => $_SERVER["REMOTE_ADDR"],
+            "UseNoUse" => $data["u_UseNoUse"],
             "TotalCashAmount" => $data["TotalCashAmount"],
             "TotalDepositAmount" => $data["TotalDepositAmount"],
             "TotalDepositDailyAmount" => $data["TotalDepositDailyAmount"],

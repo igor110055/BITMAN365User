@@ -17,7 +17,7 @@
 
         //select query
         public function selectBettingAmount($unixtime){
-            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_time = '".$unixtime."' AND b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."'";
+            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_time = '".$unixtime."' AND b_Account_Code = '".$_SESSION["admin_session"]["u_Account_Code"]."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,46 +25,13 @@
         }
 
         public function selectCurrentBalance(){
-            $query = "SELECT * FROM ".$this->tbl_bit_transaction_header." WHERE t_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."'";
+            $query = "SELECT * FROM ".$this->tbl_bit_transaction_header." WHERE t_Account_Code = '".$_SESSION["admin_session"]["u_Account_Code"]."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             $user_balance = $user["t_Amount_in_Total"];
             return $user_balance;
         }
-
-        // public function postBinanceData($bidata){
-        //     //(SELECT a_close FROM tbl_bi_apis WHERE a_StatusId IN(1) ORDER BY a_Id DESC LIMIT 1)
-        //     $query = "INSERT INTO ".$this->tbl_bi_api." (a_Id,a_time,a_time_date, a_open, a_high, a_low, a_close, a_Trend) VALUES (:ai,:time, :date, :open, :high, :low, :close, :trend);
-        //     UPDATE tbl_bit_betting_details SET b_Result = :result WHERE b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' AND b_time = :time AND b_Result IN(0);
-        //     UPDATE ".$this->tbl_bi_api." SET a_close = :open WHERE a_time = :timeM";
-        //     $stmt = $this->conn->prepare($query);
-
-        //     $t = $bidata->time;
-        //     $o = $bidata->open;
-        //     $h = $bidata->high;
-        //     $l = $bidata->low;
-        //     $c = $bidata->close;
-        //     $tr = ($bidata->close > $bidata->open) ? 'Buy' : 'Sell';
-        //     $r = ($tr == '매수') ? 2 : 1;
-        //     $ai = $this->getAutoIncrement();
-        //     $tm = $bidata->timeminus1;
-        //     $date = $bidata->datetime;
-        //     $stmt->bindParam(':time', $t, PDO::PARAM_INT);
-        //     $stmt->bindParam(':open', $o, PDO::PARAM_STR);
-        //     $stmt->bindParam(':high', $h, PDO::PARAM_STR);
-        //     $stmt->bindParam(':low', $l, PDO::PARAM_STR);
-        //     $stmt->bindParam(':close', $c, PDO::PARAM_STR);
-        //     $stmt->bindParam(':trend', $tr, PDO::PARAM_STR);
-        //     $stmt->bindParam(':result', $r, PDO::PARAM_INT);
-        //     $stmt->bindParam(':ai', $ai, PDO::PARAM_INT);
-        //     $stmt->bindParam(':timeM', $tm, PDO::PARAM_STR);
-        //     $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-        //     if($stmt->execute()){
-        //         return true;
-        //     }
-        //     return false;
-        // }
 
         public function getBinanceApiData($sort,$limit){
             $query = "SELECT * FROM (SELECT * FROM ".$this->tbl_bi_api." ORDER BY a_Id $sort LIMIT $limit) AS sub ORDER BY a_Id"; 
@@ -140,7 +107,7 @@
                 $stmt = $this->conn->prepare($user_trans);
 
                 $amount = $cur_balance + $total_amount;
-                $a_code = $_SESSION["user_session"]["u_Account_Code"];
+                $a_code = $_SESSION["admin_session"]["u_Account_Code"];
 
                 $stmt->bindParam(':a_code', $a_code, PDO::PARAM_STR);
                 $stmt->bindParam(':t_amount', $amount, PDO::PARAM_STR);
@@ -150,7 +117,7 @@
                 $stmt = $this->conn->prepare($user_trans);
 
                 $amount = $cur_balance + $amount;
-                $a_code = $_SESSION["user_session"]["u_Account_Code"];
+                $a_code = $_SESSION["admin_session"]["u_Account_Code"];
                 
                 $stmt->bindParam(':a_code', $a_code, PDO::PARAM_STR);
                 $stmt->bindParam(':t_amount', $amount, PDO::PARAM_STR);
@@ -160,11 +127,11 @@
 
         public function postPurchaserequest($arr){
             $query = "INSERT INTO ".$this->tbl_bi_betting." (b_Account_Code,b_time,b_betAmount,b_Total_BetAmount,b_MultiplyBy,b_Trend) VALUES (:Account_Code,:time,:betAmount,:Total_BetAmount,:MultiplyBy,:Trend);
-            UPDATE ".$this->tbl_bit_transaction_header." SET t_Amount_in_Total = :total_balance WHERE t_Account_Code  = '".$_SESSION["user_session"]["u_Account_Code"]."'";
+            UPDATE ".$this->tbl_bit_transaction_header." SET t_Amount_in_Total = :total_balance WHERE t_Account_Code  = '".$_SESSION["admin_session"]["u_Account_Code"]."'";
             $stmt = $this->conn->prepare($query);
 
             $cur_balance = $this->selectCurrentBalance();
-            $accountcode = $_SESSION["user_session"]["u_Account_Code"];
+            $accountcode = $_SESSION["admin_session"]["u_Account_Code"];
             $time = $arr->time;
             $betamount = $arr->betAmount;
             $dbalance = $cur_balance - $arr->betAmount;
@@ -285,14 +252,14 @@
         }
 
         public function getBinanceUserHistory(){
-            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY b_Id DESC LIMIT 20"; 
+            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_Account_Code = '".$_SESSION["admin_session"]["u_Account_Code"]."' ORDER BY b_Id DESC LIMIT 20"; 
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
         }
 
         public function getBetPerMin(){
-            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(0) AND b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."'"; 
+            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(0) AND b_Account_Code = '".$_SESSION["admin_session"]["u_Account_Code"]."'"; 
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
@@ -367,7 +334,7 @@
         }
 
         public function getUserCashBalance(){
-            $query = "SELECT * FROM ".$this->tbl_bit_transaction_header." WHERE t_Account_Code  = '".$_SESSION["user_session"]["u_Account_Code"]."' LIMIT 1"; 
+            $query = "SELECT * FROM ".$this->tbl_bit_transaction_header." WHERE t_Account_Code  = '".$_SESSION["admin_session"]["u_Account_Code"]."' LIMIT 1"; 
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
@@ -460,7 +427,7 @@
         }
 
         public function checkTimeBetPerMin($timeunix){
-            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_time = '".$timeunix."' AND b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."'";
+            $query = "SELECT * FROM ".$this->tbl_bi_betting." WHERE b_time = '".$timeunix."' AND b_Account_Code = '".$_SESSION["admin_session"]["u_Account_Code"]."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

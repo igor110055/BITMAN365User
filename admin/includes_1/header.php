@@ -1,12 +1,12 @@
 <?php
     include_once '../php/config/Database.php';
-    include_once '../php/class/Users.php';
+    include_once '../php/class/AdminUsers.php';
     include_once '../php/class/Admin.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $user = new User($db);
+    $user = new AdminUser($db);
     $query = new Admin($db);
 
     if(!$user->is_logged_in()){

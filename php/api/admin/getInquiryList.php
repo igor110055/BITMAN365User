@@ -59,7 +59,7 @@
 				($val["t_Inquiry_Status_Id"] == 0) ? $output .= '<td style="background: #666666; width: 90px;">대기</td>' : $output .= '<td style="background: #666666; width: 90px;">완료</td>';
 				$output .= '<td style="background: #666666;">'.$val["u_Nickname"].'</td>';
 				$output .= '<td style="background: #666666;">'.$val["t_Inquiry_Date"].'</td>';
-				$output .= '<td style="background: #666666;">'.$_SESSION["user_session"]["u_Account_Code"].'</td>';
+				$output .= '<td style="background: #666666;">'.$_SESSION["admin_session"]["u_Account_Code"].'</td>';
 				($val["t_Response_Time"]) ? $output .= '<td style="background: #666666;">'.$val["t_Response_Time"].'</td>' : $output .= '<td style="background: #666666;">-</td>';
 				$output .= '</tr>';
 			}else{
@@ -69,7 +69,7 @@
 				($val["t_Inquiry_Status_Id"] == 0) ? $output .= '<td style="background: #555555; width: 90px;">대기</td>' : $output .= '<td style="background: #555555; width: 90px;">완료</td>';
 				$output .= '<td style="background: #555555;">'.$val["u_Nickname"].'</td>';
 				$output .= '<td style="background: #555555;">'.$val["t_Inquiry_Date"].'</td>';
-				$output .= '<td style="background: #555555;">'.$_SESSION["user_session"]["u_Account_Code"].'</td>';
+				$output .= '<td style="background: #555555;">'.$_SESSION["admin_session"]["u_Account_Code"].'</td>';
 				($val["t_Response_Time"]) ? $output .= '<td style="background: #555555;">'.$val["t_Response_Time"].'</td>' : $output .= '<td style="background: #555555;">-</td>';
 				$output .= '</tr>';
 			}

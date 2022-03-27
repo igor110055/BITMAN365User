@@ -133,15 +133,31 @@ $("form[id='formInquiryEdit']").validate({
 $("#userbtnsubmit").click(function(){
     let formData = $('#formUserUpdateByAdmin').serialize();
     var adminPass = $('#admin_pwd').val();
+    var userPass = $('#user_pass').val();
     $.post('../php/api/admin/checkAdminUserPass.php?admin_pass='+adminPass, function(response){
         if(response == 0){
             izitoastmsg('알리다!','비밀번호가 일치하지 않습니다.','fa fa-ban','#ED5659');
             return false;
+        }else{
+            if (!(/^(.{4,12}$)/.test(userPass))) {
+                return izitoastmsg('알리다!','숫자, 영어대/소문자, 특수문자를 포함하여 4~12자까지 가능합니다.','fa fa-ban','#ED5659');
+            }
+            else if (!(/^(?=.*[A-Z])/.test(userPass))) {
+                return izitoastmsg('알리다!','숫자, 영어대/소문자, 특수문자를 포함하여 A~Z자까지 가능합니다.','fa fa-ban','#ED5659');
+            }
+            else if (!(/^(?=.*[a-z])/.test(userPass))) {
+                return izitoastmsg('알리다!','숫자, 영어대/소문자, 특수문자를 포함하여 a~z자까지 가능합니다.','fa fa-ban','#ED5659');
+            }
+            else if (!(/^(?=.*[0-9])/.test(userPass))) {
+                return izitoastmsg('알리다!','숫자, 영어대/소문자, 특수문자를 포함하여 0~9자까지 가능합니다.','fa fa-ban','#ED5659');
+            }
+            else if (!(/^(?=.*[@#$%&!])/.test(userPass))) {
+                return izitoastmsg('알리다!','숫자, 영어대/소문자, 특수문자를 포함하여 @#$%&!자까지 가능합니다.','fa fa-ban','#ED5659');
+            }
+            postuserUpdateByAdmin(formData);
         }
-        postuserUpdateByAdmin(formData);
     })
 })
-
 function postuserUpdateByAdmin(formData){
     let accountid = $('#accountid').text();
     $.ajax({
@@ -150,10 +166,50 @@ function postuserUpdateByAdmin(formData){
         data: { formData},
         cache: false,
         success: function(response){
-            console.log(response)
+            if(response == 1){
+                izitoastmsg('알리다!','ID '+accountid+' 에 대해 성공적으로 업데이트되었습니다.','fa fa-check-circle-o','#1072BA');
+                return false; 
+            }else{
+                izitoastmsg('알리다!','오류 발생, 세부 사항 확인.','fa fa-ban','#ED5659');
+                return false; 
+            }
         }
     })
 }
+$("#btn_stop_site").click(function(){
+    if (this.checked) {
+        $('.btn_stop_site').each(function () {
+            this.checked = true;
+            $('#usenouse').text('이용');
+        });
+    } else {
+        $('.btn_stop_site').each(function () {
+            this.checked = false;
+            $('#usenouse').text('멈추다');
+        });
+    }
+    var ctitle = 'stop_usage';
+    var code = $('#accountid').text();
+    var onoff = (this.checked == true) ? 1 : 0;
+    $.ajax({
+        type: 'POST',
+        url: '../php/api/admin/postInformation.php?category_title='+ctitle+'&code='+code+'&usenoneuse='+onoff,
+        cache: false,
+        success: function(response){
+            if(response == 1){
+                izitoastmsg('알리다!','ID '+code+' 에 대해 성공적으로 업데이트되었습니다.','fa fa-check-circle-o','#1072BA');
+                return false; 
+            }else{
+                izitoastmsg('알리다!','오류 발생, 세부 사항 확인.','fa fa-ban','#ED5659');
+                return false; 
+            }
+        }
+    })
+})
+$('.btn_logout').click(function(){
+    var code = $(this).data('code');
+    window.location.href="../logout.php?code="+code
+})
 function getUserList(url){
     $.ajax({
         type: 'GET',
@@ -198,6 +254,7 @@ $(document).on('change','#i_nickname_e', function(){
                 $('#ip').text(res.Current_Ip);
                 $('#browser').text(res.Browser_Use);
                 $('#server_ip').text(res.ServerIp);
+                $('#usenouse').text((res.UseNoUse == 0) ? '멈추다' : '이용');
                 $('#totalcash').text(formatter.format(res.TotalCashAmount));
                 $('#totaldeposit').text(formatter.format(res.TotalDepositAmount));
                 $('#totaldepositdaily').text(formatter.format(res.TotalDepositDailyAmount));

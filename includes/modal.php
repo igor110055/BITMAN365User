@@ -102,7 +102,7 @@
                                     <td style="width: 30%;">
                                         <div class="form-inline">
                                             <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d h:i:s')?>">
-                                            <img src="../assets/icons/calendar.png" alt="cal">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
@@ -157,7 +157,7 @@
                                     <td style="width: 30%;">
                                         <div class="form-inline">
                                             <input type="text" name="register_date_e" id="register_date_e" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;">
-                                            <img src="../assets/icons/calendar.png" alt="cal">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
@@ -211,7 +211,7 @@
                                     <td style="width: 30%;">
                                         <div class="form-inline">
                                             <input type="text" name="register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d h:i:s')?>">
-                                            <img src="../assets/icons/calendar.png" alt="cal">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
@@ -266,7 +266,7 @@
                                     <td style="width: 30%;">
                                         <div class="form-inline">
                                             <input type="text" name="g_register_date_e" id="g_register_date_e" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;">
-                                            <img src="../assets/icons/calendar.png" alt="cal">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
                                         </div>
                                     </td>
                                 </tr>
@@ -359,12 +359,15 @@
                         <!-- 1st row -->
                         <div class="card-header">
                             <span style="color: #FF9300; font-size: 20px;">기본정보</span>
-                            <div class="pull-right" style="padding: 0;">
-                                <button type="button" class="btn" style="background: #FF9300; color: #FFFFFF;">쪽지발송</button>
-                                <button type="button" class="btn" style="background: #ED5659; color: #FFFFFF;">로그아웃</button>
-                                <button type="button" class="btn" style="background: #FFF200; color: #000;">이용</button>
-                                <input type="password" name="admin_pwd" id="admin_pwd" class="btn" style="background: #FFFFFF; width: 120px; border-radius: 5px;">
-                                <button type="button" class="btn" id="userbtnsubmit" style="background: #0093FF; color: #FFFFFF;">수정</button>
+                            <div class="pull-right">
+                                <button type="button" class="btn" style="margin-top: -8px; background: #FF9300; color: #FFFFFF; margin-bottom: 2px;">쪽지발송</button>
+                                <button type="button" class="btn" style="margin-top: -8px; background: #ED5659; color: #FFFFFF;">로그아웃</button>
+                                <input type="checkbox" id="btn_stop_site" class="btn_stop_site" hidden checked>
+                                <label class="btn labelfortoggle" for="btn_stop_site">
+                                    <span id="usenouse">이용</span>
+                                </label>
+                                <input type="password" name="admin_pwd" id="admin_pwd" class="btn" style="margin-top: -8px; border: none; height: 32px; border-radius: 5px; width: 140px; text-align: center;">
+                                <button type="button" class="btn" id="userbtnsubmit" style="margin-top: -8px; background: #0093FF; color: #FFFFFF;">수정</button>
                             </div>
                         </div>
                         <div class="card-body">

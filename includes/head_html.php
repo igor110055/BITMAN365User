@@ -1,11 +1,11 @@
 <?php
     include_once 'php/config/Database.php';
-    include_once 'php/class/Users.php';
+    include_once 'php/class/AdminUsers.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $user = new User($db);
+    $user = new AdminUser($db);
 ?>
 <!DOCTYPE html>
 <html lang="en">
