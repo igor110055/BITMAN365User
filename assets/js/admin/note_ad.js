@@ -93,7 +93,6 @@ $("form[id='formNote_Edit']").validate({
                             data: { formData},
                             cache: false,
                             success: function(response){
-                                console.log(reponse)
                                 if(response == 1){
                                     izitoast('공지사항!','성공적으로 업데이트되었습니다.','fa fa-bullhorn','#1072BA','./note.php');
                                 }

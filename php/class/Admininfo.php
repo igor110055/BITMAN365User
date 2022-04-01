@@ -729,12 +729,11 @@
         }
 
         public function postNoteUpdate($formdata){
-            print_r($formdata);
             $query = "UPDATE ".$this->tbl_bit_note." 
             SET
             e_Title = :Title,
             e_Details = :Details,
-            e_Writer = :Writer,
+            e_Writer = :Writer
             WHERE e_Id = :Id";
             $stmt = $this->conn->prepare($query);
 

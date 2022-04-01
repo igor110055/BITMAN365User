@@ -40,5 +40,13 @@
             $del = $query->postFAQDeleteMultiple($arrMultiplDelete);
             echo $del;
             break;
+        case "note_delete":
+            $del = $query->postNoteDelete($_GET["id"]);
+            echo $del;
+            break;
+        case "note_delete_multiple":
+            $del = $query->postNoteDeleteMultiple($arrMultiplDelete);
+            echo $del;
+            break;
     }
 ?>
