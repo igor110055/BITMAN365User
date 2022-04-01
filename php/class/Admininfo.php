@@ -729,6 +729,7 @@
         }
 
         public function postNoteUpdate($formdata){
+            print_r($formdata);
             $query = "UPDATE ".$this->tbl_bit_note." 
             SET
             e_Title = :Title,

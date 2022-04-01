@@ -77,36 +77,35 @@ $("form[id='formNote_Edit']").validate({
     submitHandler: function() {
         let formData = $('#formNote_Edit').serialize();
         let title = $('#e_title_note').val();
-        console.log(formData)
-        // $.confirm({
-        //     title: '업데이트하려고 합니다!',
-        //     content: '제목: <span style="color: #458B00;">'+title+'</span> <br>범주: <span style="color: #458B00;">쪽지</span>',
-        //     type: 'green',
-        //     typeAnimated: true,
-        //     buttons: {
-        //         tryAgain: {
-        //             text: 'Yes',
-        //             btnClass: 'btn-green',
-        //             action: function(){
-        //                 $.ajax({
-        //                     type: 'POST',
-        //                     url: '../php/api/admin/postInformation.php',
-        //                     data: { formData},
-        //                     cache: false,
-        //                     success: function(response){
-        //                         console.log(reponse)
-        //                         if(response == 1){
-        //                             izitoast('공지사항!','성공적으로 업데이트되었습니다.','fa fa-bullhorn','#1072BA','./note.php');
-        //                         }
-        //                     }
-        //                 })
-        //             }
-        //         },
-        //         close: function () {
-        //             location.href="./note.php"
-        //         }
-        //     }
-        // });
+        $.confirm({
+            title: '업데이트하려고 합니다!',
+            content: '제목: <span style="color: #458B00;">'+title+'</span> <br>범주: <span style="color: #458B00;">쪽지</span>',
+            type: 'green',
+            typeAnimated: true,
+            buttons: {
+                tryAgain: {
+                    text: 'Yes',
+                    btnClass: 'btn-green',
+                    action: function(){
+                        $.ajax({
+                            type: 'POST',
+                            url: '../php/api/admin/postInformation.php',
+                            data: { formData},
+                            cache: false,
+                            success: function(response){
+                                console.log(reponse)
+                                if(response == 1){
+                                    izitoast('공지사항!','성공적으로 업데이트되었습니다.','fa fa-bullhorn','#1072BA','./note.php');
+                                }
+                            }
+                        })
+                    }
+                },
+                close: function () {
+                    location.href="./note.php"
+                }
+            }
+        });
     }
 })
 $('.btn_delete_all').on('click', function() {
