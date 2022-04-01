@@ -282,6 +282,115 @@
         </div>
     </div>
 </div>
+<!-- display new record for faq -->
+<div class="modal fade modal_faq_template" id="modal-faq_add" tabindex="-1">
+    <div class="modal-dialog modal-lg" style="height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 20px;">공지사항</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        공지사항
+                    </div>
+                    <div class="card-body">
+                        <form id="formFAQ" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="category_title" value="faq">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 20%;">제목</td>
+                                    <td colspan="3">
+                                        <input type="text" name="f_title" id="f_title" class="noticeguide_input" placeholder="공지......">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">사용</td>
+                                    <td style="width: 30%;">
+                                        <div class="select-wrapper">
+                                            <select name="f_use_nonuse" class="form-control">
+                                                <option selected disabled>-</option>
+                                                <option value="1">사용</option>
+                                                <option value="0">미사용</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td style="width: 20%;">공지일자</td>
+                                    <td style="width: 30%;">
+                                        <div class="form-inline">
+                                            <input type="text" name="f_register_date" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;" value="<?=date('Y-m-d h:i:s')?>">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <textarea id="summernote_faq_add" name="faq_details"></textarea>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- edit faq -->
+<div class="modal fade modal_faq_template" id="modal-faq_edit" tabindex="-1">
+    <div class="modal-dialog modal-lg" style="height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 20px;">공지사항</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        공지사항
+                    </div>
+                    <div class="card-body">
+                        <form id="formFAQ_Edit" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="f_id_e" id="f_id_e">
+                            <input type="hidden" name="category_title" value="faq_edit">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 20%;">제목</td>
+                                    <td colspan="3">
+                                        <input type="text" name="f_title_e" id="f_title_e" class="noticeguide_input" placeholder="공지......">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;">사용</td>
+                                    <td style="width: 30%;">
+                                        <div class="select-wrapper">
+                                            <select name="f_use_nonuse_e" id="f_use_nonuse_e" class="form-control">
+                                                <option selected disabled>-</option>
+                                                <option value="1">사용</option>
+                                                <option value="0">미사용</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td style="width: 20%;">공지일자</td>
+                                    <td style="width: 30%;">
+                                        <div class="form-inline">
+                                            <input type="text" name="f_register_date_e" id="f_register_date_e" class="form-control datepicker" style="width: 80%; margin-right: 6px; text-align: center;">
+                                            <img src="<?= "http://" . $_SERVER["HTTP_HOST"] . "/BITMAN365_admin/assets/icons/calendar.png"?>" alt="cal">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <textarea id="summernote_faq_edit" name="faq_details_e"></textarea>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-noticeguide_save">등록</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- display template answer for inquiry -->
 <div class="modal fade modal_inquiry_template" id="modal-inquiry_template_edit" tabindex="-1">
     <div class="modal-dialog modal_size_medium">
@@ -621,6 +730,77 @@
                             </div>
                             <div style="padding: 10px 0;" class="m_footer">
                                 <center><button type="submit" class="btn btn-inquiry_save">등록</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display new record for note -->
+<div class="modal fade modal_note_template" id="modal-note_add" tabindex="-1">
+    <div class="modal-dialog modal-lg" style="height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 20px;">전체쪽지</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        전체쪽지
+                    </div>
+                    <div class="card-body">
+                        <form id="formNote" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="category_title" value="note">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 20%;">제목</td>
+                                    <td colspan="3">
+                                        <input type="text" name="title_note" id="title_note" class="form-control" placeholder="전체쪽지전체쪽지......">
+                                    </td>
+                                </tr>
+                            </table>
+                            <textarea id="summernote_note_add" name="note_details"></textarea>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-note_save">등록</button></center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display edit for note -->
+<div class="modal fade modal_note_template" id="modal-note_edit" tabindex="-1">
+    <div class="modal-dialog modal-lg" style="height: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #333333;">
+                <span style="color: #FFFFFF; font-size: 20px;">전체쪽지</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        전체쪽지
+                    </div>
+                    <div class="card-body">
+                        <form id="formNote_Edit" enctype="multipart/form-data" method="POST">
+                            <input type="hidden" name="category_title" value="note_edit">
+                            <input type="hidden" id="id_note" name="id_note">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 20%;">제목</td>
+                                    <td colspan="3">
+                                        <input type="text" name="e_title_note" id="e_title_note" class="form-control" placeholder="전체쪽지전체쪽지......">
+                                    </td>
+                                </tr>
+                            </table>
+                            <textarea id="summernote_note_edit" name="e_note_details"></textarea>
+                            <div style="padding: 10px 0;" class="m_footer">
+                                <center><button type="submit" class="btn btn-note_save">등록</button></center>
                             </div>
                         </form>
                     </div>

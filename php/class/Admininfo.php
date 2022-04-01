@@ -18,11 +18,33 @@
         private $tbl_bit_trans_history = "tbl_bit_transaction_histories";
         private $tbl_bit_answer_template = "tbl_bit_answer_templates";
         private $tbl_bit_game_type = "tbl_bit_game_types";
+        private $tbl_bit_faq = "tbl_bit_faqs";
+        private $tbl_bit_note = "tbl_bit_notes";
         
         //properties  
 		public function __construct($db){
 			$this->conn = $db;
 		}
+        public function getNoteList(){
+            $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Deleted_Date IS NULL ORDER BY e_Registration_Time DESC";
+            return $query;
+        }
+        public function getNoteRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Deleted_Date IS NULL";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getFAQList(){
+            $query = "SELECT * FROM ".$this->tbl_bit_faq." WHERE f_Deleted_Date IS NULL ORDER BY f_Updated_Date DESC";
+            return $query;
+        }
+        public function getFAQRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_faq." WHERE f_Deleted_Date IS NULL";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
         public function getUserTransactionList($code,$year,$month){
             $query = "SELECT *
             FROM ".$this->tbl_bit_trans_history." WHERE (h_Transaction_Type, h_Processing_Time) IN (
@@ -275,7 +297,7 @@
             $title = $formdata["title_e"];
             $usenonuse = $formdata["use_nonuse_e"];
             $message = $formdata["notice_details_e"];
-            $writer = $_SESSION["admin_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -305,13 +327,13 @@
             return false;
         }
         public function postNoticeDeleteMultiple($arr){
-            print_r($arr);
             $count = count($arr);
             for($i = 0; $i <= $count; $i++){
                 $query = "UPDATE ".$this->tbl_bit_notice." SET n_Deleted_Date = '".date('Y-m-d h:i')."' WHERE n_Id = '".$arr[$i]."'";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
+            return true;
         }
         public function getNoticePerId($id){
             $query = "SELECT * FROM ".$this->tbl_bit_notice." WHERE n_Id = '".$id."'";
@@ -354,7 +376,7 @@
             $title = $formdata["g_title_e"];
             $usenonuse = $formdata["g_use_nonuse_e"];
             $message = $formdata["g_guide_details_e"];
-            $writer = $_SESSION["admin_session"]["u_Account_Code"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
 
             $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
@@ -367,7 +389,7 @@
             return false;
         }
         public function postGuideDelete($id){
-            $query = "UPDATE ".$this->tbl_bit_guide." 
+            $query = "UPDATE ".$this->tbl_bit_guide."
             SET
             g_Deleted_Date = :Date
             WHERE g_Id = :Id";
@@ -389,6 +411,62 @@
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
+            return true;
+        }
+        public function postFAQ($formdata){
+            $query = "INSERT INTO ".$this->tbl_bit_faq." (f_Title,f_Details,f_Writer,f_UseUnUse,f_Registration_Date) VALUES (:Title,:Details,:Writer,:Usenonuse,:RegistrationDate)";
+            $stmt = $this->conn->prepare($query);
+
+            $title = $formdata["f_title"];
+            $usenonuse = $formdata["f_use_nonuse"];
+            $regdate = $formdata["f_register_date"];
+            $message = $formdata["faq_details"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
+
+            $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
+            $stmt->bindParam(':Writer', $writer, PDO::PARAM_STR);
+            $stmt->bindParam(':Usenonuse', $usenonuse, PDO::PARAM_STR);
+            $stmt->bindParam(':RegistrationDate', $regdate, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postFAQUpdate($formdata){
+            $query = "UPDATE ".$this->tbl_bit_faq." 
+            SET
+            f_Title = :Title,
+            f_Details = :Details,
+            f_Writer = :Writer,
+            f_UseUnuse = :Usenonuse
+            WHERE f_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $formdata["f_id_e"];
+            $title = $formdata["f_title_e"];
+            $usenonuse = $formdata["f_use_nonuse_e"];
+            $message = $formdata["faq_details_e"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
+
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
+            $stmt->bindParam(':Writer', $writer, PDO::PARAM_STR);
+            $stmt->bindParam(':Usenonuse', $usenonuse, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postFAQDeleteMultiple($arr){
+            $count = count($arr);
+            for($i = 0; $i <= $count; $i++){
+                $query = "UPDATE ".$this->tbl_bit_faq." SET f_Deleted_Date = '".date('Y-m-d h:i')."' WHERE f_Id = '".@$arr[$i]."'";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+            }
+            return true;
         }
         public function postInquiry($formdata){
             $query = "INSERT INTO ".$this->tbl_bit_answer_template." (a_Title,a_Answer_Details) VALUES (:title,:details)";
@@ -399,6 +477,22 @@
 
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':details', $details, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postFAQDelete($id){
+            $query = "UPDATE ".$this->tbl_bit_faq."
+            SET
+            f_Deleted_Date = :Date
+            WHERE f_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $id;
+            $date = date('Y-m-d h:i');
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Date', $date, PDO::PARAM_STR);
             if($stmt->execute()){
                 return true;
             }
@@ -615,6 +709,74 @@
             }
             return false;
         }
+        public function postNote($formdata){
+            $query = "INSERT INTO ".$this->tbl_bit_note." (e_Title,e_Details,e_Writer,e_Registration_Time) VALUES (:Title,:Details,:Writer,:RegistrationTime)";
+            $stmt = $this->conn->prepare($query);
+
+            $title = $formdata["title_note"];
+            $regdate = date('Y-m-d h:i');
+            $message = $formdata["note_details"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
+
+            $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
+            $stmt->bindParam(':Writer', $writer, PDO::PARAM_STR);
+            $stmt->bindParam(':RegistrationTime', $regdate, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+
+        public function postNoteUpdate($formdata){
+            $query = "UPDATE ".$this->tbl_bit_note." 
+            SET
+            e_Title = :Title,
+            e_Details = :Details,
+            e_Writer = :Writer,
+            WHERE e_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $formdata["id_note"];
+            $title = $formdata["e_title_note"];
+            $message = $formdata["e_note_details"];
+            $writer = $_SESSION["admin_session"]["u_Nickname"];
+
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':Details', $message, PDO::PARAM_STR);
+            $stmt->bindParam(':Writer', $writer, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+
+        public function postNoteDelete($id){
+            $query = "UPDATE ".$this->tbl_bit_note." 
+            SET
+            e_Deleted_Date = :Date
+            WHERE e_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $id;
+            $date = date('Y-m-d h:i');
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Date', $date, PDO::PARAM_STR);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        public function postNoteDeleteMultiple($arr){
+            $count = count($arr);
+            for($i = 0; $i <= $count; $i++){
+                $query = "UPDATE ".$this->tbl_bit_note." SET e_Deleted_Date = '".date('Y-m-d h:i')."' WHERE e_Id = '".$arr[$i]."'";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+            }
+            return true;
+        }
         public function getInfoCntUser(){
             $query = "SELECT COUNT(u_Status_Id) AS Cnt FROM ".$this->tbl_bit_user." WHERE u_Status_Id IN(1)";
             $stmt = $this->conn->prepare($query);
@@ -707,6 +869,18 @@
         }
         public function checkAdminUserPass($admin_pass){
             $query = "SELECT * FROM ".$this->tbl_bit_user." WHERE u_Password = '".$admin_pass."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getFAQPerId($id){
+            $query = "SELECT * FROM ".$this->tbl_bit_faq." WHERE f_Id = '".$id."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getNotePerId($id){
+            $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Id = '".$id."'";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

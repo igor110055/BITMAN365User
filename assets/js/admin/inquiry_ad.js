@@ -206,10 +206,6 @@ $("#btn_stop_site").click(function(){
         }
     })
 })
-$('.btn_logout').click(function(){
-    var code = $(this).data('code');
-    window.location.href="../logout.php?code="+code
-})
 function getUserList(url){
     $.ajax({
         type: 'GET',

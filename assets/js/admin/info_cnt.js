@@ -98,59 +98,5 @@ function checkCategoryReq(){
 $('.mutesound').click(function(){
     $.post('../php/api/admin/setToMute.php?setMute=1', function(req){})
 })
-// function soundEffectDep(){
-//     $.ajax({
-//         "url": "../php/api/admin/getInfoCnt.php",
-//         "type": "GET",
-//         "contentType": "application/json",
-//         "async": false,
-//         success: function(response) {
-//             var notif = response["Notif"];
-//             notif.forEach(function(nt){
-//                 if(nt.s_Notif_Type == 'DepositApplication' && nt.s_TypeName == 'on'){
-//                     playsoundEffect()
-//                 }else{
-//                     pausesoundEffect();
-//                 }           
-//             })
-//         }
-//     })
-// }
-// function soundEffectWid(){
-//     $.ajax({
-//         "url": "../php/api/admin/getInfoCnt.php",
-//         "type": "GET",
-//         "contentType": "application/json",
-//         "async": false,
-//         success: function(response) {
-//             var notif = response["Notif"];
-//             notif.forEach(function(nt){
-//                 if(nt.s_Notif_Type == 'WithdrawApplication' && nt.s_TypeName == 'on'){
-//                     playsoundEffect()
-//                 }else{
-//                     pausesoundEffect();
-//                 }           
-//             })
-//         }
-//     })
-// }
-// function soundEffectInq(){
-//     $.ajax({
-//         "url": "../php/api/admin/getInfoCnt.php",
-//         "type": "GET",
-//         "contentType": "application/json",
-//         "async": false,
-//         success: function(response) {
-//             var notif = response["Notif"];
-//             notif.forEach(function(nt){
-//                 if(nt.s_Notif_Type == 'InquiryApplication' && nt.s_TypeName == 'on'){
-//                     playsoundEffect()
-//                 }else{
-//                     pausesoundEffect();
-//                 }           
-//             })
-//         }
-//     })
-// }
 display_counter();
 getInfoCnt();

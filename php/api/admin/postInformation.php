@@ -51,5 +51,21 @@
             $post = $query->postforceStopUsingWebsite($_GET);
             echo $post;
             break;
+        case "faq":
+            $post = $query->postFAQ($_POST);
+            echo $post;
+            break;
+        case "faq_edit":
+            $post = $query->postFAQUpdate($_POST);
+            echo $post;
+            break;
+        case "note":
+            $post = $query->postNote($_POST);
+            echo $post;
+            break;
+        case "note_edit":
+            $post = $query->postNoteUpdate($_POST);
+            echo $post;
+            break;
     }
 ?>

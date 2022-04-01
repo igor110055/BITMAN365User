@@ -32,5 +32,13 @@
             $del = $query->postWithdrawDelete($_GET["id"]);
             echo $del;
             break;
+        case "faq_delete":
+            $del = $query->postFAQDelete($_GET["id"]);
+            echo $del;
+            break;
+        case "faq_delete_multiple":
+            $del = $query->postFAQDeleteMultiple($arrMultiplDelete);
+            echo $del;
+            break;
     }
 ?>
