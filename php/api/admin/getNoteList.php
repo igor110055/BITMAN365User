@@ -37,7 +37,7 @@
 
 	$output = '';
 	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 610px;">';
-	$output .= '<table style="width: 100%;" class="notice_ad">';
+	$output .= '<table style="width: 100%;" class="note_ad">';
 	$output .= '<thea>';
 	$output .= '<tr>';
 	$output .= '<th><input type="checkbox" id="chkAll"</th>';
@@ -105,12 +105,12 @@
 			// Iterate each checkbox
 			$(':checkbox').each(function() {
 				this.checked = true;
-				$('.btn_delete_all').removeAttr('disabled');            
+				$('.btn_delete_showall').removeAttr('disabled');            
 			});
 		} else {
 			$(':checkbox').each(function() {
 				this.checked = false;
-				$('.btn_delete_all').attr('disabled', true);                        
+				$('.btn_delete_showall').attr('disabled', true);                        
 			});
 		}
 	});

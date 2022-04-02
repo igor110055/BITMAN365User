@@ -57,6 +57,42 @@
     .modal_note_template .summer_body{
         padding: 5px 5px;
     }
+    #modal-delete_notif .modal-content{
+        background: #333333;
+        border: 4px solid #888888;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    #modal-delete_notif .modal-content{
+        height: 250px;
+        margin-top: 100px;
+    }
+    #modal-delete_notif .modal-header{
+        border-bottom: none;
+    }
+    #modal-delete_notif .modal-footer{
+        border-top: none;
+        margin-top: 30px;
+    }
+    #modal-delete_notif .modal-footer .btn{
+        border-radius: 5px;
+        width: 100px;
+        height: 40px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+    }
+    #modal-delete_notif .modal-footer .close{
+        background: #555555;
+        cursor: pointer;
+    }
+    #modal-delete_notif .modal-footer .btn_delete_all{
+        background: #0093FF;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
 </style>
         <div class="container-fluid">
             <?php include __DIR__ . '/includes_2/middle_header.php';?>
@@ -80,7 +116,7 @@
                         <div class="pull-right" style="padding-top: 0; padding-bottom: 0;">
                             <button type="button" class="btn btn_delete_bycheck" style="background: #ED5659; color: #FFFFFF;">선택삭제</button>
                             <button type="button" class="btn modal-note_add_show" style="background: #0093FF; color: #FFFFFF;">전체쪽지</button>
-                            <button type="button" class="btn btn_delete_all" disabled style="background: #FF9300; color: #FFFFFF;">전체삭제</button>
+                            <button type="button" class="btn btn_delete_showall" disabled style="background: #FF9300; color: #FFFFFF;">전체삭제</button>
                         </div>
                     </div>
                     <div id="pagination-result">
