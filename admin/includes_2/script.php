@@ -47,6 +47,9 @@
                 }
             });
         });
+        $('.modal-logout_show').click(function(){
+            $('#modal-logout_notif').modal('show');
+        })
         $('.btn_logout').click(function(){
             var code = $(this).data('code');
             window.location.href="../logout.php?code="+code

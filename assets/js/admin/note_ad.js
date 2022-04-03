@@ -109,25 +109,19 @@ $("form[id='formNote_Edit']").validate({
 })
 $('.btn_delete_showall').on('click', function() {
     $('#modal-delete_notif').modal('show');
-})
-$('.btn_delete_all').on('click', function(){
+});
+$('#btn_delete_all').on('click', function() {
     var  arr = [];
     $("input:checkbox[name=chks_not]:checked").each(function () {
-        arr.push($(this).data("id")); 
+        arr.push($(this).data("id"));
     });
-    console.log(arr)
-    // if(arr.length < 2){
-    //     alert('최대 2개의 선택된 행');
-    //     return false;
-    // }
     $.ajax({
         type: 'POST',
         url: '../php/api/admin/postInformationDelete.php?category_title=note_delete_multiple',
         cache: false,
         data: JSON.stringify(arr),
         success: function(response){
-            console.log(response)
-            izitoast('공지사항!','성공적으로 업데이트되었습니다.','fa fa-check-circle-o','#1072BA','./note.php');
+            izitoast('공지사항!','성공적으로 삭제되었습니다.','fa fa-times-circle-o','#ED5659','./note.php');
         }
     })
 });

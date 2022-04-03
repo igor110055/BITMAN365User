@@ -6,5 +6,5 @@
     <div class="info_content" style="background-color: #1072BA;" title="deposit application"><span class="deposit_application"></span></div>
     <div class="info_content" style="background-color: #ED6964;" title="withdraw application"><span class="withdraw_application"></span></div>
     <div class="info_content" style="background-color: #FF9300;" title="inquiry application"><span class="inquiry_application"></span></div>
-    <div class="info_content" style="border: none;"><a href="#" data-code="<?=$_SESSION["admin_session"]["u_Account_Code"]?>" class="btn_logout logoff"><i class="fa fa-power-off fa-2x"></i></a></div>
+    <div class="info_content" style="border: none;"><a href="#"  class="modal-logout_show logoff"><i class="fa fa-power-off fa-2x"></i></a></div>
 </div>

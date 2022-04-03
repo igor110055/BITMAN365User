@@ -260,6 +260,42 @@
                 width: 20px;
                 height: 20px;
             }
+            #modal-logout_notif .modal-content{
+                background: #333333;
+                border: 4px solid #888888;
+                box-sizing: border-box;
+                border-radius: 10px;
+            }
+            #modal-logout_notif .modal-content{
+                height: 250px;
+                margin-top: 100px;
+            }
+            #modal-logout_notif .modal-header{
+                border-bottom: none;
+            }
+            #modal-logout_notif .modal-footer{
+                border-top: none;
+                margin-top: 30px;
+            }
+            #modal-logout_notif .modal-footer .btn{
+                border-radius: 5px;
+                width: 100px;
+                height: 40px;
+                color: #FFFFFF;
+                font-size: 16px;
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+            }
+            #modal-logout_notif .modal-footer .close{
+                background: #555555;
+                cursor: pointer;
+            }
+            #modal-logout_notif .modal-footer .btn_logout{
+                background: #0093FF;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
             @media only screen  and (min-width : 1200px) {
                 body{
                     background: #444444;

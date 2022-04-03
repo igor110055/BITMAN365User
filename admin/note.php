@@ -88,7 +88,7 @@
         background: #555555;
         cursor: pointer;
     }
-    #modal-delete_notif .modal-footer .btn_delete_all{
+    #modal-delete_notif .modal-footer #btn_delete_all{
         background: #0093FF;
         color: #FFFFFF;
         cursor: pointer;

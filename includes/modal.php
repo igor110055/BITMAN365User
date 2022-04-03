@@ -821,7 +821,26 @@
                     <h3 class="text-center text-white modal-notif-body">모든 쪽지를 삭제하시겠습니까?</h3>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn close" data-dismiss="modal">아니요</button>
-                        <button type="button" class="btn btn_delete_all">예</button>
+                        <button type="button" class="btn" id="btn_delete_all">예</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- display edit for note -->
+<div class="modal fade modal_note_template" id="modal-logout_notif" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div class="container">
+                    <h3 class="text-center text-white modal-notif-body">로그아웃 하시겠습니까?</h3>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn close" data-dismiss="modal">아니요</button>
+                        <button type="button" class="btn btn_logout" data-code="<?=$_SESSION["admin_session"]["u_Account_Code"]?>">예</button>
                     </div>
                 </div>
             </div>

@@ -329,7 +329,7 @@
         public function postNoticeDeleteMultiple($arr){
             $count = count($arr);
             for($i = 0; $i <= $count; $i++){
-                $query = "UPDATE ".$this->tbl_bit_notice." SET n_Deleted_Date = '".date('Y-m-d h:i')."' WHERE n_Id = '".$arr[$i]."'";
+                $query = "UPDATE ".$this->tbl_bit_notice." SET n_Deleted_Date = '".date('Y-m-d h:i:s')."' WHERE n_Id = '".@$arr[$i]."'";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
@@ -407,7 +407,7 @@
         public function postGuideDeleteMultiple($arr){
             $count = count($arr);
             for($i = 0; $i <= $count; $i++){
-                $query = "UPDATE ".$this->tbl_bit_guide." SET g_Deleted_Date = '".date('Y-m-d h:i')."' WHERE g_Id = '".$arr[$i]."'";
+                $query = "UPDATE ".$this->tbl_bit_guide." SET g_Deleted_Date = '".date('Y-m-d h:i:s')."' WHERE g_Id = '".@$arr[$i]."'";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
@@ -462,7 +462,7 @@
         public function postFAQDeleteMultiple($arr){
             $count = count($arr);
             for($i = 0; $i <= $count; $i++){
-                $query = "UPDATE ".$this->tbl_bit_faq." SET f_Deleted_Date = '".date('Y-m-d h:i')."' WHERE f_Id = '".@$arr[$i]."'";
+                $query = "UPDATE ".$this->tbl_bit_faq." SET f_Deleted_Date = '".date('Y-m-d h:i:s')."' WHERE f_Id = '".@$arr[$i]."'";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
@@ -771,7 +771,7 @@
         public function postNoteDeleteMultiple($arr){
             $count = count($arr);
             for($i = 0; $i <= $count; $i++){
-                $query = "UPDATE ".$this->tbl_bit_note." SET e_Deleted_Date = '".date('Y-m-d h:i')."' WHERE e_Id = '".$arr[$i]."'";
+                $query = "UPDATE ".$this->tbl_bit_note." SET e_Deleted_Date = '".date('Y-m-d h:i:s')."' WHERE e_Id = '".@$arr[$i]."'";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
             }
@@ -881,6 +881,62 @@
         }
         public function getNotePerId($id){
             $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Id = '".$id."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getMembershipList(){
+            $query = "SELECT
+            DISTINCT
+            U.u_Id,
+            U.u_Recommended_Point,
+            U.u_Account_Code,
+            U.u_Account_Code AS parent_code,
+            U.u_Nickname,
+            U.u_Bank_Holder_Name,
+            CASE WHEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) ELSE 0 END AS Holding_amount,
+            CASE WHEN (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) > 0 THEN  (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) ELSE 0 END AS TotalDepositAmount,
+            CASE WHEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) ELSE 0
+            END AS TotalWithdrawAmount,
+            U.u_Ip_Address,
+            U.u_Entry_Date,
+            (SELECT MAX(l_LogInDateTime) AS l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code ORDER BY l_LogInDateTime DESC) AS l_LogInDateTime,
+            (SELECT COUNT(l_Account_Code) AS cnt FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code) AS ConnectionCnt,
+            CASE
+                WHEN U.u_State = 1 THEN '이용'
+                WHEN U.u_State = 2 THEN '접속중'
+                WHEN U.u_State = 3 THEN '정지'
+            END AS u_State
+            FROM ".$this->tbl_bit_user." U
+            LEFT JOIN ".$this->tbl_bit_user_log." L ON U.u_Account_Code = L.l_Account_Code
+            WHERE U.u_isAdminUser IN(0)";
+            return $query;
+        }
+        public function getMembershipRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_user." 
+            WHERE u_isAdminUser IN(0)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getPointList(){
+            $query = "SELECT u_Recommended_Point FROM ".$this->tbl_bit_user." WHERE u_isAdminUser IN(0) AND u_Recommended_Point NOT IN('-')";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getAccessDate(){
+            $query = "SELECT U.u_Account_Code, MAX(DATE(l_LogInDateTime)) AS l_LogInDateTime 
+            FROM ".$this->tbl_bit_user_log." L
+            LEFT JOIN ".$this->tbl_bit_user." U ON L.l_Account_Code = U.u_Account_Code
+            WHERE U.u_isAdminUser IN(0)
+            GROUP BY U.u_Account_Code ORDER BY l_LogInDateTime DESC";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+        public function getSubscriptionDate(){
+            $query = "SELECT DISTINCT(DATE(u_Entry_Date)) AS u_Entry_Date FROM ".$this->tbl_bit_user." WHERE u_State NOT IN(0)";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
