@@ -885,31 +885,29 @@
             $stmt->execute();
             return $stmt;
         }
+        // CASE WHEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) ELSE 0 END AS Holding_amount,
+        // CASE WHEN (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) > 0 THEN  (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) ELSE 0 END AS TotalDepositAmount,
+        // CASE WHEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) ELSE 0
+        // (SELECT MAX(l_LogInDateTime) AS l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code ORDER BY l_LogInDateTime DESC) AS l_LogInDateTime,
+        // (SELECT COUNT(l_Account_Code) AS cnt FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code) AS ConnectionCnt,
         public function getMembershipList(){
             $query = "SELECT
-            DISTINCT
             U.u_Id,
             U.u_Recommended_Point,
             U.u_Account_Code,
             U.u_Account_Code AS parent_code,
             U.u_Nickname,
             U.u_Bank_Holder_Name,
-            CASE WHEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) ELSE 0 END AS Holding_amount,
-            CASE WHEN (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) > 0 THEN  (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) ELSE 0 END AS TotalDepositAmount,
-            CASE WHEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) ELSE 0
-            END AS TotalWithdrawAmount,
             U.u_Ip_Address,
             U.u_Entry_Date,
-            (SELECT MAX(l_LogInDateTime) AS l_LogInDateTime FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code ORDER BY l_LogInDateTime DESC) AS l_LogInDateTime,
-            (SELECT COUNT(l_Account_Code) AS cnt FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code) AS ConnectionCnt,
+            L.l_LogInDateTime,
             CASE
                 WHEN U.u_State = 1 THEN '이용'
                 WHEN U.u_State = 2 THEN '접속중'
                 WHEN U.u_State = 3 THEN '정지'
             END AS u_State
             FROM ".$this->tbl_bit_user." U
-            LEFT JOIN ".$this->tbl_bit_user_log." L ON U.u_Account_Code = L.l_Account_Code
-            WHERE U.u_isAdminUser IN(0)";
+            LEFT JOIN ".$this->tbl_bit_user_log." L ON U.u_Account_Code = L.l_Account_Code";
             return $query;
         }
         public function getMembershipRowCount(){

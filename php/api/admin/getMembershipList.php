@@ -14,22 +14,22 @@
 	print_r($_GET);
 	//AND DATE(U.u_Entry_Date) >= '".$start."' AND DATE(U.u_Entry_Date) <= '".$end."'
 	if(!empty($_GET["state"])){
-		$where .= " AND U.u_State = '".$_GET["state"]."'";
+		$where .= "WHERE U.u_State = '".$_GET["state"]."'";
 	}
 	if(!empty($_GET["point"])){
-		$where .= " AND U.u_Recommended_Point = '".$_GET["point"]."'";
+		$where .= " WHERE U.u_Recommended_Point = '".$_GET["point"]."'";
 	}
 	if(!empty($_GET["nickname"])){
-		$where .= " AND U.u_Nickname = '".$_GET["nickname"]."'";
+		$where .= " WHERE U.u_Nickname = '".$_GET["nickname"]."'";
 	}
 	if(!empty($_GET["accessdate"])){
-		$where .= " AND DATE(L.l_LogInDateTime) = '".$_GET["accessdate"]."'";
+		$where .= " WHERE DATE(L.l_LogInDateTime) = '".$_GET["accessdate"]."'";
 	}
 	if(!empty($_GET["start"])){
-		$where .= " AND DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
+		$where .= " WHERE DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
 	}
 	if(!empty($_GET["end"])){
-		$where .= " AND DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
+		$where .= " WHERE DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
 	}
 	$where .= "";
 			
@@ -43,7 +43,17 @@
 	$start = ($page-1)*$perPage->perpage;
 	if($start < 0) $start = 0;
 
-	$query =  $sql . $where. " ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
+	$query =  $sql . $where. " GROUP BY 
+	L.l_LogInDateTime,U.u_Id,
+	U.u_Recommended_Point,
+	U.u_Account_Code,
+	U.u_Account_Code AS parent_code,
+	U.u_Nickname,
+	U.u_Bank_Holder_Name,
+	U.u_Ip_Address,
+	U.u_Entry_Date,
+	L.l_LogInDateTime,
+	ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
 	$faq = $db->prepare($query);
     $faq->execute();
 
@@ -86,12 +96,12 @@
             $output .= '<td style="width: 50px;">'.$val["u_Recommended_Point"].'</td>';
             $output .= '<td style="width: 100px">'.$val["u_Account_Code"].'<br>'.$val["u_Nickname"].'</td>';
             $output .= '<td style="width: 100px">'.$val["u_Bank_Holder_Name"].'</td>';
-            $output .= '<td style="width: 100px">'.number_format($val["Holding_amount"], 0, '.', ',').'</td>';
-            $output .= '<td style="width: 100px"><span style="color: #78A6FF;">'.$val["TotalDepositAmount"].'</span><br><span style="color: #FF787B;">'.$val["TotalWithdrawAmount"].'</span></td>';
-            $output .= '<td style="width: 100px"><span style="color: #78A6FF;">0</span><br><span style="color: #FF787B;">0</span></td>';
+            //$output .= '<td style="width: 100px">'.number_format($val["Holding_amount"], 0, '.', ',').'</td>';
+            //$output .= '<td style="width: 100px"><span style="color: #78A6FF;">'.$val["TotalDepositAmount"].'</span><br><span style="color: #FF787B;">'.$val["TotalWithdrawAmount"].'</span></td>';
+            //$output .= '<td style="width: 100px"><span style="color: #78A6FF;">0</span><br><span style="color: #FF787B;">0</span></td>';
             $output .= '<td style="width: 130px">'.substr($val["u_Entry_Date"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>';
             ($val["l_LogInDateTime"]) ? $output .= '<td style="width: 130px">'.substr($val["l_LogInDateTime"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["u_Ip_Address"].'</td>';
-            $output .= '<td style="width: 50px;">'.$val["ConnectionCnt"].'</td>';
+            //$output .= '<td style="width: 50px;">'.$val["ConnectionCnt"].'</td>';
             if($val["u_State"] == '정지'){
                 $output .= '<td style="color: #FFFFFF;width: 80px;">'.$val["u_State"].'</td>';
             }else if($val["u_State"] == '이용'){
