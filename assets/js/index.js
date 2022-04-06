@@ -1,5 +1,4 @@
 $(function(){
-    // modal
     $(".modal-popup-login").click(function(){
         $("#modal-login").modal('show');
     });
@@ -56,13 +55,49 @@ $(function(){
     })
     
     $('#navbar-collapse-1').click(function(){
+        $('.display_log').css('display','none');
+        $('.display_nonlog').css('display','none');
         $('.navbar-collapse-1-mobile').toggle();
+        if ($(".footer").hasClass('fixed_bottom')) {
+            $( ".footer" ).addClass( 'fixed_bottom');
+        } else {
+          $( ".footer" ).addClass( 'fixed_bottom');
+        }
+        if ($(".navbar-custom").hasClass('fixed_top')) {
+            $( ".navbar-custom" ).addClass( 'fixed_top');
+        } else {
+          $( ".navbar-custom" ).addClass( 'fixed_top');
+        }
     });
     $('#navbar-collapse-2').click(function(){
+        $('.navbar-collapse-1-mobile').css('display','none');
+        $('.display_log').css('display','none');
         $('.display_nonlog').toggle();
+        if ($(".footer").hasClass('fixed_bottom')) {
+            $( ".footer" ).addClass( 'fixed_bottom');
+        } else {
+          $( ".footer" ).addClass( 'fixed_bottom');
+        }
+        if ($(".navbar-custom").hasClass('fixed_top')) {
+            $( ".navbar-custom" ).addClass( 'fixed_top');
+        } else {
+          $( ".navbar-custom" ).addClass( 'fixed_top');
+        }
     });
     $('#navbar-collapse-3').click(function(){
+        $('.navbar-collapse-1-mobile').css('display','none');
+        $('.display_nonlog').css('display','none');
         $('.display_log').toggle();
+        if ($(".footer").hasClass('fixed_bottom')) {
+            $( ".footer" ).addClass( 'fixed_bottom');
+        } else {
+          $( ".footer" ).addClass( 'fixed_bottom');
+        }
+        if ($(".navbar-custom").hasClass('fixed_top')) {
+            $( ".navbar-custom" ).addClass( 'fixed_top');
+        } else {
+          $( ".navbar-custom" ).addClass( 'fixed_top');
+        }
     });
     //fetching cash balance
     $.ajax({

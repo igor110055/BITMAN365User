@@ -19,7 +19,7 @@
     </div>
 </div>
 <!-- login modal popup -->
-<div class="modal fade" id="modal-login" tabindex="-1">
+<!-- <div class="modal fade" id="modal-login" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- display binance 1m result -->
 <div class="modal fade" id="modal-bi_1m_result" tabindex="-1">
     <div class="modal-dialog modal-lg">

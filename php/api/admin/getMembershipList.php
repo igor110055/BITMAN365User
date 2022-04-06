@@ -11,27 +11,40 @@
     $sql = $query->getMembershipList();
     $sql1 = $query->getMembershipRowCount();
 	$where = '';
-	print_r($_GET);
-	//AND DATE(U.u_Entry_Date) >= '".$start."' AND DATE(U.u_Entry_Date) <= '".$end."'
-	if(!empty($_GET["state"])){
-		$where .= "WHERE U.u_State = '".$_GET["state"]."'";
+	switch(@$_GET["field"]){
+		case "nickname":  
+            $where .= " WHERE U.u_Nickname LIKE '".$_GET["searchfield"]."%'";
+            break;
+		case "accountcode":  
+			$where .= " WHERE U.u_Account_Code LIKE '".$_GET["searchfield"]."%'";
+			break;
+		case "accholder":  
+			$where .= " WHERE U.u_Bank_Holder_Name LIKE '".$_GET["searchfield"]."%'";
+			break;
+		case "accnumber":  
+			$where .= " WHERE U.u_Account_Number LIKE '".$_GET["searchfield"]."%'";
+			break;
+		case "accessip":  
+			$where .= " WHERE U.u_Ip_Address LIKE '".$_GET["searchfield"]."%'";
+			break;
+		case "subsip":  
+			$where .= " WHERE H.l_Current_Ip LIKE '".$_GET["searchfield"]."%'";
+			break;
+		case "dateaccess":  
+			if(@$_GET["end"]){
+				$where .= " WHERE (DATE(H.l_LogInDateTime) BETWEEN '".@$_GET["start"]."' AND '".@$_GET["end"]."')";
+			}else{
+				$where .= " WHERE (DATE(H.l_LogInDateTime) BETWEEN '".@$_GET["start"]."' AND '".date('Y-m-d')."')";
+			}
+			break;
+		case "subscribedate":  
+			if(@$_GET["end"]){
+				$where .= " WHERE (DATE(U.u_Entry_Date) BETWEEN '".@$_GET["start"]."' AND '".@$_GET["end"]."')";
+			}else{
+				$where .= " WHERE (DATE(U.u_Entry_Date) BETWEEN '".@$_GET["start"]."' AND '".date('Y-m-d')."')";
+			}
+			break;
 	}
-	if(!empty($_GET["point"])){
-		$where .= " WHERE U.u_Recommended_Point = '".$_GET["point"]."'";
-	}
-	if(!empty($_GET["nickname"])){
-		$where .= " WHERE U.u_Nickname = '".$_GET["nickname"]."'";
-	}
-	if(!empty($_GET["accessdate"])){
-		$where .= " WHERE DATE(L.l_LogInDateTime) = '".$_GET["accessdate"]."'";
-	}
-	if(!empty($_GET["start"])){
-		$where .= " WHERE DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
-	}
-	if(!empty($_GET["end"])){
-		$where .= " WHERE DATE(U.u_Entry_Date) >= '".$_GET["start"]."' AND DATE(U.u_Entry_Date) <= '".$_GET["end"]."'";
-	}
-	$where .= "";
 			
 	$paginationlink = "../php/api/admin/getMembershipList.php?page=";
 					
@@ -42,18 +55,11 @@
 
 	$start = ($page-1)*$perPage->perpage;
 	if($start < 0) $start = 0;
-
-	$query =  $sql . $where. " GROUP BY 
-	L.l_LogInDateTime,U.u_Id,
-	U.u_Recommended_Point,
-	U.u_Account_Code,
-	U.u_Account_Code AS parent_code,
-	U.u_Nickname,
-	U.u_Bank_Holder_Name,
-	U.u_Ip_Address,
-	U.u_Entry_Date,
-	L.l_LogInDateTime,
-	ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
+	if($where){
+		$query =  $sql . $where. " AND U.u_isAdminUser IN(0) ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
+	}else{
+		$query =  $sql . " WHERE U.u_isAdminUser IN(0) ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
+	}
 	$faq = $db->prepare($query);
     $faq->execute();
 
@@ -65,9 +71,6 @@
     $data = $faq->fetchAll(PDO::FETCH_ASSOC);
 	$counter = ($_GET["page"] > 1) ? ($_GET["page"] * COUNT($data)) - COUNT($data) : 0;
 	$sNum = $counter + 1;
-	echo '<pre>';
-	print_r($query);
-	echo '</pre>';
 
 	$output = '';
 	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 560px;">';
@@ -96,12 +99,12 @@
             $output .= '<td style="width: 50px;">'.$val["u_Recommended_Point"].'</td>';
             $output .= '<td style="width: 100px">'.$val["u_Account_Code"].'<br>'.$val["u_Nickname"].'</td>';
             $output .= '<td style="width: 100px">'.$val["u_Bank_Holder_Name"].'</td>';
-            //$output .= '<td style="width: 100px">'.number_format($val["Holding_amount"], 0, '.', ',').'</td>';
-            //$output .= '<td style="width: 100px"><span style="color: #78A6FF;">'.$val["TotalDepositAmount"].'</span><br><span style="color: #FF787B;">'.$val["TotalWithdrawAmount"].'</span></td>';
-            //$output .= '<td style="width: 100px"><span style="color: #78A6FF;">0</span><br><span style="color: #FF787B;">0</span></td>';
-            $output .= '<td style="width: 130px">'.substr($val["u_Entry_Date"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>';
+           	$output .= '<td style="width: 100px">'.number_format($val["Holding_amount"], 0, '.', ',').'</td>';
+           	$output .= '<td style="width: 100px"><span style="color: #78A6FF;">'.$val["TotalDepositAmount"].'</span><br><span style="color: #FF787B;">'.$val["TotalWithdrawAmount"].'</span></td>';
+           	$output .= '<td style="width: 100px"><span style="color: #78A6FF;">0</span><br><span style="color: #FF787B;">0</span></td>';
+			   ($val["l_LogInDateTime"]) ? $output .= '<td style="width: 130px">'.substr($val["l_LogInDateTime"], 0,16).'<br>'.$val["l_Current_Ip"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["l_Current_Ip"].'</td>';
             ($val["l_LogInDateTime"]) ? $output .= '<td style="width: 130px">'.substr($val["l_LogInDateTime"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["u_Ip_Address"].'</td>';
-            //$output .= '<td style="width: 50px;">'.$val["ConnectionCnt"].'</td>';
+            $output .= '<td style="width: 50px;">'.$val["ConnectionCnt"].'</td>';
             if($val["u_State"] == '정지'){
                 $output .= '<td style="color: #FFFFFF;width: 80px;">'.$val["u_State"].'</td>';
             }else if($val["u_State"] == '이용'){

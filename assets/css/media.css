@@ -1,111 +1,478 @@
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-/* Styles */
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
-/* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-/* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-/* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-/* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-/* Styles */
-}
-/**********
-iPad 3
-**********/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-/* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
-/* Styles */
-}
-
-/* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
-/* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-/* iPhone 5 ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-/* iPhone 6 ----------- */
-@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-/* iPhone 6+ ----------- */
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-/* Samsung Galaxy S3 ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
-}
-
-/* Samsung Galaxy S4 ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-/* Styles */
-}
-
-/* Samsung Galaxy S5 ----------- */
-@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-/* Styles */
-}
-
-@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-/* Styles */
-}
+@media (max-width: 1290px) {
+    .footer{
+      padding: 0 14.66%;
+    }
+    .display_nonlog{
+      display: none;
+    }
+    .display_log{
+      display: none;
+    }
+    .nav-item{
+      padding-right: 0px;
+    }
+    .btn-primary{
+      font-size: 12px;
+      width: 80px;
+      height: 35px;
+    }
+    .btn-primary a.btn-signup{
+      font-size: 12px;
+    }
+    .jumbotron.trading_title_details{
+      height: 250px;
+    }
+    .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+      width: 100px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 1140px) {
+    .nav-link{
+      font-size: 12px;
+    }
+    .btn_group_nav button{
+      width: 87px;
+      padding: 5px 5px;
+    }
+    .dropdown-menu{
+      margin-top: 14px;
+    }
+    .jumbotron.headers{
+      padding: 30px 16.66%;
+      top: 70px;
+    }
+    .jumbotron.trading_title_details{
+      margin: 0;
+      padding: 15px 16.66%;
+      background: #FFFFFF;
+      height: 220px;
+    }
+    .trading_title{
+      font-size: 17px;
+    }
+    .trading_subtitle{
+        font-size: 11px;
+    }
+    .tradings {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+    .card-trading-title{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 19px;
+        margin: -35px 0 0 30px;
+        position: absolute;
+    }
+    .card-trading-subtitle{
+        font-size: 11px;
+        width: 87%;
+    }
+    .jumbotron.graph{
+      padding: 30px 16.66%;
+    }
+    .navbar-collapse-1-mobile{
+      padding: 200px 200px;
+    }
+    .header_graph_title{
+      font-size: 16px;
+    }
+    .header_graph_subtitle{
+      font-size: 11px;
+    }
+    .footer{
+      padding: 0 16.66%;
+    }
+    .display_nonlog{
+      display: none;
+    }
+    .display_log{
+      display: none;
+    }
+    .nav-item{
+      padding-right: 0px;
+    }
+    .btn-primary{
+      font-size: 12px;
+      width: 80px;
+      height: 35px;
+    }
+    .btn-primary a.btn-signup{
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 992px) {
+    .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      display: block;
+    }
+    .display_nonlog{
+      padding: 50px 200px;
+      position: fixed;
+    }
+    .display_log{
+      padding: 100px 200px;
+      position: fixed;
+    }
+    .btn_log_mobile{
+      width: 100%;
+    }
+    .soung_img{
+      float: right;
+    }
+    .jumbotron.graph{
+      margin-bottom: 150px;
+    }
+    .header_graph_title{
+      font-size: 14px;
+    }
+    .header_graph_subtitle{
+      font-size: 9px;
+    }
+    .jumbotron.trading_title_details{
+      height: 250px;
+    }
+    .card-trading-subtitle{
+      font-size: 10px;
+    }
+    .header_grid{
+      margin-top: 25px;
+    }
+    .header_title{
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      line-height: 25px;
+    }
+    .header_subtitle{
+      width: 90%;
+      text-align: left;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .btn-white{
+      height: 50px;
+      font-size: 20px;
+      right: 0;
+      margin: 20px 16.66%; 
+    }
+  }
+  @media (max-width: 778px) {
+    .jumbotron.headers{
+      padding: 30px 16.66%;
+    }
+    .jumbotron.trading_title_details{
+      margin: 0;
+      padding: 15px 16.66%;
+      background: #FFFFFF;
+      height: 240px;
+    }
+    .trading_title{
+        font-size: 16px;
+    }
+    .trading_subtitle{
+        font-size: 12px;
+    }
+    .tradings {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+    .card-trading-title{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 19px;
+        margin: -35px 0 0 30px;
+        position: absolute;
+    }
+    .card-trading-subtitle{
+        font-size: 9px;
+        width: 87%;
+    }
+    .btn-white{
+      height: 50px;
+      font-size: 20px;
+      right: 0;
+      margin: 20px 16.66%; 
+    }
+    .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      display: block;
+    }
+    .jumbotron.graph{
+      padding: 15px 16.66%;
+      margin-bottom: 150px;
+    }
+    .header_graph_cl{
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .header_graph{
+      width: 100%;
+      display: grid;
+      grid-gap: 1rem;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: 50% 50%;
+    }
+    .header_graph_title{
+      font-size: 16px;
+    }
+    .header_graph_subtitle{
+      font-size: 11px;
+    }
+    .navbar-collapse-1-mobile{
+      padding: 200px 100px;
+    }
+    .display_nonlog{
+      padding: 50px 100px;
+      position: fixed;
+    }
+    .display_log{
+      position: fixed;
+      padding: 130px 150px;
+    }
+    .btn_log_mobile{
+      width: 100%;
+    }
+    .layout_bg{
+      padding: 10px 20px;
+      width: 50%;
+    }
+    .btn_logs_mobile{
+      margin: 10px 50px;
+    }
+    .soung_img{
+      float: right;
+    }
+    .header_grid{
+      margin-top: 20px;
+    }
+    .header_title{
+      width: 100%;
+      text-align: left;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    .header_subtitle{
+      width: 90%;
+      text-align: left;
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .footer_brand .footer_logo{
+      font-size: 45px;
+      text-align: center;
+      width: 100%;
+      padding: 10px 0;
+    }
+    .footer_brand .footer_sub_title{
+        display: none;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .jumbotron.headers{
+      height: 160px;
+      padding: 10px 4.11%;
+      position: relative;
+    }
+    .jumbotron .header_grid{
+      grid-template-columns: 100%;
+    }
+    .header_title{
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+    }
+    .header_subtitle{
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 10px;
+    }
+    .header_btn{
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -20px;
+    }
+    .btn-white{
+      height: 50px;
+      font-size: 20px;
+      margin-top: 0px;
+    }
+    .jumbotron.trading_title_details{
+      height: 100%;
+      padding: 10px 4.11%;
+      position: relative;
+      top: 70px;
+    }
+    .trading_title{
+      font-size: 18px;
+    }
+    .trading_subtitle{
+        font-size: 14px;
+    }
+    .tradings {
+        grid-template-columns: 100%;
+    }
+    .card-trading-title{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 19px;
+        margin: -35px 0 0 30px;
+        position: absolute;
+    }
+    .card-trading-subtitle{
+        font-size: 12px;
+        width: 100%;
+    }
+    .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      display: block;
+    }
+    .jumbotron.graph{
+      padding: 10px 4.11%;
+      margin-bottom: 150px;
+    }
+    .header_graph_cl{
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .header_graph{
+      width: 100%;
+      display: grid;
+      grid-gap: 1rem;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: 50% 50%;
+    }
+    .footer_brand .footer_logo{
+      font-size: 45px;
+      text-align: center;
+      width: 100%;
+      padding: 10px 0;
+    }
+    .footer_brand .footer_sub_title{
+        display: none;
+    }
+    .navbar-collapse-1-mobile{
+      padding: 200px 100px;
+    }
+    .display_nonlog{
+      padding: 50px 100px;
+      position: fixed;
+    }
+    .display_log{
+      padding: 130px 150px;
+      position: fixed;
+    }
+    .btn_logs_mobile{
+      margin: 10px 20px;
+    }
+    .btn_log_mobile{
+      width: 100%;
+    }
+    .layout_bg{
+      padding: 10px 20px;
+    }
+    .soung_img{
+      float: right;
+    }
+  }
+  @media (max-width: 479px){
+    .header_btn{
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -20px;
+    }
+    .jumbotron.headers{
+      padding: 20px 4.11%;
+      position: relative;
+      top: 105px;
+    }
+    .header_grid{
+      margin-top: 10px;
+    }
+    .header_title{
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .header_subtitle{
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      line-height: 14px;
+    }
+    .btn-white{
+      height: 40px;
+      font-size: 18px;
+    }
+    .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      display: block;
+    }
+    .jumbotron.trading_title_details{
+      padding: 20px 4.11%;
+      position: relative;
+      top: 100px;
+    }
+    .jumbotron.graph{
+      margin-bottom: 150px;
+    }
+    .header_graph_cl{
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .display_nonlog{
+      position: fixed;
+      padding: 50px 10px;
+    }
+    .display_log{
+      position: fixed;
+      padding: 130px 20px;
+    }
+    .layout_bg{
+      padding: 10px 20px;
+    }
+    .btn_log_mobile{
+      width: 95%;
+    }
+    .header_graph{
+      width: 100%;
+      display: grid;
+      grid-gap: 1rem;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: 50% 50%;
+    }
+    .navbar-collapse-1-mobile{
+      padding: 200px 20px;
+    }
+    .header_graph_title{
+      font-size: 16px;
+    }
+    .header_graph_subtitle{
+      font-size: 10px;
+    }
+    .footer_brand .footer_logo{
+      font-size: 45px;
+      text-align: center;
+    }
+    .footer_brand .footer_sub_title{
+        display: none;
+    }
+    .soung_img{
+      float: right;
+    }
+  }

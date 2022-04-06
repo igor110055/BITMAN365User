@@ -8,6 +8,7 @@
         private $tbl_bit_bank = "tbl_bit_banklists";
         private $tbl_bit_game_type = "tbl_bit_game_types";
         private $tbl_bit_admin_log = "tbl_bit_admin_logs";
+        private $tbl_bit_admin_log_header = "tbl_bit_admin_log_headers";
 
         //properties  
 		public function __construct($db){
@@ -111,7 +112,8 @@
         }
 
         public function userLogs($isType,$account_code,$get_ip){
-            $query = "INSERT INTO ".$this->tbl_bit_admin_log." (l_Account_Code,l_LogInDateTime,l_Current_Ip,l_Access_Domain,l_Device_Use,l_Browser_Use,l_isActive) VALUES (:AccountCode,:LogInDateTime,:CurrentIp,:AccessDomain,:DeviceUse,:BrowserUse,:isActive)";
+            $query = "INSERT INTO ".$this->tbl_bit_admin_log." (l_Account_Code,l_LogInDateTime,l_Current_Ip,l_Access_Domain,l_Device_Use,l_Browser_Use) VALUES (:AccountCode,:LogInDateTime,:CurrentIp,:AccessDomain,:DeviceUse,:BrowserUse);
+            INSERT INTO ".$this->tbl_bit_admin_log_header." (l_Account_Code,l_LogInDateTime,l_Current_Ip,l_Access_Domain,l_Device_Use,l_Browser_Use,l_isActive) VALUES (:AccountCode,:LogInDateTime,:CurrentIp,:AccessDomain,:DeviceUse,:BrowserUse,:isActive)";
             $stmt = $this->conn->prepare($query);
 
             $code = $account_code;
@@ -136,7 +138,8 @@
         }
 
         public function destroyUserSession($code){
-            $query = "UPDATE ".$this->tbl_bit_admin_log." SET l_LogOutDateTime = :logoutdtime, l_isActive = :status WHERE l_Account_Code = :code AND DATE(l_LogInDateTime) = :logdate AND l_isActive IN(1)";
+            $query = "UPDATE ".$this->tbl_bit_admin_log." SET l_LogOutDateTime = :logoutdtime WHERE l_Account_Code = :code AND DATE(l_LogInDateTime) = :logdate;
+            UPDATE ".$this->tbl_bit_admin_log_header." SET l_LogOutDateTime = :logoutdtime, l_isActive = :status WHERE l_Account_Code = :code AND DATE(l_LogInDateTime) = :logdate AND l_isActive IN(1)";
             $stmt = $this->conn->prepare($query);
 
             $acode = $code;

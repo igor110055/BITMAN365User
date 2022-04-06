@@ -71,13 +71,23 @@
                             <option value="2">접속중</option>
                         </select>
                         <select name="s_point" id="s_point"></select>
-                        <select name="s_nickname" id="s_nickname"></select>
-                        <input type="text" class="search_input" placeholder="검색어">
-                        <select name="s_accessdate" id="s_accessdate"></select>
-                        <select name="s_subscriptiondate" id="s_subscriptiondate"></select>
-                        <input type="text" class="datepicker_start">
+                        <select name="s_field_list" id="s_field_list">
+                            <option value="nickname">닉네임</option>
+                            <option value="accountcode">아이디</option>
+                            <option value="accholder">예금주</option>
+                            <option value="contact">연락처</option>
+                            <option value="accnumber">계좌번호</option>
+                            <option value="accessip">접속 IP</option>
+                            <option value="subsip">가입 IP</option>
+                        </select>
+                        <input type="text" id="search_input" class="search_input" placeholder="검색어">
+                        <select name="s_field_list_date" id="s_field_list_date">
+                            <option value="dateaccess">접속일자</option>
+                            <option value="subscribedate">가입일자</option>
+                        </select>
+                        <input type="text" id="datepicker_start" class="datepicker_start">
                         <img src="../assets/icons/tilde.png" alt="">
-                        <input type="text" class="datepicker_end">
+                        <input type="text" id="datepicker_end" class="datepicker_end">
                     </div>
                     <div id="pagination-result">
                         <input type="hidden" name="rowcount" id="rowcount" />
