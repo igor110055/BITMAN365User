@@ -3,7 +3,7 @@ function display_time() {
 }
 function counter(){
     var refresh = 1000; // Refresh rate in milli seconds
-    //reshistory = setTimeout('getresult("../php/api/admin/getResultHistorytList.php")',refresh)
+    mytime = setTimeout('display_time()',refresh)
     reserve = setTimeout('btcusdt()',refresh)
 }
 function btcusdt(){
