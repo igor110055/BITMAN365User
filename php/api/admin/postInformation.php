@@ -67,5 +67,14 @@
             $post = $query->postNoteUpdate($_POST);
             echo $post;
             break;
-    }
+        case "membership_status_update":
+            $post = $query->membershipUpdate($_GET['id'], $_GET['status']);
+            echo $post;
+            break;
+        case "subscriptiondate":
+            $post = $query->membershipSortAsc();
+            echo $post;
+            break;
+        
+}
 ?>

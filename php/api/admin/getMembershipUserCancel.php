@@ -9,42 +9,7 @@
 
     $query = new Admininfo($db);
     $sql = $query->getMembershipList();
-    $sql1 = $query->getMembershipRowCount();
-	$where = '';
-	switch(@$_GET["field"]){
-		case "nickname":  
-            $where .= " WHERE U.u_Nickname LIKE '".$_GET["searchfield"]."%'";
-            break;
-		case "accountcode":  
-			$where .= " WHERE U.u_Account_Code LIKE '".$_GET["searchfield"]."%'";
-			break;
-		case "accholder":  
-			$where .= " WHERE U.u_Bank_Holder_Name LIKE '".$_GET["searchfield"]."%'";
-			break;
-		case "accnumber":  
-			$where .= " WHERE U.u_Account_Number LIKE '".$_GET["searchfield"]."%'";
-			break;
-		case "accessip":  
-			$where .= " WHERE U.u_Ip_Address LIKE '".$_GET["searchfield"]."%'";
-			break;
-		case "subsip":  
-			$where .= " WHERE H.l_Current_Ip LIKE '".$_GET["searchfield"]."%'";
-			break;
-		case "dateaccess":  
-			if(@$_GET["end"]){
-				$where .= " WHERE (DATE(H.l_LogInDateTime) BETWEEN '".@$_GET["start"]."' AND '".@$_GET["end"]."')";
-			}else{
-				$where .= " WHERE (DATE(H.l_LogInDateTime) BETWEEN '".@$_GET["start"]."' AND '".date('Y-m-d')."')";
-			}
-			break;
-		case "subscribedate":  
-			if(@$_GET["end"]){
-				$where .= " WHERE (DATE(U.u_Entry_Date) BETWEEN '".@$_GET["start"]."' AND '".@$_GET["end"]."')";
-			}else{
-				$where .= " WHERE (DATE(U.u_Entry_Date) BETWEEN '".@$_GET["start"]."' AND '".date('Y-m-d')."')";
-			}
-			break;
-	}
+    $sql1 = $query->getMembershipUserCacelListRowCount();
 			
 	$paginationlink = "../php/api/admin/getMembershipList.php?page=";
 					
@@ -53,13 +18,10 @@
 		$page = $_GET["page"];
 	}
 
+
 	$start = ($page-1)*$perPage->perpage;
 	if($start < 0) $start = 0;
-	if($where){
-		$query =  $sql . $where. " AND U.u_isAdminUser IN(0) ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
-	}else{
-		$query =  $sql . " WHERE U.u_isAdminUser IN(0) ORDER BY U.u_Entry_Date DESC limit " . $start . "," . $perPage->perpage; 
-	}
+    $query =  $sql . " AND u_isAdminUser IN(0) AND u_Status_Id IN(3) limit " . $start . "," . $perPage->perpage; 
 	$faq = $db->prepare($query);
     $faq->execute();
 
@@ -72,6 +34,10 @@
 	$counter = ($_GET["page"] > 1) ? ($_GET["page"] * COUNT($data)) - COUNT($data) : 0;
 	$sNum = $counter + 1;
 
+    // echo '<pre>';
+    // print_r($data);
+    // echo '</pre>';
+
 	$output = '';
 	$output .= '<div class="table-responsive" style="overflow-y: scroll; height: 560px;">';
 	$output .= '<table style="width: 100%;" class="mem_ad">';
@@ -79,48 +45,45 @@
 	$output .= '<tr>';
 	$output .= '<th>No</th>';
 	$output .= '<th>지점</th>';
-	$output .= '<th>아이디Z<br>닉네임</th>';
-	$output .= '<th>예금주</th>';
-	$output .= '<th>보유금액<br>총입출차액</th>';
-	$output .= '<th>금일입금<br>금일출금</th>';
-	$output .= '<th>금일지급<br>금일회수</th>';
-	$output .= '<th>가입일자<br>가입IP</th>';
-	$output .= '<th>접속일자<br>접속IP</th>';
-	$output .= '<th>접속수</th>';
-	$output .= '<th>상태</th>';
+	$output .= '<th>아이디<br>닉네임</th>';
+	$output .= '<th>예금주<br><span style="color: #FFF200;">[중복건수]</span></th>';
+	$output .= '<th>은행</th>';
+	$output .= '<th>계좌번호<br><span style="color: #FFF200;">[중복건수]</span></th>';
+	$output .= '<th>연락처<br><span style="color: #FFF200;">[중복건수]</span></th>';
+	$output .= '<th>가입기기<br>가입브라우저</th>';
+	$output .= '<th>
+                가입일자 
+                <br>
+                가입IP
+                </th>';
 	$output .= '<th>비고</th>';
 	$output .= '</tr>';
 	$output .= '</thead>';
 	$output .= '<tbody>';
+
 	if($sql1->rowCount() > 0){
 		foreach($data as $key => $val){
 			$output .= '<tr>';
             $output .= '<td style="width: 50px;">'.$sNum.'</td>';
             $output .= '<td style="width: 50px;">'.$val["u_Recommended_Point"].'</td>';
             $output .= '<td style="width: 100px" class="modal-inquiry_template_show" data-id="'.$val["u_Id"].'">'.$val["u_Account_Code"].'<br>'.$val["u_Nickname"].'</td>';
-            $output .= '<td style="width: 100px">'.$val["u_Bank_Holder_Name"].'</td>';
-           	$output .= '<td style="width: 100px">'.number_format($val["Holding_amount"], 0, '.', ',').'</td>';
-           	$output .= '<td style="width: 100px"><span style="color: #78A6FF;">'.$val["TotalDepositAmount"].'</span><br><span style="color: #FF787B;">'.$val["TotalWithdrawAmount"].'</span></td>';
-           	$output .= '<td style="width: 100px"><span style="color: #78A6FF;">0</span><br><span style="color: #FF787B;">0</span></td>';
-			   ($val["l_LogInDateTime"]) ? $output .= '<td style="width: 130px">'.substr($val["l_LogInDateTime"], 0,16).'<br>'.$val["l_Current_Ip"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["l_Current_Ip"].'</td>';
-            ($val["l_LogInDateTime"]) ? $output .= '<td style="width: 130px">'.substr($val["l_LogInDateTime"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["u_Ip_Address"].'</td>';
-            $output .= '<td style="width: 50px;">'.$val["ConnectionCnt"].'</td>';
-            if($val["u_State"] == '정지'){
-                $output .= '<td style="color: #FFFFFF;width: 80px;">'.$val["u_State"].'</td>';
-            }else if($val["u_State"] == '이용'){
-                $output .= '<td style="color: #FF787B;width: 80px;">'.$val["u_State"].'</td>';
-            }else if($val["u_State"] == '접속중'){
-                $output .= '<td style="color: #FF9300;width: 80px;">'.$val["u_State"].'</td>';
-            }
-            $output .= '<td style="width: 80px;">
-                <button type="button" class="btn btn_delete" data-id="'.$val["u_Id"].'">접속</button>
-            </td>';
+            $output .= '<td style="width: 100px">'.$val["u_Bank_Holder_Name"].'<br><span style="color: #FFF200;">[0]</span></td>';
+           	$output .= '<td style="width: 100px">'.$val["m_Bank_Name"].'</td>';
+            $output .= '<td style="width: 100px">'.$val["u_Account_Number"].'<br><span style="color: #FFF200;">[0]</span></td>';
+            $output .= '<td style="width: 100px">'.$val["u_Mobile_Number"].'<br><span style="color: #FFF200;">[0]</span></td>';
+           	$output .= '<td style="width: 100px">'.$val["DeviceName"].'<br>'.$val["BrowserName"].'</td>';
+            ($val["u_Entry_Date"]) ? $output .= '<td style="width: 130px">'.substr($val["u_Entry_Date"], 0,16).'<br>'.$val["u_Ip_Address"].'</td>' : $output .= '<td style="width: 130px">-<br>'.$val["u_Ip_Address"].'</td>';
+            
+            $output .= '<td style="width: 100px;">
+					<button type="button" class="btn btn_approve" data-id="'.$val["u_Id"].'">승인</button>
+				</td>';
             $output .= '</tr>';
 			$sNum ++;
 		}
 	}else{
+
 		$output .= '<tr style="text-align: center; height: 40px;">';
-        $output .= '<td colspan="12">기록을 찾을 수 없습니다.</td>';
+        $output .= '<td colspan="10">기록을 찾을 수 없습니다.</td>';
         $output .= '</tr>';
 	}
 	$output .= '</tbody>';
@@ -133,6 +96,34 @@
     print $output;
 ?>
 <script>
+	$('.btn_approve').click(function(){
+		var id = $(this).data('id');
+		$.confirm({
+            title: '삭제하려고 합니다!',
+            content: '제목: 승인대기',
+            type: 'blue',
+            typeAnimated: true,
+            buttons: {
+                tryAgain: {
+                    text: 'Yes',
+                    btnClass: 'btn-blue',
+                    action: function(){
+                        $.ajax({
+                            type: 'POST',
+                            url: '../php/api/admin/postInformation.php?id='+id+'&category_title=membership_status_update&status=1',
+                            cache: false,
+                            success: function(response){
+                                izitoast('공지사항!','성공적으로 업데이트되었습니다.','fa fa-check-circle-o','#1072BA','./membership_cancel_application.php');
+                            }
+                        })
+                    }
+                },
+                close: function () {
+                    location.href="./membership_cancel_application.php"
+                }
+            }
+        });
+	});
 	$(".modal-inquiry_template_show").click(function(){
 		var id = $(this).data('id');
 		$.ajax({

@@ -30,6 +30,23 @@
             $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Deleted_Date IS NULL ORDER BY e_Registration_Time DESC";
             return $query;
         }
+
+        public function getMembershipUserListRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_user." 
+            WHERE u_isAdminUser IN(0) AND u_Status_Id IN(1)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function getMembershipUserCacelListRowCount(){
+            $query = "SELECT * FROM ".$this->tbl_bit_user." 
+            WHERE u_isAdminUser IN(0) AND u_Status_Id IN(3)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
         public function getNoteRowCount(){
             $query = "SELECT * FROM ".$this->tbl_bit_note." WHERE e_Deleted_Date IS NULL";
             $stmt = $this->conn->prepare($query);
@@ -862,6 +879,30 @@
             $stmt->execute();
             return $stmt;
         }
+        public function getUserPerId($id){
+            $query = "SELECT *,
+            u_Account_Code AS CodeParent,
+            u_Bank_Code AS BankParent,
+            (SELECT m_Bank_Name FROM ".$this->tbl_bit_bank." WHERE m_BankId = BankParent) AS BankName,
+            (SELECT l_LogInDateTime FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_LogInDateTime,
+            (SELECT l_Device_Use FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Device_Use,
+            (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Browser_Use,
+            (SELECT l_Access_Domain FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Access_Domain,
+            (SELECT l_Current_Ip FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_Current_Ip,
+            (SELECT l_isActive FROM ".$this->tbl_bit_user_log_header." WHERE DATE(l_LogInDateTime) = '".date('Y-m-d')."' AND l_Account_Code = CodeParent AND l_isActive IN(1) ORDER BY l_LogInDateTime DESC LIMIT 1) AS l_isActive,
+            (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = CodeParent) AS TotalCashAmount,
+            (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = CodeParent) AS TotalDepositAmount,
+            (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = CodeParent AND DATE(l_LogInDateTime) = '".date('Y-m-d')."') AS TotalDepositDailyAmount,
+            (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = CodeParent) AS TotalWithdrawAmount,
+            (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = CodeParent AND DATE(t_Cashout_Date) = '".date('Y-m-d')."') AS TotalWithdrawDailyAmount,
+            (SELECT SUM(b_betAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."') AS TotalTradingDailyAmount,
+            (SELECT SUM(b_Total_BetAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(1)) AS TotalProfitDailyAmount,
+            (SELECT SUM(b_betAmount) AS cnt FROM ".$this->tbl_bit_betting_detail." WHERE b_Account_Code = CodeParent AND DATE(b_UpdatedDate) = '".date('Y-m-d')."' AND b_Result IN(2)) AS TotalDisqualifyDailyAmount
+            FROM ".$this->tbl_bit_user." WHERE u_Id = '".$id."'";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
         public function getAnswerTemplateList(){
             $query = "SELECT * FROM ".$this->tbl_bit_answer_template." ORDER BY a_Updated_Date DESC";
             $stmt = $this->conn->prepare($query);
@@ -894,11 +935,14 @@
                 U.u_Account_Code,
                 U.u_Account_Code AS parent_code,
                 U.u_Nickname,
+                U.u_Account_Number,
+                U.u_Mobile_Number,
                 U.u_Bank_Holder_Name,
                 U.u_Entry_Date,
                 U.u_Ip_Address,
                 H.l_LogInDateTime,
                 H.l_Current_Ip,
+                B.m_Bank_Name,
                 CASE
                     WHEN U.u_State = 1 THEN '이용'
                     WHEN U.u_State = 2 THEN '접속중'
@@ -907,9 +951,12 @@
                 CASE WHEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT t_Amount_in_Total FROM ".$this->tbl_bit_Money_transaction." WHERE t_Account_Code = parent_code) ELSE 0 END AS Holding_amount,
                 CASE WHEN (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) > 0 THEN  (SELECT SUM(t_Total_Amount_Cash_In) AS cnt FROM ".$this->tbl_bit_deposit." WHERE t_Account_Code = parent_code) ELSE 0 END AS TotalDepositAmount,
                 CASE WHEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) > 0 THEN (SELECT SUM(t_Total_Amount_Cash_Out) AS cnt FROM ".$this->tbl_bit_withdraw." WHERE t_Account_Code = parent_code) ELSE 0 END AS TotalWithdrawAmount,
-                (SELECT COUNT(l_Account_Code) AS cnt FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code) AS ConnectionCnt
+                (SELECT COUNT(l_Account_Code) AS cnt FROM ".$this->tbl_bit_user_log." WHERE l_Account_Code = parent_code) AS ConnectionCnt,
+                (SELECT l_Device_Use FROM ".$this->tbl_bit_user_log_header." WHERE l_Account_Code = parent_code) AS DeviceName,
+                (SELECT l_Browser_Use FROM ".$this->tbl_bit_user_log_header." WHERE l_Account_Code = parent_code) AS BrowserName
                 FROM tbl_bit_users U 
                 LEFT JOIN ".$this->tbl_bit_user_log_header." H ON U.u_Account_Code = H.l_Account_Code
+                JOIN ".$this->tbl_bit_bank." B ON U.u_Bank_Code = B.m_BankId
                 ";
             return $query;
         }
@@ -926,6 +973,26 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function membershipUpdate($id,$status){
+
+            $query = "UPDATE ".$this->tbl_bit_user." 
+            SET
+            u_Status_Id = :Status
+            WHERE u_Id = :Id";
+            $stmt = $this->conn->prepare($query);
+
+            $id = $id;
+            $status = $status;
+
+            $stmt->bindParam(':Id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':Status', $status, PDO::PARAM_INT);
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+
         // public function getAccessDate(){
         //     $query = "SELECT MAX(DATE(H.l_LogInDateTime)) AS l_LogInDateTime 
         //     FROM ".$this->tbl_bit_user_log_header." H

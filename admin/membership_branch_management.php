@@ -1,6 +1,7 @@
+
 <?php
         $scriptjs = array(
-            "../assets/js/admin/membership_ad.js"
+            "../assets/js/admin/membership_user_cancel_ad.js"
         );
     ?>
     <style>
@@ -37,8 +38,21 @@
             padding: 5px 10px;
             text-align: right;
         }
-        td:nth-child(3){
-            cursor: pointer;
+        .btn_approve{
+            background: #0093FF;
+            border-radius: 5px;
+            color: #FFFFFF;
+            width: 80px;
+            height: 32px;
+            padding: 5px;
+        }
+        .btn_cancel{
+            background: #ED5659;
+            border-radius: 5px;
+            color: #FFFFFF;
+            width: 80px;
+            height: 32px;
+            padding: 5px 5px;
         }
     </style>
     <?php include __DIR__ . '/includes_1/header.php';?>
@@ -60,37 +74,7 @@
                 <?php include __DIR__ . '/includes_1/sidebarlist_membership.php';?>
                 <div class="data_list">
                     <div style="padding: 7px 7px;" class="form-group">
-                        <span style="color: #FF9300; font-size: 16px; font-style: normal;">검색</span>
-                        <div class="pull-right" style="padding-top: 0; padding-bottom: 0;">
-                            <button type="button" class="btn btn_search" style="background: #FF9300; color: #FFFFFF;">검색</button>
-                        </div>
-                    </div>
-                    <div class="search_field">
-                        <select name="s_state" id="s_state">
-                            <option selected disabled>- 상태 -</option>
-                            <option value="">모두 표시</option>
-                            <option value="1">이용</option>
-                            <option value="3">정지</option>
-                            <option value="2">접속중</option>
-                        </select>
-                        <select name="s_point" id="s_point"></select>
-                        <select name="s_field_list" id="s_field_list">
-                            <option value="nickname">닉네임</option>
-                            <option value="accountcode">아이디</option>
-                            <option value="accholder">예금주</option>
-                            <option value="contact">연락처</option>
-                            <option value="accnumber">계좌번호</option>
-                            <option value="accessip">접속 IP</option>
-                            <option value="subsip">가입 IP</option>
-                        </select>
-                        <input type="text" id="search_input" class="search_input" placeholder="검색어">
-                        <select name="s_field_list_date" id="s_field_list_date">
-                            <option value="dateaccess">접속일자</option>
-                            <option value="subscribedate">가입일자</option>
-                        </select>
-                        <input type="text" id="datepicker_start" class="datepicker_start">
-                        <img src="../assets/icons/tilde.png" alt="">
-                        <input type="text" id="datepicker_end" class="datepicker_end">
+                        <span style="color: #FF9300; font-size: 16px; font-style: normal;">리스트</span>
                     </div>
                     <div id="pagination-result">
                         <input type="hidden" name="rowcount" id="rowcount" />

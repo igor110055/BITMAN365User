@@ -48,5 +48,6 @@
             $del = $query->postNoteDeleteMultiple($arrMultiplDelete);
             echo $del;
             break;
+        
     }
 ?>
