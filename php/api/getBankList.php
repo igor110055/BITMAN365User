@@ -3,7 +3,7 @@
     $database = new Database();
     $db = $database->getConnection();
 
-    $query = new Admininfo($db);
+    $query = new User($db);
     $stmt = $query->getBankList();
 
     $sql = $stmt->rowCount();

@@ -1,4 +1,25 @@
 <?php
+/**
+ * Mobile Detect Library
+ * Motto: "Every business should have a mobile detection script to detect mobile readers"
+ *
+ * Mobile_Detect is a lightweight PHP class for detecting mobile devices (including tablets).
+ * It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.
+ *
+ * Homepage: http://mobiledetect.net
+ * GitHub: https://github.com/serbanghita/Mobile-Detect
+ * README: https://github.com/serbanghita/Mobile-Detect/blob/master/README.md
+ * CONTRIBUTING: https://github.com/serbanghita/Mobile-Detect/blob/master/docs/CONTRIBUTING.md
+ * KNOWN LIMITATIONS: https://github.com/serbanghita/Mobile-Detect/blob/master/docs/KNOWN_LIMITATIONS.md
+ * EXAMPLES: https://github.com/serbanghita/Mobile-Detect/wiki/Code-examples
+ *
+ * @license https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt MIT License
+ * @author  Serban Ghita <serbanghita@gmail.com>
+ * @author  Nick Ilyin <nick.ilyin@gmail.com>
+ * Original author: Victor Stanciu <vic.stanciu@gmail.com>
+ *
+ * @version 2.8.36
+ */
 class Mobile_Detect
 {
     /**
@@ -108,13 +129,13 @@ class Mobile_Detect
      */
     protected static $mobileHeaders = array(
 
-            'HTTP_ACCEPT' => array('matches' => array(
-            // Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/
-            'application/x-obml2d',
-            // BlackBerry devices.
-            'application/vnd.rim.html',
-            'text/vnd.wap.wml',
-            'application/vnd.wap.xhtml+xml'
+            'HTTP_ACCEPT'                  => array('matches' => array(
+                                                                        // Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/
+                                                                        'application/x-obml2d',
+                                                                        // BlackBerry devices.
+                                                                        'application/vnd.rim.html',
+                                                                        'text/vnd.wap.wml',
+                                                                        'application/vnd.wap.xhtml+xml'
                                             )),
             'HTTP_X_WAP_PROFILE'           => null,
             'HTTP_X_WAP_CLIENTID'          => null,

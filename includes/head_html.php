@@ -1,11 +1,11 @@
 <?php
     include_once 'php/config/Database.php';
-    include_once 'php/class/AdminUsers.php';
+    include_once 'php/class/Users.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $user = new AdminUser($db);
+    $user = new User($db);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@
             }
         </style>
         
-        <title>BITMAN365-Admin</title>
+        <title>BITMAN365</title>
         <?php
             if (isset($linkcss) || is_array(@$linkcss)) {
                 foreach ($linkcss as $css) {

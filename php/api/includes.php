@@ -6,9 +6,8 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
     include_once '../config/Database.php';
-    include_once '../class/AdminUsers.php';
-    include_once '../class/Admininfo.php';
+    include_once '../class/Users.php';
     include_once '../class/Authentication.class.php';
-    include_once '../class/Mobile_Detect.class.php';
     include_once '../class/Getuseripaddress.class.php';
+    include_once '../class/Mobile_Detect.class.php';
     include_once '../class/Getcountryinfo.class.php';

@@ -4,7 +4,7 @@
     $database = new Database();
     $db = $database->getConnection();
 
-    $query = new AdminUser($db);
+    $query = new User($db);
     $auth = new Authentication($db);
     $get_ip = new Getuseripaddress($db);
     $ip = $get_ip->GetIpAddress();

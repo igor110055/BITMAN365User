@@ -1,4 +1,5 @@
 $(function(){
+    // modal
     $(".modal-popup-login").click(function(){
         $("#modal-login").modal('show');
     });
@@ -101,7 +102,7 @@ $(function(){
     });
     //fetching cash balance
     $.ajax({
-        "url": "php/api/admin/getUserCashBalance.php",
+        "url": "php/api/user/getUserCashBalance.php",
         "type": "GET",
         "contentType": "application/json",
         "async": false,

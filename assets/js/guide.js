@@ -12,4 +12,4 @@ function getresult(url) {
         {} 	        
    });
 }
-getresult("php/api/getNoticeList.php");
+getresult("php/api/getGuideList.php");

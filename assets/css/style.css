@@ -7,13 +7,13 @@ body::-webkit-scrollbar{
 }
 .navbar-custom {
     background: #393E46;
-    height: 70px !important;
-    padding: 10px 30px;
+    height: 80px !important;
+    padding: 10px 40px;
 }
 .nav-link{
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
 }
 .nav-link:hover{
@@ -50,25 +50,26 @@ body::-webkit-scrollbar{
     box-shadow: none;
 }
 .navbar-brand-mobile{
-    font-size: 24px;
+    font-size: 28px;
     position: absolute;
-    margin: 3px 0 0 10px;
+    margin-left: 20px;
     font-style: normal;
     font-weight: bold;
+    font-family: Tahoma, sans-serif;
     color: #FFFFFF;
 }
 .navbar-brand{
     font-style: normal;
-    font-weight: bold;
     font-size: 48px;
+    font-weight: 700;
     color: #FFFFFF;
 }
 a#brand_desk{
-    font-size: 35px;
+    font-size: 48px;
     text-decoration: none;
     color: #FFFFFF;
     font-weight: 700;
-    padding-right: 40px;
+    padding-right: 50px;
 }
 .navbar a.navbar-brand:hover{
     text-decoration: none;
@@ -109,6 +110,7 @@ a#brand_desk{
 }
 .btn_group_nav{
     margin-right: 15px;
+    margin-left: 15px;
     font-size: 18px;
 }
 .navbar-toggler-icon{
@@ -118,7 +120,7 @@ a#brand_desk{
     margin-bottom: 20px;
 }
 .jumbotron.headers{
-    height: 200px;
+    height: 370px;
     background: url("../img/unsplash_7LoWpCOAn6k.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -126,26 +128,25 @@ a#brand_desk{
     border-bottom: 8px solid rgba(58, 58, 58, 0.2);
     box-sizing: border-box;
     box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
-    padding: 30px 20.82%;
-    position: relative;
-    top: 70px;
+    padding: 100px 360px;
 }
 .header_title{
     color: #FFFFFF;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 40px;
-    width: 100%;
+    font-size: 40px;
+    line-height: 47px;
+    width: 650px;
     float: left;
+    margin-bottom: 30px;
 }
 .header_subtitle{
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 24px;
+    line-height: 28px;
     color: #FFFFFF;
-    width: 400px;
+    width: 480px;
     float: left;
 }
 .btn-white{
@@ -172,19 +173,18 @@ a#brand_desk{
 }
 .jumbotron.trading_title_details{
     margin: 0;
-    padding: 10px 20.82%;
+    padding: 10px 360px;
     background: #FFFFFF;
-    height: 240px;
-    position: relative;
-    top: 70px;
+    height: 375px;
 }
 .trading_title{
+    margin-top: 20px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 36px;
 }
 .trading_subtitle{
     font-weight: 500;
-    font-size: 14px;
+    font-size: 24px;
     color: #666666;
 }
 .tradings {
@@ -193,7 +193,7 @@ a#brand_desk{
     display: grid;
     grid-gap: 1rem;
     margin: 0 0 2.60rem 0;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: 403.33px 403.33px 403.33px;
 }
 .mycheckbox input[type="checkbox"] {
     display: none;
@@ -204,25 +204,24 @@ a#brand_desk{
      height: 20px;
 }
 .mycheckbox input[type="checkbox"]:checked + label {
-    background: url('../icons/bi_check-circle-fill.png') no-repeat;
+    background: url('../icons/bi_check-circle-fill.png');
 }
 .card-trading-title{
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 18px;
     line-height: 19px;
     margin: -35px 0 0 30px;
     position: absolute;
 }
 .card-trading-subtitle{
     color: #888888;
-    font-size: 12px;
+    font-size: 16px;
     width: 87%;
 }
 .jumbotron.graph{
-    padding: 25px 20.82%;
-    position: relative;
-    top: 70px;
+    padding: 25px 360px;
+    height: 380px;
 }
 .header_graph{
     width: 100%;
@@ -231,7 +230,7 @@ a#brand_desk{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 302.5px 302.5px 302.5px 302.5px;
 }
 .header_graph_red{
     border-radius: 15px;
@@ -262,21 +261,23 @@ a#brand_desk{
     width: 95%;
 }
 .header_graph_img img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 .header_graph_title{
     text-align: center;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
+    color: #000000;
+    padding-top: 10px;
 }
 .header_graph_subtitle{
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 20px;
 }
 .header_graph_cl{
-    height: 264px;
+    height: 350px;
     color: #888888;
 }
 #modal-login{
@@ -342,6 +343,89 @@ a#brand_desk{
 #modal-login .modal-footer .btn-user-orange{
     background: #FF9300;
 }
+
+
+
+
+#modal-change_password{
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#modal-change_password .modal-content {
+    background: #393E46;
+    border: 4px solid #B4BAC8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+#modal-change_password .modal-dialog{
+    width: 600px;
+    height: 350px;
+}
+#modal-change_password .modal-backdrop{
+    background-color: transparent !important;
+}
+#modal-change_password .modal-backdrop.in {
+      opacity: 0;
+}
+#modal-change_password .modal-title{
+    text-align: center;
+    font-size: 34px;
+}
+#modal-change_password .btn_currpassword{
+    background: #888888;
+    border-radius: 10px;
+    width: 155px;
+    height: 44px;
+    color: #FFFFFF;
+    margin: 3% 4%;
+}
+#modal-change_password .textinput{
+    text-align: center;
+    margin: 3% 0;
+}
+#modal-change_password .modal-header{
+    border-bottom: none;
+}
+#modal-change_password .modal-body{
+    padding: 10px 50px;
+}
+#modal-change_password .modal-footer{
+    border-top: none;
+}
+#modal-change_password .textinput{
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    background: #F7F7F7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+#modal-change_password .modal-body .text-yellow{
+    color: #FFF200;
+    font-size: 20px;
+    font-weight: 700;
+}
+#modal-change_password .modal-footer .btn-user-gray, #modal-change_password .modal-footer .btn-user-orange{
+    width: 150px;
+    height: 44px;
+    background: #888888;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+#modal-change_password .modal-footer .btn-user-gray{
+    background: #888888;
+}
+#modal-change_password .modal-footer .btn-user-orange{
+    background: #FF9300;
+}
+
+
+
 #modal-notif{
     top: 220px;
 }
@@ -400,6 +484,12 @@ a#brand_desk{
     margin-bottom: 6px;
     margin-right: 5px;
 }
+.dollar_mint1,.ic_round,.user_orange{
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+    margin-right: 5px;
+}
 .ic_rounds{
     padding-top: 100px;
     color: #FFFFFF;
@@ -407,6 +497,12 @@ a#brand_desk{
     margin-right: -5px;
 }
 .current_stocks{
+    padding-top: 100px;
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-right: 10px;
+}
+.current_stocks1{
     padding-top: 100px;
     color: #FFFFFF;
     font-size: 24px;
@@ -513,6 +609,19 @@ a#brand_desk{
     text-align: left;
     margin-bottom: 5px;
 }
+a.btn{
+    background: #F7F7F7;
+    border-radius: 10px;
+    width: 245px;
+    height: 40px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    text-align: left;
+    
+}
 .display_log .layout_bg{
     background: #C4C4C4;
     border-radius: 10px;
@@ -530,6 +639,13 @@ a#brand_desk{
     margin-top: 20px;
 }
 .current_stocks_mobile{
+    background-color: #545454;
+    height: 36px;
+    text-align: center;
+    padding-top: 1px;
+    display: none;
+}
+.current_stocks_mobile1{
     background-color: #545454;
     height: 36px;
     text-align: center;
@@ -629,6 +745,458 @@ a#brand_desk{
     color: #FFFFFF;
     font-size: 24px;
 }
+iframe{
+    border: 2px rgb(153, 152, 152) solid;
+}
+.page_btc{
+    padding: 20px 16.66%;
+}
+.game_grid,.game_list{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 68% 30%;
+}
+.game_grid{
+    margin-bottom: 10px;
+}
+.game_list{
+    margin-bottom: -23px;
+}
+.game_details,.betting_details{
+    border: 1px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+}
+.game_title, .betting_title{
+    color: #FFF200;
+    font-size: 20px;
+    background: #000000;
+    padding:  10px 10px;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+}
+.game_title_timer{
+    float: right;
+}
+.game_field, .betting_field{
+    background: #F7F7F7;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 390px;
+}
+.candle_chart_field{
+    width: 100%;
+    height: 100%;
+}
+#candle_chart{
+    object-fit: cover;
+}
+.betting_title{
+    text-align: center;
+}
+.card-footer{
+    display: none;
+    background: #F7F7F7;
+    border: none;
+}
+.betting_table{
+    width: 100%;
+}
+.betting_table tr td{
+    padding: 5px 10px;
+}
+.fchild{
+    width: 45%;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+}
+.lchild{
+    width: 65%;
+    text-align: right;
+    font-weight: 700;
+    font-size: 12px;
+}
+.cblance{
+    color: #1072BA;
+    font-weight: 700;
+}
+.lchild input[type="text"]{
+    text-align: right;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #C4C4C4;
+    color: #888888;
+    height: 30px;
+    font-size: 18px;
+}
+.ablchild input[type="text"]{
+    text-align: right;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #C4C4C4;
+    color: #888888;
+    height: 30px;
+    font-size: 18px;
+}
+.lchild input[type="text"]::placeholder{
+    color: #888888;
+}
+.lchild.acomp{
+    color: #1F8FAE;
+    padding: 0 10px;
+}
+.bchild{
+    font-size: 11px;
+    color: #888888
+}
+.pull-right{
+    padding-top: 5px;
+}
+.btn_child{
+    padding: 0 5px;
+}
+.bet_orange{
+    color: #FFFFFF;
+    background: #FF9300;
+    width: 150px;
+    font-size: 16px;
+    padding: 3px 2px;
+    height: 100px;
+}
+.bet_mint_green{
+    color: #FFFFFF;
+    background: #1F8FAE;
+    width: 150px;
+    font-size: 16px;
+    padding: 3px 2px;
+}
+.bet_red{
+    color: #FFFFFF;
+    background: #ED5659;
+    width: 150px;
+    font-size: 16px;
+    padding: 3px 2px;
+}
+.bet_blue{
+    color: #FFFFFF;
+    background: #1072BA;
+    width: 150px;
+    font-size: 16px;
+    padding: 3px 2px;
+}
+.game_field{
+    background: #FFFFFF;
+    position: relative;
+    z-index: 0;
+}
+.game_field_opa{
+    background: rgba(0, 0, 0, 0.7);
+}
+.text_result{
+    display: none;
+    color: #FFFFFF;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    top: 0%;
+    height: 420px;
+}
+.result_title{
+    padding-top: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+.result_field{
+    padding: 5px 150px;
+}
+.result_table{
+    width: 100%;
+}
+.rfchild{
+    width: 30%;
+    height: 40px;
+    background: rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.rmid{
+    width: 2%;
+    height: 40px;
+}
+.rlchild{
+    width: 68%;
+    height: 40px;
+    background: rgba(250, 250, 250, 0.9);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.time_result{
+    color: #FFFFFF;
+}
+.text_title_result{
+    text-align: center;
+    font-size: 30px;
+}
+#candle_chart{
+    font-size: 20px;
+    margin-top: 0;
+}
+.mtimeclock{
+    float: right !important;
+}
+.mtimeclock,.timeclock{
+    color: #FF9300;
+}
+.user_field{
+    height:550px;
+    background: #F7F7F7;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.user_field_group{
+    height:550px;
+    background: #F7F7F7;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: scroll;
+}
+.tab-content::-webkit-scrollbar{
+    display: none;
+}
+
+  
+ 
+
+
+
+/* .card_btc {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 1em 1em;
+    grid-auto-flow: row dense;
+}
+.card_btc_target {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 1em 1em;
+    grid-auto-flow: row dense;
+    margin-top: 20px;
+}
+.card_item {
+    background: #FFFFFF;
+    padding: 0;
+    border-radius: 10px 10px 10px 10px;
+}
+.btc_header{
+    background: #393E46;
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0px 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 1em 1em;
+    grid-auto-flow: row dense;
+    height: 50px;
+}
+.btc_header_trade{
+    background: #393E46;
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0px 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    height: 50px;
+}
+.btc_trading{
+    background: #393E46;
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0px 0px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    padding-top: 8px;
+    height: 50px;
+}
+.body_trading{
+    padding: 10px;
+    height: 550px;
+}
+.btc_trading, .c_header_c{
+    text-align: center;
+    color: #FFF200;
+}
+.c_header_l{
+    text-align: left;
+    color: #FFF200;
+    padding-top: 8px;
+    padding-left: 20px;
+}
+.c_header_r{
+    text-align: right;
+    color: #FFFFFF;
+    padding-top: 8px;
+    padding-right: 40px;
+}
+.mtimeclock{
+    float: right !important;
+}
+.mtimeclock,.timeclock{
+    color: #FF9300;
+}
+.text_trading_left{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+}
+.text_trading_right,.text_trading_right_orange,.text_trading_right_blue{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: right;
+    padding: 10px;
+}
+.text_trading_right_orange{
+    color: #FF9300;
+}
+.text_trading_right_blue{
+    color: #1072BA;
+}
+.body_trading table td{
+    border: none;
+}
+.body_trading_gray{
+    background: #DDDDDE;
+    height: 170px;
+    line-height: 5px;
+    padding: 10px; 
+}
+.body_trading_gray .text_trading_left{
+    font-size: 14px;
+}
+.text_trading_right input[type="text"]{
+    background: #F7F7F7;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 148px;
+    height: 32px;
+    border: none;
+    margin: -10px;
+}
+.text_trading_right input[type="text"]::placeholder{
+    text-align: right;
+    color: #888888;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+}
+.text_trading_right input[type="text"]{
+    text-align: right;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.body_trading_white{
+    background: #FFFFFF;
+    margin-bottom: 200px;
+}
+.btn_trading_orange{
+    background: #FF9300;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    width: 31%;
+    margin-bottom: 10px;
+}
+.btn_trading_bg{
+    background: #1F8FAE;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    width: 31%;
+    margin-top: -10px;
+}
+.btn_trading_red, .btn_trading_blue{
+    width: 140px;
+    height: 36px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+.btn_trading_red{
+    background: #ED5659;
+}
+.btn_trading_blue{
+    background: #1072BA;
+} */
+/* .rowcol,.rowcol1 {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    margin: 0;
+}
+.rowcol,.rowcol1 { 
+    grid-template-columns: 30% 70%; 
+}
+.decition_time,.price{
+    background: rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+    margin-left: 30px;
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: 700;
+    width: 124px;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-align: center;
+}
+.time_result,.price_result{
+    background: rgb(229, 226, 226);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+    margin-right: 50px;
+    padding: 10px;
+    color: #575454;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 280px;
+    text-align: left;
+    height: 44px;
+}
+.results,.text_title_result{
+    text-align: center;
+    font-weight: 700;
+}
+.text_title_result{
+    text-align: center;
+    font-size: 14px;
+}
+.c_header_trade{
+    color: #FFF200; 
+}*/
+/* .footer_grid{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    margin: 0 0 2.60rem 0;
+    grid-template-columns: 50% 50%;
+} */
 .footer_brand span{
     display: inline-block;
 }
@@ -655,13 +1223,6 @@ a#brand_desk{
     position: fixed;
     right: 0;
     bottom: 0;
-    left: 0;
-    z-index: 1030;
-}
-.fixed-middle{
-    position: fixed;
-    top: 70px;
-    right: 0;
     left: 0;
     z-index: 1030;
 }

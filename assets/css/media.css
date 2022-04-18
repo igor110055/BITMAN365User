@@ -1,478 +1,2146 @@
-@media (max-width: 1290px) {
-    .footer{
-      padding: 0 14.66%;
-    }
-    .display_nonlog{
-      display: none;
-    }
-    .display_log{
-      display: none;
-    }
-    .nav-item{
-      padding-right: 0px;
-    }
-    .btn-primary{
-      font-size: 12px;
-      width: 80px;
-      height: 35px;
-    }
-    .btn-primary a.btn-signup{
-      font-size: 12px;
-    }
-    .jumbotron.trading_title_details{
-      height: 250px;
-    }
-    .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
-      width: 100px;
-      font-size: 14px;
-    }
+@media (max-width : 2230px){
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 120px;
+    font-size: 16px;
   }
-  @media (max-width: 1140px) {
-    .nav-link{
-      font-size: 12px;
-    }
-    .btn_group_nav button{
-      width: 87px;
-      padding: 5px 5px;
-    }
-    .dropdown-menu{
-      margin-top: 14px;
-    }
-    .jumbotron.headers{
-      padding: 30px 16.66%;
-      top: 70px;
-    }
-    .jumbotron.trading_title_details{
-      margin: 0;
-      padding: 15px 16.66%;
-      background: #FFFFFF;
-      height: 220px;
-    }
-    .trading_title{
-      font-size: 17px;
-    }
-    .trading_subtitle{
-        font-size: 11px;
-    }
-    .tradings {
-        grid-template-columns: 33.33% 33.33% 33.33%;
-    }
-    .card-trading-title{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 19px;
-        margin: -35px 0 0 30px;
-        position: absolute;
-    }
-    .card-trading-subtitle{
-        font-size: 11px;
-        width: 87%;
-    }
-    .jumbotron.graph{
-      padding: 30px 16.66%;
-    }
-    .navbar-collapse-1-mobile{
-      padding: 200px 200px;
-    }
-    .header_graph_title{
-      font-size: 16px;
-    }
-    .header_graph_subtitle{
-      font-size: 11px;
-    }
-    .footer{
-      padding: 0 16.66%;
-    }
-    .display_nonlog{
-      display: none;
-    }
-    .display_log{
-      display: none;
-    }
-    .nav-item{
-      padding-right: 0px;
-    }
-    .btn-primary{
-      font-size: 12px;
-      width: 80px;
-      height: 35px;
-    }
-    .btn-primary a.btn-signup{
-      font-size: 12px;
-    }
+  .page_btc{
+    padding: 20px 16.66%;
   }
-  @media (max-width: 992px) {
-    .current_stocks_mobile{
-      background-color: #545454;
-      height: 36px;
-      display: block;
-    }
-    .display_nonlog{
-      padding: 50px 200px;
-      position: fixed;
-    }
-    .display_log{
-      padding: 100px 200px;
-      position: fixed;
-    }
-    .btn_log_mobile{
-      width: 100%;
-    }
-    .soung_img{
-      float: right;
-    }
-    .jumbotron.graph{
-      margin-bottom: 150px;
-    }
-    .header_graph_title{
-      font-size: 14px;
-    }
-    .header_graph_subtitle{
-      font-size: 9px;
-    }
-    .jumbotron.trading_title_details{
-      height: 250px;
-    }
-    .card-trading-subtitle{
-      font-size: 10px;
-    }
-    .header_grid{
-      margin-top: 25px;
-    }
-    .header_title{
-      width: 100%;
-      text-align: left;
-      font-size: 16px;
-      line-height: 25px;
-    }
-    .header_subtitle{
-      width: 90%;
-      text-align: left;
-      font-size: 14px;
-      line-height: 20px;
-    }
-    .btn-white{
-      height: 50px;
-      font-size: 20px;
-      right: 0;
-      margin: 20px 16.66%; 
-    }
+  .card-trading-title{
+    font-size: 12px;
+
   }
-  @media (max-width: 778px) {
-    .jumbotron.headers{
-      padding: 30px 16.66%;
-    }
-    .jumbotron.trading_title_details{
-      margin: 0;
-      padding: 15px 16.66%;
-      background: #FFFFFF;
-      height: 240px;
-    }
-    .trading_title{
-        font-size: 16px;
-    }
-    .trading_subtitle{
-        font-size: 12px;
-    }
-    .tradings {
-        grid-template-columns: 33.33% 33.33% 33.33%;
-    }
-    .card-trading-title{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 10px;
-        line-height: 19px;
-        margin: -35px 0 0 30px;
-        position: absolute;
-    }
-    .card-trading-subtitle{
-        font-size: 9px;
-        width: 87%;
-    }
-    .btn-white{
-      height: 50px;
-      font-size: 20px;
-      right: 0;
-      margin: 20px 16.66%; 
-    }
-    .current_stocks_mobile{
-      background-color: #545454;
-      height: 36px;
-      display: block;
-    }
-    .jumbotron.graph{
-      padding: 15px 16.66%;
-      margin-bottom: 150px;
-    }
-    .header_graph_cl{
-      margin-bottom: 10px;
-      width: 100%;
-    }
-    .header_graph{
-      width: 100%;
-      display: grid;
-      grid-gap: 1rem;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      grid-template-columns: 50% 50%;
-    }
-    .header_graph_title{
-      font-size: 16px;
-    }
-    .header_graph_subtitle{
-      font-size: 11px;
-    }
-    .navbar-collapse-1-mobile{
-      padding: 200px 100px;
-    }
-    .display_nonlog{
-      padding: 50px 100px;
-      position: fixed;
-    }
-    .display_log{
-      position: fixed;
-      padding: 130px 150px;
-    }
-    .btn_log_mobile{
-      width: 100%;
-    }
-    .layout_bg{
-      padding: 10px 20px;
-      width: 50%;
-    }
-    .btn_logs_mobile{
-      margin: 10px 50px;
-    }
-    .soung_img{
-      float: right;
-    }
-    .header_grid{
-      margin-top: 20px;
-    }
-    .header_title{
-      width: 100%;
-      text-align: left;
-      font-size: 12px;
-      line-height: 20px;
-    }
-    .header_subtitle{
-      width: 90%;
-      text-align: left;
-      font-size: 12px;
-      line-height: 15px;
-    }
-    .footer_brand .footer_logo{
-      font-size: 45px;
-      text-align: center;
-      width: 100%;
-      padding: 10px 0;
-    }
-    .footer_brand .footer_sub_title{
-        display: none;
-    }
+}
+@media (max-width : 1940px){
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .page_btc{
+    padding: 20px 16.66%;
+  }
+
+  .card-trading-title{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 19px;
+    margin: -35px 0 0 30px;
+    position: absolute;
+  }
+  .card-trading-subtitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 19px;
+    color: #888888;
+    
+  }
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 100%;
+  }
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 25% 25% 25% 25% ;
+  }
+
+  .header_graph_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #000000;
+
+  }
+  .header_graph_subtitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #888888;
+    
+  }
+
+}
+@media (max-width : 1240px){
+ 
+  .nav-link{
+    font-size: 14px;
+  }
+  .footer{
+    padding: 0 14.66%;
+  }
+  .display_nonlog{
+    display: none;
+  }
+  .display_log{
+    display: none;
+  }
+  .nav-item{
+    padding-right: 0px;
+  }
+  .btn-primary{
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
+  }
+  .btn-primary a.btn-signup{
+    font-size: 12px;
+  }
+  .jumbotron.headers{
+    padding: 10px 100px
+  }
+  .header_title{
+    margin-top: 70px;
+    font-size: 35px;
+  }
+  .btn-white{
+    margin-top: 120px;
+    height: 50px;
+    font-size: 20px;
+    right: 0;
+    width: 170px;
+    margin: 35% 0%; 
+
+  }
+  .jumbotron.trading_title_details{
+    height: 400px;
+    padding: 10px 100px;
+  }
+
+  .trading_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 23px;
+    color: #000000;
+  }
+  .trading_subtitle{
+    font-size: 21px;
+    letter-spacing: -1px;
+  }
+
+  .card-trading-title{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 19px;
+    margin: -35px 0 0 30px;
+    position: absolute;
+  }
+  .card-trading-subtitle{
+    font-size: 19px;
+    width: 87%;
+    margin-bottom: 10px;
+  }
+
+  .jumbotron.graph{
+    padding: 15px 40px;
+    margin-top: -3%;
+    
+  }
+
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 100%;
   }
   
-  @media (max-width: 600px) {
-    .jumbotron.headers{
-      height: 160px;
-      padding: 10px 4.11%;
-      position: relative;
-    }
-    .jumbotron .header_grid{
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 22% 22% 22% 22% ;
+  }
+
+  .header_graph_title{
+    font-size: 22px;
+  }
+  .header_graph_subtitle{
+    font-size: 20px;
+  }
+
+  .tradings {
+    margin-top: 3%;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+
+}
+@media (max-width: 1224px) {
+
+  .nav-link{
+    font-size: 15px;
+  }
+  .footer{
+    padding: 0 14.66%;
+  }
+  .display_nonlog{
+    display: none;
+  }
+  .display_log{
+    display: none;
+  }
+  .nav-item{
+    padding-right: 0px;
+  }
+  .btn-primary{
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
+  }
+  .btn-primary a.btn-signup{
+    font-size: 12px;
+  }
+  .jumbotron.headers{
+    padding: 10px 100px
+  }
+  .header_title{
+    margin-top: 70px;
+    font-size: 35px;
+  }
+  .btn-white{
+    margin-top: 120px;
+    height: 50px;
+    font-size: 20px;
+    right: 0;
+    width: 170px;
+    margin: 35% 0%; 
+
+  }
+  .jumbotron.trading_title_details{
+    height: 400px;
+    padding: 10px 100px;
+  }
+
+  .trading_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 23px;
+    color: #000000;
+  }
+  .trading_subtitle{
+    font-size: 20px;
+  }
+
+  .card-trading-title{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    margin: -35px 0 0 30px;
+    position: absolute;
+  }
+  .card-trading-subtitle{
+    font-size: 18px;
+    width: 87%;
+    margin-bottom: 10px;
+  }
+
+  .jumbotron.graph{
+    padding: 15px 40px;
+    margin-top: -3%;
+    
+  }
+
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 100%;
+  }
+  
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 22% 22% 22% 22% ;
+  }
+
+  .header_graph_title{
+    font-size: 20px;
+  }
+  .header_graph_subtitle{
+    font-size: 18px;
+  }
+
+  .tradings {
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+
+  
+}
+
+
+
+@media (max-width: 1140px) {
+  .navbar-custom {
+    padding: 10px 40px;
+  }
+  .nav-link{
+    font-size: 12px;
+  }
+  .btn_group_nav button{
+    width: 87px;
+    padding: 5px 5px;
+  }
+  .dropdown-menu{
+    margin-top: 14px;
+  }
+  .jumbotron.headers{
+    padding: 30px 100px;
+  }
+  .header_subtitle{
+    font-size: 20px;
+  }
+  .header_title{
+    margin-top: 50px;
+    font-size: 30px;
+  }
+  .btn-white{
+    margin-top: 100px;
+  }
+  .jumbotron.trading_title_details{
+    margin: 0;
+    padding: 15px 100px;
+    background: #FFFFFF;
+    height: 220px;
+    
+  }
+  .trading_title{
+    font-size: 17px;
+  }
+  .trading_subtitle{
+      font-size: 11px;
+  }
+  .tradings {
+      grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+  .card-trading-title{
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 19px;
+      margin: -35px 0 0 30px;
+      position: absolute;
+  }
+  .card-trading-subtitle{
+      font-size: 11px;
+      width: 87%;
+  }
+  .jumbotron.graph{
+    padding: 30px 40px;
+  }
+  .header_graph{
+    grid-template-columns: 230px 230px 230px 230px;
+  }
+  .navbar-collapse-1-mobile{
+    padding: 200px 200px;
+  }
+  .header_graph_title{
+    font-size: 16px;
+  }
+  .header_graph_subtitle{
+    font-size: 11px;
+  }
+  .footer{
+    padding: 0 16.66%;
+  }
+  .display_nonlog{
+    display: none;
+  }
+  .display_log{
+    display: none;
+  }
+  .nav-item{
+    padding-right: 0px;
+  }
+  .btn-primary{
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
+  }
+  .btn-primary a.btn-signup{
+    font-size: 12px;
+  }
+  .page_btc{
+    padding: 20px 4.11%;
+  }
+  .game_grid{
+    grid-template-columns: 68% 30%;
+  }
+  .game_title{
+    text-align: center;
+  }
+  .game_title_timer{
+    display: none;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 80px;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 80px;
+  }
+}
+@media (max-width: 992px) {
+  .navbar-custom{
+    padding: 10px 40px;
+  }
+  .jumbotron.headers{
+    padding: 10px 40px;
+    height: 250px;
+  }
+  .current_stocks_mobile{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .current_stocks_mobile1{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .display_nonlog{
+    padding: 50px 200px;
+    position: fixed;
+  }
+  .display_log{
+    padding: 100px 200px;
+    position: fixed;
+  }
+  .btn_log_mobile{
+    width: 100%;
+  }
+  .soung_img{
+    float: right;
+  }
+  .header_graph_title{
+    font-size: 14px;
+  }
+  .header_graph_subtitle{
+    font-size: 9px;
+  }
+  .jumbotron.trading_title_details{
+    height: 250px;
+    padding: 10px 40px;
+  }
+  .card-trading-subtitle{
+    font-size: 12px;
+  }
+  .header_grid{
+    margin-top: 25px;
+  }
+  .header_title{
+    width: 100%;
+    text-align: left;
+    font-size: 22px;
+    line-height: 25px;
+    margin-top: 30px;
+  }
+  .header_subtitle{
+    width: 90%;
+    text-align: left;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .btn-white{
+    height: 50px;
+    font-size: 20px;
+    right: 0;
+    width: 200px;
+    margin: 50px 40px; 
+  }
+  .header_graph{
+    grid-template-columns: 210px 210px 210px 210px;
+  }
+  .header_graph_title{
+    font-size: 20px;
+  }
+  .header_graph_subtitle{
+    font-size: 14px;
+  }
+  .page_btc{
+    padding: 20px 4.11%;
+  }
+  .game_grid{
+    grid-template-columns: 68% 30%;
+  }
+  .game_title{
+    text-align: center;
+  }
+  .game_title_timer{
+    display: none;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 70px;
+  }
+  .fchild,.lchild{
+    font-size: 14px;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 80px;
+  }
+}
+@media (max-width: 870px) {
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 65px;
+    font-size: 12px;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 40px;
+  }
+
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 900px){
+  .navbar-custom{
+    padding: 10px 20px;
+  }
+  .jumbotron.headers{
+    padding: 30px 40px;
+    height: 200px;
+  }
+  .jumbotron.trading_title_details{
+    margin: 0;
+    padding: 5px 40px;
+    background: #FFFFFF;
+    height: 240px;
+  }
+  .trading_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+  }
+  .trading_subtitle{
+      font-size: 16px;
+  }
+ 
+
+  .card-trading-title{
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      margin: -35px 0 0 30px;
+      position: absolute;
+  }
+  .card-trading-subtitle{
+      font-size: 12px;
+      width: 87%;
+      margin-bottom: 10px;
+  }
+  .btn-white{
+    height: 50px;
+    font-size: 20px;
+    right: 0;
+    margin: 50px 16.66%; 
+  }
+  .current_stocks_mobile{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .current_stocks_mobile1{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .jumbotron.graph{
+    padding: 15px 40px;
+    margin-top: 5%;
+   
+  }
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+    background: #F7F7F7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 330px;
+  }
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 25% 25% 25% 25% ;
+  }
+  .header_graph_title{
+    font-size: 16px;
+  }
+  .header_graph_subtitle{
+    font-size: 14px;
+  }
+  .navbar-collapse-1-mobile{
+    padding: 200px 100px;
+  }
+  .display_nonlog{
+    padding: 50px 100px;
+    position: fixed;
+  }
+  .display_log{
+    position: fixed;
+    padding: 130px 150px;
+  }
+  .btn_log_mobile{
+    width: 100%;
+  }
+  .layout_bg{
+    padding: 10px 20px;
+    width: 50%;
+  }
+  .soung_img{
+    float: right;
+  }
+  .header_grid{
+    margin-top: -10px;
+  }
+  .header_title{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 1px;
+  }
+  .header_subtitle{
+    width: 90%;
+    text-align: left;
+    font-size: 16px;
+    line-height: 15px;
+    margin-top: -10px;
+    letter-spacing: 1px;
+  }
+  .footer_brand .footer_logo{
+    font-size: 45px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .footer_brand .footer_sub_title{
+      display: none;
+  }
+  .page_btc{
+    padding: 20px 22.77%;
+  }
+  .game_grid{
+    grid-template-columns: 100%;
+  }
+  .game_title{
+    text-align: center;
+  }
+  .game_title_timer{
+    display: none;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 100px;
+    font-size: 16px;
+  }
+  .game_field{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .card-footer{
+    display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .text_result{
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    top: 20px;
+    right: 100px;
+  }
+  .result_table{
+    width: 100%;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 40px;
+  }
+  .game_grid,.game_list{
+    grid-template-columns: 100%;
+  }
+
+  .display_log .btn_log_mobile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    position: absolute;
+    width: 400px;
+    height: 44px;
+    left: 190px;
+    top: 116px;
+    background: #F7F7F7;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 16px;
+
+}
+.display_log .soung_img{
+    margin-left: 150px;
+}
+.display_log .layout_bg{
+    position: absolute;
+    width: 400px;
+    height: 174px;
+    margin: 0% 5%;
+    top: 204px;
+    background: #C4C4C4;
+    border-radius: 10px;
+
+}
+.display_log .rec_point{
+    font-size: 14px;
+    height: 10px;
+    margin-top: 33px;
+    font-family: 'Roboto';
+    
+}
+.layout_bg .btn_withdraw_deposit{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 350px;
+    height: 44px;
+    left: 64px;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+    
+
+}
+.layout_bg .btn_transaction_history{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 350px;
+    height: 44px;
+    left: 64px;
+    margin-top: 3%;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+}
+.layout_bg .btn_privacy_settings{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 350px;
+    height: 44px;
+    left: 64px;
+    margin-top: 3%;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+}
+
+.logout_mobile .btn_logout_mobile{
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    width: 198px;
+    height: 46px;
+    color: #888888;
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    left: 131px;
+    top: 392px;
+    padding-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    margin: 0% 20%;
+}
+
+
+}
+
+
+}
+
+@media (max-width: 600px) {
+  .navbar-custom{
+    padding: 10px 10px;
+  }
+  .jumbotron.headers{
+    height: 188px;
+    padding: 10px 4.11%;
+  }
+  .jumbotron .header_grid{
+    grid-template-columns: 100%;
+  }
+  .header_title{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+  .header_subtitle{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    margin-top: -20px;
+  }
+  .header_btn{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+  }
+  .btn-white{
+    height: 50px;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  .jumbotron.trading_title_details{
+    height: 100%;
+    padding: 10px 4.11%;
+  }
+  .trading_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+    width: 328px;
+    
+  }
+  .trading_subtitle{
+      font-size: 14px;
+      letter-spacing: -2px;
+      text-align: justify;
+      margin-left: 2%;
+      margin-right: 2%;
+  }
+  .tradings {
       grid-template-columns: 100%;
-    }
-    .header_title{
+  }
+  .card-trading-title{
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 19px;
+  }
+  .card-trading-subtitle{
+      font-size: 12px;
       width: 100%;
+      margin-top: -3%;
+  }
+  .current_stocks_mobile{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .current_stocks_mobile1{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .jumbotron.graph{
+    padding: 10px 4.11%;
+  }
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+  }
+  .header_graph_title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    color: #000000;
+    padding-top: 10px;
+  }
+  .header_graph_subtitle{
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+  .footer_brand .footer_logo{
+    font-size: 45px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .footer_brand .footer_sub_title{
+      display: none;
+  }
+  .navbar-collapse-1-mobile{
+    padding: 200px 100px;
+  }
+  .display_nonlog{
+    padding: 50px 100px;
+    position: fixed;
+  }
+  .display_log{
+    padding: 130px 150px;
+    position: fixed;
+  }
+  .btn_log_mobile{
+    width: 100%;
+  }
+  .layout_bg{
+    padding: 10px 20px;
+  }
+  .soung_img{
+    float: right;
+  }
+  .page_btc{
+    padding: 20px 6.66%;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 130px;
+    font-size: 18px;
+  }
+  .game_grid{
+    grid-template-columns: 100%;
+  }
+  .game_field{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .card-footer{
+    display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 40px;
+  }
+  .game_grid,.game_list{
+    grid-template-columns: 100%;
+  }
+}
+@media (max-width: 479px){
+  .navbar-custom{
+    padding: 10px 10px;
+  }
+  .header_btn{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+  }
+  .jumbotron.headers{
+    padding: 20px 20px;
+  }
+  .header_grid{
+    margin-top: 10px;
+  }
+  .jumbotron.headers{
+  background: url("../img/unsplash_7LoWpCOAn6k.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 360px 188px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 5px 5px rgba(146, 154, 171, 0.7);
+    padding: 5px 10px;
+  }
+  .header_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    height: 46px;
+    left: 16px;
+    right: 16px;
+    margin-top: -5px;
+  }
+  .header_subtitle{
+    position: static;
+    width: 100%;
+    height: 38px;
+    padding-left: 15px;
+    top: 0px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align:left;
+    color: #FFFFFF;
+  }
+  .btn-white{
+    height: 40px;
+    width: 98px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #AED3EA;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin: 0%;
+  }
+  .card-trading-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    letter-spacing: -1px;
+  }
+  .card-trading-subtitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #888888;
+    width: 300px;
+    height: 48px;
+    left: 8px;
+    letter-spacing: -1px;
+    padding-left: 30px;
+  }
+  .card-trading-title1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    letter-spacing: -1px;
+    
+  }
+  .current_stocks_mobile{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .current_stocks_mobile .current_stocks{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+  }
+  .current_stocks_mobile .dollar_mint1{
+    position: static;
+    width: 28px;
+    height: 28px;
+    left: 84.5px;
+    margin-top: 3px;
+
+  }
+  .current_stocks_mobile1{
+    background-color: #545454;
+    height: 36px;
+    display: block;
+  }
+  .jumbotron.graph{
+    height: 250px;
+}
+  .header_graph_cl{
+    margin-bottom: 10px;
+    width: 100%;
+    height: 198px;
+    color: #888888;
+    background: #F7F7F7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  .header_graph_img img{
+    width: 66px;
+    height: 70px;
+    margin-top: -10px;
+  }
+  
+  .display_nonlog{
+    position: fixed;
+    padding: 50px 10px;
+  }
+  .display_log{
+    position: fixed;
+    padding: 130px 20px;
+  }
+  .layout_bg{
+    padding: 10px 20px;
+  }
+  .btn_log_mobile{
+    width: 95%;
+  }
+  .jumbotron.graph{
+    padding: 10px 20px;
+  }
+  .header_graph{
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    margin-top: -15%;
+  }
+  .navbar-collapse-1-mobile{
+    padding: 200px 20px;
+  }
+  .header_graph_title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    letter-spacing: -1px;
+  }
+  .header_graph_subtitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #888888;
+    width: 140px;
+    letter-spacing: 0px;
+    margin-top: -5%;
+    margin-left: -5%;
+  }
+  .footer{
+    position: absolute;
+    top: 1210px;
+  }
+  .footer_brand .footer_logo{
+    position: static;
+    width: 240px;
+    height: 28px;
+    left: 113.5px;
+    top: 14px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+  }
+  .footer_brand .footer_sub_title{
+      display: none;
+  }
+  .soung_img{
+    float: right;
+  }
+  .game_title{
+    text-align: center;
+  }
+  .game_title_timer{
+    display: none;
+  }
+  .page_btc{
+    padding: 20px 4.11%;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 100px;
+    font-size: 18px;
+  }
+  .game_grid{
+    grid-template-columns: 100%;
+  }
+  .game_field{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .card-footer{
+    display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .text_result{
+    display: none;
+    left: 0%;
+    top: 0%;
+    height: 420px;
+  }
+  .result_field{
+    padding: 0 20px;
+  }
+  .game_grid,.game_list{
+    grid-template-columns: 100%;
+  }
+  .betting_field{
+    height: 400px;
+  }
+  .display_log .btn_log_mobile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    position: absolute;
+    width: 245px;
+    height: 44px;
+    left: 57px;
+    top: 116px;
+    background: #F7F7F7;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 16px;
+   
+}
+.display_log .layout_bg{
+    position: absolute;
+    width: 245px;
+    height: 164px;
+    left: 57px;
+    top: 204px;
+    background: #C4C4C4;
+    border-radius: 10px;
+
+}
+.display_log .rec_point{
+    font-size: 14px;
+    height: 10px;
+    margin-top: 33px;
+    font-family: 'Roboto';
+    
+}
+.layout_bg .btn_withdraw_deposit{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 231px;
+    height: 44px;
+    left: 64px;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+    
+
+}
+.layout_bg .btn_transaction_history{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 231px;
+    height: 44px;
+    left: 64px;
+    margin-top: 3%;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+}
+.layout_bg .btn_privacy_settings{
+    align-items: center;
+    padding: 8px 8px 8px 16px;
+    width: 231px;
+    height: 44px;
+    left: 64px;
+    margin-top: 3%;
+    background: #EEEEEE;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    padding-top: 12.5px;
+    padding-left: 16px;
+}
+
+.logout_mobile .btn_logout_mobile{
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    width: 98px;
+    height: 36px;
+    color: #888888;
+    text-align: center;
+    font-size: 16px;
+    position: absolute;
+    left: 131px;
+    top: 392px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+}
+
+}
+/* @media (max-width: 360px){
+  .betting_details{
+    margin-bottom: 10px;
+  }
+  .betting_field{
+    height: 400px;
+  }
+  .bet_orange,.bet_mint_green,.bet_red, .bet_blue{
+    width: 100px;
+    font-size: 16px;
+  }
+  .game_grid,.game_list{
+    grid-template-columns: 100%;
+  }
+} */
+
+  /* Styles */
+  /* .navbar-brand{
+      display: none;
+  }
+  .jumbotron.headers{
+      height: 188px;
+      background: url("../img/unsplash_7LoWpCOAn6k.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-bottom: 8px solid rgba(58, 58, 58, 0.2);
+      box-sizing: border-box;
+      box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+      padding: 23px;
+  }
+  .header_title{
+      color: #FFFFFF;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 23px;
+      text-align: center;
+      width: 100%;
+      margin: -10px 0 0 0;
+  }
+  .header_subtitle{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #FFFFFF;
+      width: 100%;
+      margin: 10px 0 0 0;
+  }
+  .btn-white{
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #AED3EA;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      height: 40px;
+      width: 98px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      margin: 10px 0 0 0;
+  }
+  .header_btn{
+      text-align: center !important
+  }
+  .tradings{
+      height: 470px;
+      background-color: #FFFFFF;
+      padding: 20px;
+  }
+  .trading_digital{
+      margin-top: -15px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 19px;
+      line-height: 23px;
+  }
+  .trading_digital-subtitle{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: left;
+      color: #666666;
+      padding-top: 0;
+  }
+  .cards-trading {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-gap: 1rem;
+      margin: 0 0 4.60rem 0;
+      text-align: left;
+  }
+  .cards-trading { 
+      grid-template-columns: repeat(1, 1fr); 
+  }
+  .card-trading {
+      width: 100%;
+      height: 48px;
+      word-wrap: break-word;
+      margin: 10px 60px 20px 0;
+  }
+  .card-trading-title{
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      margin: -35px 20px 0 30px;
+  }
+  .card-trading-subtitle{
+      color: #888888;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      margin: -10px 0 0 30px;
+  }
+  .graph{
+      padding: 20px 0 0 0;
+      margin-bottom: 20px;
+  }
+  .cards_graph {
+      width: 100%;
+      display: grid;
+      grid-gap: 1.16rem;
+      text-align: center;
+      margin: 0;
+  }
+  .cards_graph { 
+      grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  }
+  .card_graph {
+      padding: 1rem;
+      width: 156px;
+      height: 198px;
+      word-wrap: break-word;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 0px rgba(223, 222, 222, 0.85);
+  }
+  .carbon_chart-candlestick,.ri_24-hours-fill,.flat-color-icons_combo-chart,.gala_secure{
+      width: 55.08px;
+      height: 61.48px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -5px;
+  }
+  .carbon_chart-title,.ri_24-title,.flat-color-title,.gala_secure-title{
+      padding: 10px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+  }
+  .carbon_chart-subtitle,.ri_24-subtitle,.flat-color-subtitle,.gala_secure-subtitle{
+      padding: 0 15px 0 15px;
+      text-align: left;
+      color: #888888;
+      margin-top: -20px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+  }
+  .navbar-nav,.nav_layout_btn{
+      display: none;
+  }
+  .display_nonlog,.display_log,.navbar-collapse-1-mobile{
+      position: absolute;
+  }
+  .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      display: block;
+  }
+  .dollar_mint_icon_mob{
+      text-align: center !important;
+  }
+  .ic_round_1{
+      display: block;
+  }
+  .page-signup{
+      margin-top: 8px;
+  }
+  .signup-title{
+      font-size: 20px;
+  }
+  .signup-subtitle{
+      font-size: 20px;
+  }
+  .s_account_code{
+      height: 15px;
+  }
+  .text_signup, .error_id_chk, .error_nn_chk, .custom-select-lg{
+      font-size: 12px;
+  }
+  #modal-notif{
+      top: 181px;
+      left: 25px;
+      right: 25px;
+  }
+  #modal-notif .modal-dialog{
+      width: 290px;
+      height: 200px; 
+  }
+  #modal-notif .modal-notif-title{
+      font-size: 20px;
+  }
+  #modal-notif .modal-notif-body{
+      font-size: 18px;
+  }
+  #modal-notif .btn-primary{
+      width: 98px;
+      height: 44px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+  }
+  .page_btc{
+      padding-bottom: 0;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  .card_btc {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+  }
+  .card_btc_target {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+  }
+  .card.btc_header{
+      background: #393E46;
+      box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px 10px 0px 0px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+      padding: 20px 20px 20px 20px;
+  }
+  .c_header_l{
+      text-align: center;
+      font-size: 18px;
+      margin-top: -8px;
+      padding: 0;
+  }
+  .c_header_r{
+      display: none;
+  }
+  .card-footer{
+      font-weight: 700;
+      display: block;
+  }
+  .body_trading{
+      padding: 10px;
+  }
+  .btn_trading_red, .btn_trading_blue{
+      width: 120px;
+      height: 36px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-size: 16px;
+  }
+  .decition_time,.price{
+      margin-bottom: 10px;
+      margin-left: 20px;
+      padding: 2px;
+      color: #FFFFFF;
+      font-weight: 700;
+      width: 74px;
+      height: 24px;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 0px;
+  }
+  .time_result,.price_result{
+      margin-bottom: 10px;
+      margin-right: 20px;
+      padding: 2px;
+      font-weight: 700;
+      font-size: 14px;
+      width: 167px;
+      text-align: center;
+      height: 24px;
+      border-radius: 0px;
+  }
+  .time_result{
+      color: #FFFFFF;
+  }
+  .price_result{
+      color: #FFF200;
+  }
+  .btn-signup_grp{
+      width: 99px;
+      height: 44px;
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      margin-left: 10px;
+      font-size: 16px;
+      padding: 10px;
+  }
+  .footer{
+      height: 56px;
+      padding-top: 10px;
+      color: #FFFFFF;
+  }
+  .footer .sub-footer{
+      display: none;
+      
+  }
+  .footer-logo{
+      font-size: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+  }
+
+/* @media (min-width : 992px){
+  .navbar{
+    display: block;
+  }
+} */
+/* Desktops and laptops ----------- */
+/* @media only screen and (min-width: 480px) and (max-width: 768px){
+  .navbar-brand{
+      display: none;
+  }
+  .display_nonlog,.display_log,.navbar-collapse-1-mobile,.navbar-collapse{
+      position: absolute;
+  }
+  .nav-link{
+      font-size: 16px;
+  }
+  .btn-primary{
+      margin-right: 3px;
+  }
+  .trading_digital{
+      font-size: 30px;
+      text-align: center;
+  }
+  .trading_digital-subtitle{
+      font-size: 16px;
+  }
+  .tradings{
+      padding: 60px;
+  }
+  .card-trading {
+      width: 190px;
+      height: 128px;
+      margin-right: 10px;
+  }
+  .card-trading-title{
+      font-size: 14px;
+  }
+  .card-trading-subtitle{
+      font-size: 14px;
+  }
+  .jumbotron.headers{
+      height: 376px;
+      padding: 40px;
+  }
+  .header_title{
+      color: #FFFFFF;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 47px;
+      text-align: center;
+      width: 100%;
+      margin: -10px 0 0 0;
+  }
+  .header_subtitle{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 19px;
+      color: #FFFFFF;
+      width: 100%;
+      margin: 40px 0 0 0;
+  }
+  .btn-white{
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #AED3EA;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 42px;
+      margin: 10px;
+      width: 300px;
+      height: 90px;
+
+  }
+  .header_btn{
+      text-align: center!important
+  }
+  .mobile_nav_collapse{
+      margin: 40px 20px 0 20px;
+  }
+  .current_stocks_mobile{
+      background-color: #545454;
+      height: 36px;
+      margin-bottom: -20px;
+      margin-top: 0;
+      display: block;
+  }
+  .btn-mob{
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-top: 8px;
+      width:198px;
+      height: 70px;
+      font-size: 24px;
+  }
+  .graph{
+      padding: 20px 0 10px 50px;
+      margin-bottom: 20px;
+  }
+  .card_graph {
+      width: 280px;
+      height: 350px;
+  }
+  .cards_graph {
+      width: 100%;
+      display: grid;
+      grid-gap: 0.85rem;
+      text-align: center;
+  }
+  .cards_graph { 
+      grid-template-columns: repeat(auto-fit, minmax(330px, 2fr));
+  }
+  .form_login_mobile{
+      padding: 50px 120px 0 120px;
+  }
+  .ic_round_1{
+      display: block;
+      margin-left: 590px;
+  }
+  .display_log{
+      padding: 120px 160px 0 160px;
+      margin: 0;
+  }
+  .display_log img{
+      padding: 0 0 0 280px;
+  }
+  .rec_point{
+      text-align: left;
+      padding-top: 8px;
+      padding-left: 60px;
+      padding-bottom: 12px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #888888;
+  }
+  .btn_log_mobile{
+      background: #F7F7F7;
+      border-radius: 10px;
+      width: 100%;
+      height: 44px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      color: #333333;
+      text-align: left;
+      margin-bottom: 5px;
+  }
+  .display_log .layout_bg{
+      background: #C4C4C4;
+      border-radius: 10px;
+      width: 100%;
+      padding: 7px 5px 5px 5px;
+  }
+  .display_log .btn_logout{
+      background: transparent;
+      border-radius: 10px;
+      border: 1px solid #FFFFFF;
+      width: 120px;
+      height: 60px;
+      color: #888888;
       text-align: center;
       font-size: 14px;
-    }
-    .header_subtitle{
-      width: 100%;
-      text-align: center;
-      font-size: 12px;
-      line-height: 10px;
-    }
-    .header_btn{
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: -20px;
-    }
-    .btn-white{
-      height: 50px;
+      margin: 20px 65px 0 180px;
+      padding-left: 20px;
+  }
+  .page_btc{
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  .card_btc {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+      padding: 30px 100px 20px 100px;
+  }
+  .card.btc_header{
+      background: #393E46;
+      box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px 10px 0px 0px;
+      font-style: normal;
+      font-weight: normal;
       font-size: 20px;
-      margin-top: 0px;
-    }
-    .jumbotron.trading_title_details{
-      height: 100%;
-      padding: 10px 4.11%;
-      position: relative;
-      top: 70px;
-    }
-    .trading_title{
-      font-size: 18px;
-    }
-    .trading_subtitle{
-        font-size: 14px;
-    }
-    .tradings {
-        grid-template-columns: 100%;
-    }
-    .card-trading-title{
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 19px;
-        margin: -35px 0 0 30px;
-        position: absolute;
-    }
-    .card-trading-subtitle{
-        font-size: 12px;
-        width: 100%;
-    }
-    .current_stocks_mobile{
-      background-color: #545454;
-      height: 36px;
-      display: block;
-    }
-    .jumbotron.graph{
-      padding: 10px 4.11%;
-      margin-bottom: 150px;
-    }
-    .header_graph_cl{
-      margin-bottom: 10px;
-      width: 100%;
-    }
-    .header_graph{
-      width: 100%;
       display: grid;
-      grid-gap: 1rem;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      grid-template-columns: 50% 50%;
-    }
-    .footer_brand .footer_logo{
-      font-size: 45px;
-      text-align: center;
-      width: 100%;
-      padding: 10px 0;
-    }
-    .footer_brand .footer_sub_title{
-        display: none;
-    }
-    .navbar-collapse-1-mobile{
-      padding: 200px 100px;
-    }
-    .display_nonlog{
-      padding: 50px 100px;
-      position: fixed;
-    }
-    .display_log{
-      padding: 130px 150px;
-      position: fixed;
-    }
-    .btn_logs_mobile{
-      margin: 10px 20px;
-    }
-    .btn_log_mobile{
-      width: 100%;
-    }
-    .layout_bg{
-      padding: 10px 20px;
-    }
-    .soung_img{
-      float: right;
-    }
+      grid-template-columns: 100%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+      padding: 20px 20px 20px 20px;
   }
-  @media (max-width: 479px){
-    .header_btn{
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: -20px;
-    }
-    .jumbotron.headers{
-      padding: 20px 4.11%;
-      position: relative;
-      top: 105px;
-    }
-    .header_grid{
-      margin-top: 10px;
-    }
-    .header_title{
-      width: 100%;
+  .c_header_l{
       text-align: center;
-      font-size: 12px;
-      line-height: 14px;
-    }
-    .header_subtitle{
-      width: 100%;
-      text-align: center;
-      font-size: 10px;
-      line-height: 14px;
-    }
-    .btn-white{
-      height: 40px;
       font-size: 18px;
-    }
-    .current_stocks_mobile{
-      background-color: #545454;
-      height: 36px;
-      display: block;
-    }
-    .jumbotron.trading_title_details{
-      padding: 20px 4.11%;
-      position: relative;
-      top: 100px;
-    }
-    .jumbotron.graph{
-      margin-bottom: 150px;
-    }
-    .header_graph_cl{
-      margin-bottom: 10px;
-      width: 100%;
-    }
-    .display_nonlog{
-      position: fixed;
-      padding: 50px 10px;
-    }
-    .display_log{
-      position: fixed;
-      padding: 130px 20px;
-    }
-    .layout_bg{
-      padding: 10px 20px;
-    }
-    .btn_log_mobile{
-      width: 95%;
-    }
-    .header_graph{
-      width: 100%;
-      display: grid;
-      grid-gap: 1rem;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      grid-template-columns: 50% 50%;
-    }
-    .navbar-collapse-1-mobile{
-      padding: 200px 20px;
-    }
-    .header_graph_title{
+  }
+  .c_header_r{
+      display: none;
+  }
+  .card-footer{
+      display: none;
+  }
+  .body_trading{
+      padding: 10px;
+  }
+  .btn-signup_grp{
+      font-size: 20px;
+  }
+  .footer{
+      background-color: #393E46;
+      height: 120px;
+  }
+  .footer{
+      height: 120px;
+      padding-top: 25px;
+      color: #FFFFFF;
+      text-align: center;
+  }
+  .footer .sub-footer{
+      display: none;
+  }
+  .footer-logo{
+      font-size: 48px;
+  }
+} */
+/* Desktops and laptops ----------- */
+/* @media only screen  and (min-width : 1200px) {
+
+  .nav-link{
       font-size: 16px;
-    }
-    .header_graph_subtitle{
-      font-size: 10px;
-    }
-    .footer_brand .footer_logo{
-      font-size: 45px;
-      text-align: center;
-    }
-    .footer_brand .footer_sub_title{
-        display: none;
-    }
-    .soung_img{
-      float: right;
-    }
   }
+  .jumbotron.headers{
+      height: 220px;
+  }
+  .jumbotron-fluid{
+      padding-left: 10.01%;
+      padding-right: 10.01%;
+  }
+  .header_title{
+      font-size: 30px;
+      padding-right: 20px;
+      margin-top: 15px;
+  }
+  .header_btn{
+      text-align: right!important
+  }
+  .card_graph {
+      width: 210px;
+      height: 250px;
+  }
+  .cards_graph {
+      width: 100%;
+      display: grid;
+      grid-gap: 1.5rem 1.5rem;
+      text-align: center;
+      margin: 0;
+      grid-template-columns: 22% 22% 22% 22%;
+  }
+  .btn-primary{
+      margin-right: 3px;
+  }
+  .btn-white{
+      margin-right: 20px;
+      margin-top: -210px;
+  }
+  .trading_digital-subtitle{
+      width: 100%;
+      padding-right: 30px;
+  }
+  .page-signup{
+      padding-left: 24.66%;
+      padding-right: 24.66%;
+  }
+  .btn-signup_grp{
+      font-size: 20px;
+  }
+  .page_btc{
+      margin-top: 130px;
+      padding-left: 20px;
+      padding-right: 35px;
+  }
+  .card_btc {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+  }
+  .cards-trading {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-gap: 1rem;
+      margin: 0 0 4.60rem 0;
+      text-align: left;
+  }
+  .cards-trading { 
+      grid-template-columns: repeat(3, 1fr); 
+  }
+  .card-trading {
+      width: 268px;
+      height: 128px;
+      word-wrap: break-word;
+      margin-left: 0;
+      margin-right: 10px;
+  }
+  .card-footer{
+      display: none;
+  }
+  .footer{
+      background-color: #393E46;
+      height: 120px;
+  }
+  .footer{
+      height: 120px;
+      padding-top: 25px;
+      color: #FFFFFF;
+      text-align: center;
+  }
+  .footer .sub-footer{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      padding: 34px 0 0 230px;
+      position: absolute;
+      width: 100%;
+      display: block;
+      margin-left: 55px;
+  }
+  .footer-logo{
+      font-size: 48px;
+  }
+} */
+/* @media only screen  and (min-width : 1920px) {
+  .container {
+      max-width: 1640px;
+  }
+  .jumbotron-fluid{
+      padding-left: 18.20%;
+      padding-right: 18.20%;
+  }
+  .card-trading {
+      width: 268px;
+      height: 128px;
+      word-wrap: break-word;
+      margin-left: 0;
+  }
+  .nav-link{
+      font-size: 24px;
+  }
+  .jumbotron.headers{
+      padding: 10px 350px 10px 350px;
+  }
+  .header_title{
+      margin-top: 10px;
+  }
+  .header_btn{
+      text-align: right!important
+  }
+  .btn-white{
+      margin-right: 40px;
+      margin-top: -150px;
+  }
+  .card_graph {
+      width: 270px;
+      height: 250px;
+  }
+  .cards_graph {
+      width: 100%;
+      display: grid;
+      grid-gap: 1.8rem 1.8rem;
+      text-align: center;
+      margin: 0;
+      grid-template-columns: 22% 22% 22% 22%;
+      padding-top: -50px;
+  }
+  .page-signup{
+      margin-top: 30px;
+      margin-bottom: 0;
+      padding-left: 20.23%;
+      padding-right: 20.23%;
+  }
+  .page_btc{
+      margin-top: 130px;
+      padding-left: 252px;
+      padding-right: 252px;
+  }
+  .card_btc {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-gap: 1em 1em;
+      grid-auto-flow: row dense;
+  }
+  .btn-signup_grp{
+      font-size: 20px;
+  }
+  .btn-primary,.nav-item{
+      margin-left: 35px;
+  }
+  .card-footer{
+      display: none;
+  }
+  .footer{
+      background-color: #393E46;
+      height: 120px;
+  }
+  .footer{
+      height: 120px;
+      padding-top: 25px;
+      color: #FFFFFF;
+      text-align: center;
+  }
+  .footer .sub-footer{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      padding: 34px 0 0 230px;
+      position: absolute;
+      width: 100%;
+      margin-left: 112px;
+  }
+  .footer-logo{
+      font-size: 48px;
+  }
+}

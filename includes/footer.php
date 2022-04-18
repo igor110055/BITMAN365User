@@ -1,4 +1,4 @@
-<footer class="footer fixed-bottom">
+<footer class="footer">
     <div class="footer_grid">
         <div class="footer_brand">
             <span class="footer_logo">BITMAN365</span>

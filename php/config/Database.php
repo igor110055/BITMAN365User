@@ -6,7 +6,7 @@
         private $host = "localhost";
         private $database_name = "bitman365db";
         private $username = "root";
-        private $password = "admin";
+        private $password = "";
 
         public $conn;
 
