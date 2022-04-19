@@ -163,7 +163,7 @@
         if(count($_SESSION)){
             echo '
                 <div class="current_stocks_mobile">
-                    <a href="#"><span class="current_stocks"><img src="assets/icons/dollar_mint.png" class="dollar_mint"><span class="cash_balance"></span> 원</span></a>
+                    <a href="#"><span class="current_stocks"><img src="assets/icons/dollar_mint.png" class="dollar_mint"><span class="cash_balance" id="cashb"></span> 원</span></a>
                 </div>'
             ;
         }

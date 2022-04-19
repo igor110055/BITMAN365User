@@ -35,7 +35,7 @@
             return $stmt;
         }
         public function getNoteRowCount(){
-            $query = "SELECT * FROM ".$this->tbl_bit_note." ORDER BY e_Registration_Time";
+            $query = "SELECT * FROM tbl_bit_notes";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
@@ -47,19 +47,23 @@
             return $stmt;
         }
         public function getInquiryRowCount(){
-            $query = "SELECT * FROM ".$this->tbl_bit_inquiry;
+            $query = "SELECT * FROM tbl_bit_inquiries";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
         }
+
+        // Cashin Cashout History
         public function getUserHistoryRowCount(){
-            $query = "SELECT * FROM ".$this->tbl_bit_user;
+            $query = "SELECT * FROM tbl_bit_users";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
         }
+
+        // Betting Transaction History
         public function getUserTransactionRowCount(){
-            $query = "SELECT * FROM ".$this->tbl_bit_betting_detail;
+            $query = "SELECT * FROM tbl_bit_betting_details";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
@@ -79,44 +83,30 @@
             return $query;
         }
         public function getNoteList(){
-            $query = "SELECT *
-            FROM ".$this->tbl_bit_note." N 
-            JOIN ".$this->tbl_bit_user." U ON N.e_Account_Code = U.u_Account_Code 
-            ORDER BY N.e_Updated_Date DESC";
+            $query = "SELECT * FROM tbl_bit_notes WHERE e_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY e_Updated_Date DESC";
             return $query;
         }
         public function getInquiryList(){
-            $query = "SELECT * FROM ".$this->tbl_bit_inquiry." ORDER BY t_Inquiry_Date DESC";
+            $query = "SELECT * FROM tbl_bit_inquiries WHERE t_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY t_Id DESC";
             return $query;
         }
+
+        // Cashin Cashout History
         public function getUserHistoryList(){
-            $query = "SELECT
-            U.u_Account_Code AS parent_code,
-            U.u_Bank_Code,
-            U.u_Bank_Holder_Name,
-            U.u_Account_Number,
-            H.h_Event,
-            H.h_Plus,
-            H.h_Status,
-            H.h_Minus,
-            H.h_Processing_Time,
-            H.h_UpdatedDate,
-            (SELECT t_Cashin_Status FROM tbl_bit_transactions_cashin_details WHERE t_Account_Code = parent_code ORDER BY t_Cashin_Date LIMIT 1) AS t_Cashin_Status,
-            (SELECT t_Cashout_Status FROM tbl_bit_transactions_withdraw_details WHERE t_Account_Code = parent_code ORDER BY t_Cashout_Date LIMIT 1) AS t_Cashout_Status
-            -- (SELECT t_Cashin_Date FROM tbl_bit_transactions_cashin_details WHERE t_Account_Code = parent_code ORDER BY t_Cashin_Date LIMIT 1) AS t_Cashin_Date,
-            -- (SELECT t_Cashout_Date FROM tbl_bit_transactions_withdraw_details WHERE t_Account_Code = parent_code ORDER BY t_Cashin_Date LIMIT 1) AS t_Cashout_Date
-            FROM tbl_bit_transaction_histories H
-            JOIN tbl_bit_users U ON H.h_Account_Code = U.u_Account_Code";
+            $query = "SELECT *
+             FROM tbl_bit_transaction_histories H 
+            INNER JOIN tbl_bit_users U ON H.h_Account_Code = U.u_Account_Code
+            WHERE '".$_SESSION["user_session"]["u_Account_Code"]."' = h_Account_Code";
             return $query;
         }
 
-
+        // Bet History
         public function getUserTransactionList(){
             // $query = "SELECT *
             // FROM ".$this->tbl_bit_trans_history." H
             // JOIN ".$this->tbl_bit_user." U ON H.h_Account_Code = U.u_Account_Code
 
-                $query = "SELECT * FROM ".$this->tbl_bit_betting_detail." WHERE b_DeletedDate IS NULL ORDER BY b_UpdatedDate DESC";
+                $query = "SELECT * FROM tbl_bit_betting_details WHERE b_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY b_Id DESC";
                 return $query;
         }
       

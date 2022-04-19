@@ -75,7 +75,6 @@
 			else{
 				$output .= '<td>-</td>';
 			}
-           
             $output .= '<td>'.$val["b_UpdatedDate"].'</td>';
 			$output .= '</tr>';
 			$sNum ++;
@@ -98,4 +97,5 @@
     $output .= '</div>';
 	
     print $output;
+
 ?>

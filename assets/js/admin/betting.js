@@ -33,6 +33,7 @@ $(document).ready(function() {
     $('#sellBtn').click(function(){
         //1 - sell , 2 - buy
         var bet = $('#betAmount').val();
+       
         $.confirm({
             title: 'You bet for ' + bet+'원',
             content: 'Click 베팅 to submit.',
@@ -64,6 +65,7 @@ $(document).ready(function() {
                 }
             }
         });
+  
     })
     $('#buyBtn').click(function(){
         //1 - sell , 2 - buy
@@ -129,10 +131,19 @@ function disabledBtnOnBet(){
 function bettingExecution(){
     $('#betAmount').blur(function(){
         var inputValue = Number($(this).val().replace(/[^0-9\.-]+/g,""));
+        // var current = Number($('#cashb').text().replace(/[^0-9\.-]+/g,""));
         if(inputValue < 5000){
             alert('최소거래금액 ! 5000.')
             return false;
         }
+        // else if(inputValue == null){
+        //     alert('최소거래금액 ! 5000.')
+        //     return false;
+        // }
+        // else if(inputValue > current){
+        //     alert('당신은 균형이 충분하지 않습니다')
+        //     return false;
+        // }
         remDisabledSellbuy();
     })
     $('input#betAmount').keyup(function(event) {

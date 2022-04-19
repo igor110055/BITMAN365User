@@ -116,18 +116,19 @@
             <div class="modal-body">
                 <div class="container">
                     <h1 class="modal-title text-white mb-2">비밀번호 변경</h1>
-                    <form method="POST" class="form_login">
+                    <form method="POST" class="form_changepassword">
                         <div class="btn-group">
                             <button class="btn btn_currpassword" type="button">현재 비밀번호</button>
-                            <input type="text" class="form-control textinput1" id="account_currentpassword" name="account_currentpassword" placeholder="********" autofocus>
+                            <input type="text" class="form-control textinput1" id="" name="account_currentpassword" placeholder="********" autofocus disabled>
+                            <!-- <input type="text" class="form-control textinput1" id="account_currentpassword" name="account_currentpassword" placeholder="********" autofocus disabled> -->
                         </div>
                         <div class="btn-group">
                             <button class="btn btn_newpassword" type="button">변경할 비밀번호</button>
-                            <input type="text" class="form-control textinput2" id="account_newpassword" name="account_newpassword" placeholder="********" autofocus>
+                            <input type="password" class="form-control textinput2" id="account_newpassword" name="account_newpassword" placeholder="********" autofocus>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn_reenterpassword" type="button">비밀번호 재입력</button>
-                            <input type="text" class="form-control textinput3" id="account_reenter" name="account_reenter" placeholder="********" autofocus>
+                            <input type="password" class="form-control textinput3" id="account_reenter" name="account_reenter" placeholder="********" autofocus>
                         </div>
                         <p class="message" style="color: #FF787B; text-align: center;" >입력하신 정보가 잘못되었습니다. 확인하시고 다시 변경해주세요.</p>
                         <div class="display_error text-center"></div>
@@ -159,6 +160,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- display withdraw submit -->
 <div class="modal fade" id="modal-withdraw_submit" tabindex="-1">
     <div class="modal-dialog">
@@ -182,34 +185,6 @@
     </div>
 </div>
 <!-- display inquiry submit -->
-<div class="modal fade" id="modal-inquiry_submit" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <h4 class="modal-title mt-n4 mb-2 modal-notif-title mb-3">1:1 문의하기</h4>
-            <div class="modal-body">
-                <div class="container">
-                    <form class="formInquiry" method="POST">
-                        <div class="inline_grp">
-                            <button class="btn btn_title" type="button">제목</button>
-                            <input type="text" id="inquiry_title" name="inquiry_title" placeholder="제목을 입력해 주세요." class="form-control">
-                            <div class="errortitle"></div>
-                        </div>
-                        <div class="inline_grp">
-                            <button class="btn btn_title" type="button">문의내용</button>
-                            <textarea type="text" id="inquiry_details" name="inquiry_details" placeholder="문의내용을 입력해 주세요." class="form-control"></textarea>
-                            <div class="errordetails"></div>
-                        </div>
-                        <center><button class="btn btn_inquiry_save" type="submit">확인</button></center>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="modal-inquiry_submit" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">

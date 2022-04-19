@@ -1,5 +1,5 @@
 $('.btn_changepassword').click(function(){
-    var current_password = $('#current_password');
+    // var current_password = $('#current_password');
     $('#modal-change_password').modal('show')
 
   })
@@ -11,7 +11,6 @@ $('.btn_changepassword').click(function(){
     "contentType": "application/json",
     "async": false,
     success: function(response) {
-        
         $('#bank').val(response[0].m_Bank_Name);
         $('#accountno').val(response[0].u_Account_Number);
         $('#accountholder').val(response[0].u_Bank_Holder_Name);
@@ -23,3 +22,4 @@ $('.btn_changepassword').click(function(){
     }
   })
   numberFormat();
+  

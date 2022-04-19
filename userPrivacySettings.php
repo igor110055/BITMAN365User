@@ -1444,7 +1444,8 @@
                     </div>
                     <div class="btn-group">
                         <button class="btn btn_currentpass" type="button">비밀번호</button>
-                        <input type="text" id="current_password" name="current_password" class="current_password form-control" placeholder="***************">
+                        <input type="text" disabled id="" name="current_password" class="current_password form-control" placeholder="***********">
+                        <!-- <input type="text" disabled id="current_password" name="current_password" class="current_password form-control" placeholder="***********"> -->
                         <button class="btn btn_changepassword" type="button">변경</button>
                     </div>
                     <div class="btn-group">

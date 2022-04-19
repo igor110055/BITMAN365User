@@ -66,6 +66,8 @@
 		foreach($data as $key => $val){
 			$output .= '<tr>';
 			$output .= '<td>'.$sNum.'</td>';
+
+            // Bank Code
 			if($val["u_Bank_Code"] == 1){
                 $output .= '<td >KEB하나은행 </td>';
             }
@@ -133,6 +135,7 @@
 			$output .= '<td>'.$val["u_Account_Number"].'</td>';
 			$output .= '<td>'.$val["u_Bank_Holder_Name"].'</td>';
 			
+            //Deposit or Withdraw
             if($val["h_Event"] == "증금"){
                 $output .= '<td><p><font color = "#ff9300">'.$val["h_Event"].'</p></td>';
             }
@@ -140,6 +143,7 @@
                 $output .= '<td><p><font color="#78A6FF">'.$val["h_Event"].'</p></td>';
             }
            
+            //Price
             if($val["h_Plus"] == 0){
                 $output .= '<td><p><font color = "#78A6FF">'.$val["h_Minus"].'</p></td>';
             }
@@ -147,30 +151,9 @@
                 $output .= '<td><p><font color = "#ff9300">'.$val["h_Plus"].'</p></td>';
             }
 
-            // if($val["b_Result"] == 0){
-            //     $output .= '<td><font color = "#78A6FF">실현</font></td>';
-            // }
-            // else if($val["b_Result"] == 1){
-            //     $output .= '<td><font color = "#ff9300">실격</font></td>';
-            // }
-			// else{
-			// 	$output .= '<td>-</td>';
-			// }
-            
-            //IF deposit
+            //Status
 			if($val["h_Status"] == 0){
-
                 $output .= '<td>진행중</td>';
-
-				// if($val["t_Cashin_Status"] == 0){
-				// 	$output .= '<td>진행중</td>';
-				// }
-				// else if($val["t_Cashin_Status"] == 1){
-				// 	$output .= '<td>완료</td>';
-				// }
-				// else if($val["t_Cashin_Status"] == 2){
-				// 	$output .= '<td>취소</td>';
-				// }
             }
             else if ($val["h_Status"] == 1){
                 $output .= '<td>완료</td>';
@@ -178,7 +161,22 @@
             else if ($val["h_Status"] == 2){
                 $output .= '<td>취소</td>';
             }
-            // //IF withdraw
+
+
+
+            //IF withdraw
+            // if($val["h_Event"] == "증금"){
+            //     if($val["t_Cashin_Status"] == 0){
+            //         $output .= '<td>진행중</td>';
+            //     }
+            //     else if($val["t_Cashin_Status"] == 1){
+            //         $output .= '<td>완료</td>';
+            //     }
+            //     else if($val["t_Cashin_Status"] == 2){
+            //         $output .= '<td>취소</td>';
+            //     }
+            // }
+           
             // else if($val["h_Event"] == "출금"){
 			// 	if($val["t_Cashout_Status"] == 0){
 			// 		$output .= '<td>진행중</td>';
@@ -191,12 +189,7 @@
 			// 	}
             // }
 
-			// if($val["h_Event"] == "증금"){
-            //     $output .= '<td>'.$val["t_Cashin_Date"].'</td>';
-            // }
-            // else if($val["h_Event"] == "출금"){
-            //     $output .= '<td>'.$val["t_Cashout_Date"].'</td>';
-            // }
+			
             $output .= '<td>'.$val["h_Processing_Time"].'</td>';
 			$output .= '<td>'.$val["h_UpdatedDate"].'</td>';
 

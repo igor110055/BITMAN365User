@@ -7,7 +7,7 @@
     $perPage = new PerPage();
     $db = $database->getConnection();
 
-    $query = new Userinfo($db);
+    $query = new UserInfo($db);
 
 	$sql = $query->getNoteList();
     $sql1 = $query->getNoteRowCount();
@@ -48,6 +48,7 @@
 	$output .= '<thead>';
 	$output .= '<tr>';
 	$output .= '<th>번호</th>';
+	// $output .= '<th><input type="checkbox" name="selectThemAll"/></th>';
 	$output .= '<th>제목</th>';
 	$output .= '<th>상태</th>';
 	$output .= '<th>수신시간</th>';
@@ -57,7 +58,8 @@
 	if($sql1->rowCount() > 0){
 		foreach($data as $key => $val){
 			$output .= '<tr class="rowaccordion">';
-			$output .= '<td style="width:150px">'.$sNum.'</td>';
+			$output .= '<td>'.$sNum.'</td>';
+			// $output .= '<td><input type="checkbox" name="chk1" value="Yes"></td>';
 			$output .= '<td style="text-align: left;">'.$val["e_Title"].'</td>';
 			if($val["e_State"] == 0){
                 $output .= '<td style="color: #ff9300">읽지 않음</td>';
@@ -94,4 +96,15 @@
 	$(".rowContent").not($(this).next()).hide();
 		$(this).next(".rowContent").toggle();
 	})
+
+	$(function() {
+    jQuery("[name=selectThemAll]").click(function(source) { 
+        checkboxes = jQuery("[name=chk1]");
+        for(var i in checkboxes){
+            checkboxes[i].checked = source.target.checked;
+        }
+    });
+})
+
+
 </script>
