@@ -131,10 +131,10 @@
                                     <span class="user_oranges" onclick="dropdown()"><img src="assets/icons/user_orange.png" class="user_orange dropbtn"></span>
                                     <div id="myDropdown" class="dropdown-content" style="padding: 15px; background: #DDDDDE; ">
                                         <div style="background: #F7F7F7;  border-radius: 10px; font-size: 16px; height: 44px; font-weight: 700; padding: 10px;">
-                                            닉네 닉네 닉네
+                                            '.(@$_SESSION["user_session"]["u_Nickname"]).'
                                             <img src="assets/icons/akar-icons_sound-on.png" style="padding: 0 0 0 80px;">
                                         </div>
-                                        <p style="margin-top: 10px; color: #888888; font-size: 14px;">추천지점 : &nbsp;&nbsp;강남점</p>
+                                        <p style="margin-top: 10px; color: #888888; font-size: 14px;">'.(@$_SESSION["user_session"]["u_Mobile_Number"]).'</p>
                                         <div style="background: #C4C4C4; border-radius: 10px; height: 157px; width: 100%; padding: 10px; margin-bottom: 5px;">
                                             <a href="./userWithdrawAndDepositHistory.php" button type="button" class="btn" style="width: 100%; margin-bottom: 10px; text-align: left; font-weight: 700;">입출금 내역</a></button>
                                             <a href="./userTransactionHistory.php" button type="button" class="btn" style="width: 100%; margin-bottom: 10px; text-align: left; font-weight: 700;">거래내역</a></button>

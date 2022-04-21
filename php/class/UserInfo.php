@@ -83,7 +83,7 @@
             return $query;
         }
         public function getNoteList(){
-            $query = "SELECT * FROM tbl_bit_notes WHERE e_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY e_Updated_Date DESC";
+            $query = "SELECT * FROM tbl_bit_notes WHERE e_Account_Code = '".$_SESSION["user_session"]["u_Account_Code"]."' ORDER BY e_Registration_Time DESC";
             return $query;
         }
         public function getInquiryList(){

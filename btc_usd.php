@@ -21,7 +21,90 @@
     }
 ?>
     <style>
+
+        .page_btc{ 
+            width: 96%;
+            margin-left: 2%;
+        }
         
+        #my_popup{
+            position: absolute;
+            width: 600px;
+            height: 200px;
+            left: 660px;
+            top: 270px;
+            background: #393E46;
+            border: 4px solid #B4BAC8;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display:none;
+        }
+
+        .success-btc{
+            width: 100%;
+            height: 38px;
+            top: 28px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 38px;
+            color: #FFFFFF;
+            margin: 10% 30%;
+        }
+
+        #my_popup_failed{
+            position: absolute;
+            width: 600px;
+            height: 200px;
+            left: 660px;
+            top: 270px;
+            background: #393E46;
+            border: 4px solid #B4BAC8;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display:none;
+        }
+
+        .failed-btc{
+            width: 100%;
+            height: 38px;
+            top: 28px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 38px;
+            color: #FFFFFF;
+            margin: 10% 10%;
+        }
+
+        #minimum_transaction{
+            position: absolute;
+            width: 600px;
+            height: 200px;
+            left: 660px;
+            top: 270px;
+            background: #393E46;
+            border: 4px solid #B4BAC8;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display:none;
+        }
+
+        .minimum_transaction-btc{
+            width: 100%;
+            height: 38px;
+            top: 28px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 38px;
+            color: #FFFFFF;
+            margin: 10% 10%;
+        }
+
         .navbar-collapse-1-mobile{
             padding: 200px 20px 0 20px;
         }
@@ -267,6 +350,17 @@
                 </div>
             </div>
         </div>
+        <div id="my_popup">
+            <p class="success-btc">성공적으로 베팅!</p>
+        </div>
+        <div id="my_popup_failed">
+            <p class="failed-btc">당신은 균형이 충분하지 않습니다!</p>
+        </div>
+        <div id="minimum_transaction">
+            <p class="minimum_transaction-btc">최소 거래 금액은 5000입니다.!</p>
+        </div>
+
+        <span hidden class="cash_balance" id="cashb"></span>
         <div class="game_list" id="reloadPage">
             <div class="game_details">
                 <div class="game_title">

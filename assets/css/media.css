@@ -21,6 +21,47 @@
     padding: 20px 16.66%;
   }
 
+  .btn-white{
+    height: 60px;
+    width: 250px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 19px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #AED3EA;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+  }
+
+    .header_btn .btn-white{
+    height: 60px;
+    width: 250px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 19px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #AED3EA;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 8%;
+    color: #1F8FAE;
+  }
+
   .card-trading-title{
     font-style: normal;
     font-weight: bold;

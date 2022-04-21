@@ -11,7 +11,7 @@
                         <p class="header_subtitle">거래 분석전문가와 함께 <br> 안전하고 실현가능한 가치에 투자하세요.</p>
                     </div>
                     <div class="header_btn">
-                        <button type="button" class="btn btn-white">거래 시작</button>
+                        <a href="./btc_usd.php" button type="button" class="btn btn-white">거래 시작</a></button>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                         <p class="header_subtitle">거래 분석전문가와 함께 안전하고 실현가능한 가치에 투자하세요.</p>
                     </div>
                     <div class="header_btn">
-                        <button type="button" class="btn btn-white">거래 시작</button>
+                        <button type="button" class="btn btn-white modal-popup-login mr-3">거래 시작</button>
                     </div>
                 </div>
             </div>

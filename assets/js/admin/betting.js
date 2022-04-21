@@ -32,76 +32,103 @@ $(document).ready(function() {
     })
     $('#sellBtn').click(function(){
         //1 - sell , 2 - buy
+
         var bet = $('#betAmount').val();
-       
-        $.confirm({
-            title: 'You bet for ' + bet+'원',
-            content: 'Click 베팅 to submit.',
-            type: 'red',
-            typeAnimated: true,
-            buttons: {
-                bet: {
-                    text: '베팅',
-                    btnClass: 'btn-red',
-                    action: function(){
-                        var mytime = moment.tz(moment(),'Asia/Seoul').format("YYYY-MM-DD HH:mm");
-                        var conunix = Math.floor(new Date(mytime).getTime() + 1000 * 60);
-                        var mytimeunix = conunix / 1000;
-                        var betAmount = Number($('#betAmount').val().replace(/[^0-9\.-]+/g,""));
-                        var totalBetAmount = Number($('#totalBetAmount').val().replace(/[^0-9\.-]+/g,""));
-                        var arr = [{time: mytimeunix, betAmount : betAmount, totalBetAmount : totalBetAmount, multiplyby : 1.95, trend: 1}];
-                        $.post( "php/api/user/postPurchaserequest.php", JSON.stringify(arr), function( res ) {
-                            var time = [{time: mytimeunix}];
-                            $.post( "php/api/user/checkTimeBetPerMin.php", JSON.stringify(time), function( res ) {
-                                if(res.length > 0){
-                                    location.reload(true);
-                                }
-                            })
-                        })
-                    }
-                },
-                close: function () {
+        if(bet < 5000){
+            alert("alert");
+        }
+        else{
+           
+            var mytime = moment.tz(moment(),'Asia/Seoul').format("YYYY-MM-DD HH:mm");
+            var conunix = Math.floor(new Date(mytime).getTime() + 1000 * 60);
+            var mytimeunix = conunix / 1000;
+            var betAmount = Number($('#betAmount').val().replace(/[^0-9\.-]+/g,""));
+            var totalBetAmount = Number($('#totalBetAmount').val().replace(/[^0-9\.-]+/g,""));
+            var current = Number($('#cashb').text().replace(/[^0-9\.-]+/g,""));
+            var arr = [{time: mytimeunix, betAmount : betAmount, totalBetAmount : totalBetAmount, multiplyby : 1.95, trend: 1}];
+
+            if(betAmount > current){
+                function showPopUp(){
+                    my_popup_failed.style.display="block";
+                }
+                showPopUp();
+                function ClosePopUp(){
+                    my_popup_failed.style.display="none";
                     location.reload(true);
                 }
+                setTimeout(ClosePopUp, 3000)
             }
-        });
+            else{
+                function showPopUp(){
+                    my_popup.style.display="block";
+                }
+                showPopUp();
+                function ClosePopUp(){
+                    my_popup.style.display="none";
+                    location.reload(true);
+                }
+                setTimeout(ClosePopUp, 3000)
+                
+                $.post( "php/api/user/postPurchaserequest.php", JSON.stringify(arr), function( res ) {
+                    var time = [{time: mytimeunix}];
+                    $.post( "php/api/user/checkTimeBetPerMin.php", JSON.stringify(time), function( res ) {
+                        if(res.length > 0){
+                        }
+                    })
+                })
+            }
+        }
+               
   
     })
     $('#buyBtn').click(function(){
         //1 - sell , 2 - buy
         
         var bet = $('#betAmount').val();
-        $.confirm({
-            title: 'You bet for ' + bet+'원',
-            content: 'Click 베팅 to submit.',
-            type: 'blue',
-            typeAnimated: true,
-            buttons: {
-                bet: {
-                    text: '베팅',
-                    btnClass: 'btn-blue',
-                    action: function(){
-                        var mytime = moment.tz(moment(),'Asia/Seoul').format("YYYY-MM-DD HH:mm");
-                        var conunix = Math.floor(new Date(mytime).getTime() + 1000 * 60);
-                        var mytimeunix = conunix / 1000;
-                        var betAmount = Number($('#betAmount').val().replace(/[^0-9\.-]+/g,""));
-                        var totalBetAmount = Number($('#totalBetAmount').val().replace(/[^0-9\.-]+/g,""));
-                        var arr = [{time: mytimeunix, betAmount : betAmount, totalBetAmount : totalBetAmount, multiplyby : 1.95, trend: 2}];
-                        $.post( "php/api/user/postPurchaserequest.php", JSON.stringify(arr), function( response ) {
-                            var time = [{time: mytimeunix}];
-                            $.post( "php/api/user/checkTimeBetPerMin.php", JSON.stringify(time), function( res ) {
-                                if(res.length > 0){
-                                    location.reload(true);
-                                }
-                            })
-                        })
-                    }
-                },
-                close: function () {
+        if(bet < 5000){
+            alert("alert");
+        }
+        else{
+
+            var mytime = moment.tz(moment(),'Asia/Seoul').format("YYYY-MM-DD HH:mm");
+            var conunix = Math.floor(new Date(mytime).getTime() + 1000 * 60);
+            var mytimeunix = conunix / 1000;
+            var betAmount = Number($('#betAmount').val().replace(/[^0-9\.-]+/g,""));
+            var totalBetAmount = Number($('#totalBetAmount').val().replace(/[^0-9\.-]+/g,""));
+            var arr = [{time: mytimeunix, betAmount : betAmount, totalBetAmount : totalBetAmount, multiplyby : 1.95, trend: 2}];
+            var current = Number($('#cashb').text().replace(/[^0-9\.-]+/g,""));
+
+            if(betAmount > current){
+                function showPopUp(){
+                    my_popup_failed.style.display="block";
+                }
+                showPopUp();
+                function ClosePopUp(){
+                    my_popup_failed.style.display="none";
                     location.reload(true);
                 }
+                setTimeout(ClosePopUp, 3000)
             }
-        });
+            else{
+            function showPopUp(){
+                my_popup.style.display="block";
+            }
+            showPopUp();
+            function ClosePopUp(){
+                my_popup.style.display="none";
+                location.reload(true);
+            }
+            setTimeout(ClosePopUp, 3000)
+            
+            $.post( "php/api/user/postPurchaserequest.php", JSON.stringify(arr), function( response ) {
+                var time = [{time: mytimeunix}];
+                $.post( "php/api/user/checkTimeBetPerMin.php", JSON.stringify(time), function( res ) {
+                    if(res.length > 0){
+                    }
+                })
+            }) 
+        }
+    }
     })
     window.setInterval(function() {
         $('#container_data').scrollLeft($('#container_data').scrollLeft() + 904);
@@ -112,6 +139,8 @@ $(document).ready(function() {
 function display_time() {
     display_counter();
 }
+
+
 function display_counter(){
     var refresh = 1000; // Refresh rate in milliseconds
     reshistory = setTimeout('getBettinghistory()',refresh)
@@ -131,20 +160,30 @@ function disabledBtnOnBet(){
 function bettingExecution(){
     $('#betAmount').blur(function(){
         var inputValue = Number($(this).val().replace(/[^0-9\.-]+/g,""));
-        // var current = Number($('#cashb').text().replace(/[^0-9\.-]+/g,""));
+        var current = Number($('#cashb').text().replace(/[^0-9\.-]+/g,""));
         if(inputValue < 5000){
-            alert('최소거래금액 ! 5000.')
-            return false;
+            function showPopUp(){
+                minimum_transaction.style.display="block";
+            }
+            showPopUp();
+            function ClosePopUp(){
+                minimum_transaction.style.display="none";
+                location.reload(true);
+            }
+            setTimeout(ClosePopUp, 3000)
         }
-        // else if(inputValue == null){
-        //     alert('최소거래금액 ! 5000.')
-        //     return false;
-        // }
-        // else if(inputValue > current){
-        //     alert('당신은 균형이 충분하지 않습니다')
-        //     return false;
-        // }
-        remDisabledSellbuy();
+        else if(inputValue > current){
+            function showPopUp(){
+                my_popup_failed.style.display="block";
+            }
+            showPopUp();
+            function ClosePopUp(){
+                my_popup_failed.style.display="none";
+                location.reload(true);
+            }
+            setTimeout(ClosePopUp, 3000)
+        }
+        // remDisabledSellbuy();
     })
     $('input#betAmount').keyup(function(event) {
         // skip for arrow keys
