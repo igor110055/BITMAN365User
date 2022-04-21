@@ -90,6 +90,7 @@
             U.u_Password,
             U.u_Mobile_Number,
             U.u_Ip_Address,
+            U.u_Recommended_Point,
             U.u_Access_Code,
             U.u_Bank_Holder_Name,
             U.u_Account_Number,

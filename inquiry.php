@@ -26,6 +26,8 @@
             box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
             border-radius: 10px 10px 4px 4px;
             height: 747px;
+            width: 105%;
+            margin-left: -2%;
         }
         .card-header{
             background: #393E46;
@@ -169,6 +171,7 @@
                 padding: 20px;
                 width: 100%;
             }
+            
             .card-header{
                 font-size: 22px;
                 padding: 5px 20px;

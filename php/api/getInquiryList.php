@@ -62,14 +62,14 @@
             $output .= '<td>'.$val["t_Inquiry_Date"].'</td>';
             $output .= '</tr>';
             $output .= '<tr class="rowContent">';
-            $output .= '<td style="background: #EEEEEE;  text-align: left; padding-left: 50px;">[ 문의 ]</td>';
-            $output .= '<td colspan="4" style="background: #EEEEEE; text-align: left;">'.$val["t_Inquiry_Details"].'</td>';
+            $output .= '<td style="background: #EEEEEE; text-align: center;">[ 문의 ]</td>';
+            $output .= '<th colspan="3" style="background: #EEEEEE; text-align: left; font-size:16px; font-weight: 400; ">'.$val["t_Inquiry_Details"].'</td>';
             $output .= '</tr>';
             if($val["t_Manager_Reply"] && $val["t_Inquiry_Status_Id"] == 1){
                 $output .= '<tr class="rowContent1">';
-                $output .= '<td style="background: #DDDDDE;  text-align: left; padding-left: 50px;">[ 답변 ]</td>';
-                $output .= '<td colspan="2" style="background: #DDDDDE; text-align: left;">'.$val["t_Manager_Reply"].'</td>';
-                $output .= '<td style="background: #DDDDDE; text-align: center;">'.$val["t_Response_Time"].'</td>';
+                $output .= '<td style="background: #DDDDDE; text-align:center; width:100px;">[ 답변 ]</td>';
+                $output .= '<th colspan="2" style="background: #DDDDDE; text-align:left; font-size:16px; font-weight: 400; ">'.$val["t_Manager_Reply"].'</td>';
+                $output .= '<td style="background: #DDDDDE; text-align:center;">'.$val["t_Response_Time"].'</td>';
                 
                 $output .= '</tr>';
             }
@@ -77,7 +77,7 @@
         }
     }else{
         $output .= '<tr style="text-align: center; height: 40px;">';
-        $output .= '<td colspan="4">기록을 찾을 수 없습니다.</td>';
+        $output .= '<td style="text-align: center; colspan="4">기록을 찾을 수 없습니다.</td>';
         $output .= '</tr>';
     }
 	$output .= '</tbody>';

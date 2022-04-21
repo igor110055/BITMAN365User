@@ -132,9 +132,9 @@
                                     <div id="myDropdown" class="dropdown-content" style="padding: 15px; background: #DDDDDE; ">
                                         <div style="background: #F7F7F7;  border-radius: 10px; font-size: 16px; height: 44px; font-weight: 700; padding: 10px;">
                                             '.(@$_SESSION["user_session"]["u_Nickname"]).'
-                                            <img src="assets/icons/akar-icons_sound-on.png" style="padding: 0 0 0 80px;">
+                                            <img src="assets/icons/akar-icons_sound-on.png" style="float:right;">
                                         </div>
-                                        <p style="margin-top: 10px; color: #888888; font-size: 14px;">'.(@$_SESSION["user_session"]["u_Mobile_Number"]).'</p>
+                                        <p style="margin-top: 10px; margin-left: 10px; color: #888888; font-size: 14px;">'.(@$_SESSION["user_session"]["u_Recommended_Point"]).'</p>
                                         <div style="background: #C4C4C4; border-radius: 10px; height: 157px; width: 100%; padding: 10px; margin-bottom: 5px;">
                                             <a href="./userWithdrawAndDepositHistory.php" button type="button" class="btn" style="width: 100%; margin-bottom: 10px; text-align: left; font-weight: 700;">입출금 내역</a></button>
                                             <a href="./userTransactionHistory.php" button type="button" class="btn" style="width: 100%; margin-bottom: 10px; text-align: left; font-weight: 700;">거래내역</a></button>
